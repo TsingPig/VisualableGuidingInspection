@@ -126,7 +126,6 @@ public class PeriodManager : Singleton<PeriodManager>
     {
 
     }
-
     public void LogPeriod()
     {
         Log.Info("当前时间段：", _currentPeriod.GetPeriod());

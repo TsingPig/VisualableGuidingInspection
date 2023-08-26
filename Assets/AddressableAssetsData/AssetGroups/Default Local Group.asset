@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: PatientName
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 86cec94f865302242b755725452cdfa5
+    m_Address: Inspection
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68b3229ea743de44eacc98d790c6f36a
+    m_Address: Instrument
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 565dfcdfef6f5d840a14ad4774feeab9, type: 2}
   m_SchemaSet:

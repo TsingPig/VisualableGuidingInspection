@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: PatientName Config
+  m_Name: PatientName
   m_EditorClassIdentifier: Assembly-CSharp::PatientName_SO
   _firstNameLib:
   - "\u8D75"

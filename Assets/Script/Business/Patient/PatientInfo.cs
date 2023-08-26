@@ -8,7 +8,7 @@ public enum Gender
 }
 
 
-[CreateAssetMenu(fileName = "Address Config", menuName = "Data/Address")]
+[CreateAssetMenu(fileName = "Address", menuName = "Data/Address")]
 public class Address_SO : ScriptableObject
 {
     [Header("地址区预设"), SerializeField] private List<string> _districtsLib;
@@ -18,7 +18,7 @@ public class Address_SO : ScriptableObject
     public List<string> StreetsLib { get => _streetsLib; }
 }
 
-[CreateAssetMenu(fileName = "PatientName Config", menuName = "Data/PatientName")]
+[CreateAssetMenu(fileName = "PatientName", menuName = "Data/PatientName")]
 public class PatientName_SO : ScriptableObject
 {
     [Header("姓预设"), SerializeField] private List<string> _firstNameLib;

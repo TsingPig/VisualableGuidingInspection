@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class RandomInfo
+public static partial class RandomInfo
 {
     public static string RandomPatientID(int idLength = 8)
     {
@@ -77,3 +77,4 @@ public static class RandomInfo
         return patientInfo;
     }
 }
+
