@@ -41,3 +41,17 @@ public class PatientInfo
     public string patientPhoneNumber;
 
 }
+public static partial class Log
+{
+    public static void Info(PatientInfo patientInfo)
+    {
+        Log.Info(
+            "ID：" + patientInfo.patientID,
+            "姓名：" + patientInfo.patientName,
+            "性别：" + patientInfo.patientGender.ToString(),
+            "年龄：" + patientInfo.patientAge.ToString(),
+            "地址：" + patientInfo.patientAddress,
+            "电话：" + patientInfo.patientPhoneNumber
+        );
+    }
+}

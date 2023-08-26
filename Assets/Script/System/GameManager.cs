@@ -7,6 +7,7 @@ public sealed class GameManager : Singleton<GameManager>
     private void Init()
     {
         Log.CallInfo($"{DataManager.Instance.name}生成");
+        Log.CallInfo($"{PeriodManager.Instance.name}生成");
     }
     private void GameEntry()
     {
@@ -20,9 +21,13 @@ public sealed class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.T))
+        if (Input.GetKeyUp(KeyCode.P))
         {
             RandomInfo.RandomPatientInfo();
+        }
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            PeriodManager.Instance.LogPeriod();
         }
     }
 }
