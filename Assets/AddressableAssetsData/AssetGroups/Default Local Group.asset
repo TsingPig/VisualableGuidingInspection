@@ -15,8 +15,16 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 9150ecbedd855394483b74e6ac077c3f
-  m_SerializeEntries: []
+  m_GUID: 8fa1973ada8063c4c9c956d8f70fbaab
+  m_SerializeEntries:
+  - m_GUID: 1bebcee6ae484f2489829a2f8607e178
+    m_Address: AddressData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 373e3a7ead98c8b4c8ddf30b52de663f
+    m_Address: PatientName
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 565dfcdfef6f5d840a14ad4774feeab9, type: 2}
   m_SchemaSet:
