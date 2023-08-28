@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Address
+  m_EditorClassIdentifier: Assembly-CSharp::Address_SO
+  _districtsLib:
+  - "\u6816\u971E\u533A"
+  - "\u6EE8\u6C5F\u533A"
+  - "\u5BCC\u8363\u533A"
+  - "\u6D66\u4E1C\u533A"
+  - "\u94DC\u5C71\u533A"
+  - "\u6CC9\u5C71\u533A"
+  - "\u9F13\u697C\u533A"
+  - "\u4E91\u9F99\u533A"
+  - "\u9759\u5B89\u533A"
+  _streetsLib:
+  - "\u4EBA\u6C11\u8DEF"
+  - "\u5E73\u5B89\u8DEF"
+  - "\u5BCC\u5F3A\u8DEF"
+  - "\u6C11\u4E3B\u8DEF"
+  - "\u548C\u5E73\u8DEF"
+  - "\u65F6\u4EE3\u8DEF"
+  - "\u4E0A\u6D77\u8DEF"
+  - "\u9F99\u6C5F\u8DEF"
+  - "\u5317\u4EAC\u8DEF"
+  - "\u6EE8\u6CB3\u8DEF"

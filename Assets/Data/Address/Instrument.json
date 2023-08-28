@@ -1,0 +1,138 @@
+{
+    "instrumentInfos": [
+        {
+            "instrumentID": "Body",
+            "instrumentName": "身体检查仪",
+            "instrumentCount": 8,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "Body",
+                    "periodCountPercent": 0.10000000149011612
+                },
+                {
+                    "inspectionID": "Biopsy",
+                    "periodCountPercent": 0.20000000298023225
+                }
+            ]
+        },
+        {
+            "instrumentID": "HeightWeight",
+            "instrumentName": "身高体重仪",
+            "instrumentCount": 4,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "HeightWeight",
+                    "periodCountPercent": 0.25
+                }
+            ]
+        },
+        {
+            "instrumentID": "BloodPressure",
+            "instrumentName": "血压仪",
+            "instrumentCount": 3,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "BloodPressure",
+                    "periodCountPercent": 0.15000000596046449
+                }
+            ]
+        },
+        {
+            "instrumentID": "BloodAnalyzer",
+            "instrumentName": "血液分析仪",
+            "instrumentCount": 3,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "BloodSugar",
+                    "periodCountPercent": 0.10000000149011612
+                },
+                {
+                    "inspectionID": "BiochemicalBlood",
+                    "periodCountPercent": 0.4000000059604645
+                }
+            ]
+        },
+        {
+            "instrumentID": "UrineAnalyzer",
+            "instrumentName": "尿液分析仪",
+            "instrumentCount": 4,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "Urine",
+                    "periodCountPercent": 0.20000000298023225
+                },
+                {
+                    "inspectionID": "UrineCytology",
+                    "periodCountPercent": 0.5
+                }
+            ]
+        },
+        {
+            "instrumentID": "ECG",
+            "instrumentName": "心电仪",
+            "instrumentCount": 1,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "ECG",
+                    "periodCountPercent": 0.10000000149011612
+                }
+            ]
+        },
+        {
+            "instrumentID": "XRay",
+            "instrumentName": "X射线",
+            "instrumentCount": 5,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "ChestXRay",
+                    "periodCountPercent": 0.30000001192092898
+                },
+                {
+                    "inspectionID": "AbdominalXRay",
+                    "periodCountPercent": 0.25
+                }
+            ]
+        },
+        {
+            "instrumentID": "Endoscope",
+            "instrumentName": "内窥镜",
+            "instrumentCount": 3,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "Colonoscope",
+                    "periodCountPercent": 0.5
+                },
+                {
+                    "inspectionID": "Gastroscope",
+                    "periodCountPercent": 0.5
+                }
+            ]
+        },
+        {
+            "instrumentID": "MRI_CT",
+            "instrumentName": "MRI和CT扫描仪",
+            "instrumentCount": 2,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "MRI",
+                    "periodCountPercent": 0.10000000149011612
+                },
+                {
+                    "inspectionID": "CT",
+                    "periodCountPercent": 0.10000000149011612
+                }
+            ]
+        },
+        {
+            "instrumentID": "BoneDensity",
+            "instrumentName": "骨密度仪",
+            "instrumentCount": 1,
+            "inspectionIDs": [
+                {
+                    "inspectionID": "BoneDensity",
+                    "periodCountPercent": 0.3499999940395355
+                }
+            ]
+        }
+    ]
+}

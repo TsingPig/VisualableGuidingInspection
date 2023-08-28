@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: PatientName
+  m_EditorClassIdentifier: Assembly-CSharp::PatientName_SO
+  _firstNameLib:
+  - "\u8D75"
+  - "\u94B1"
+  - "\u5B59"
+  - "\u674E"
+  - "\u5468"
+  - "\u5434"
+  - "\u90D1"
+  - "\u738B"
+  - "\u674E"
+  - "\u5218"
+  - "\u6731"
+  - "\u5B63"
+  - "\u5F20"
+  - "\u7AE0"
+  - "\u6234"
+  _femaleLastNameLib:
+  - "\u60A6"
+  - "\u96EF\u96EF"
+  - "\u5B50\u60A6"
+  - "\u7D2B\u8D24"
+  - "\u5A67"
+  - "\u7389\u82B9"
+  - "\u6653\u6708"
+  - "\u6653\u96EF"
+  - "\u5A67\u96E8"
+  - "\u8BD7\u96E8"
+  - "\u96E8\u5A77"
+  - "\u5A77"
+  - "\u8BED\u5170"
+  - "\u6167\u5A77"
+  - "\u6674"
+  _maleLastNameLib:
+  - "\u6B63\u9633"
+  - "\u6DA6\u6C11"
+  - "\u660E\u4FCA"
+  - "\u5EFA\u56FD"
+  - "\u536B\u534E"
+  - "\u65B0\u5B87"
+  - "\u6D69\u7136"
+  - "\u660A\u535A"
+  - "\u5B50\u5F3A"
+  - "\u5B50\u6DA6"
+  - "\u5B50\u6B63"
+  - "\u60E0\u6770"
+  - "\u6D2A\u8FB0"
+  - "\u5B87\u6CF0"
+  - "\u8861\u9633"
+  - "\u5723\u5143"

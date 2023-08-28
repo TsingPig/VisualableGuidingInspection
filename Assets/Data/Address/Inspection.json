@@ -1,0 +1,147 @@
+{
+    "inspectionInfos": [
+        {
+            "inspectionID": "Body",
+            "inspectionName": "身体检查",
+            "emptyStomach": false,
+            "instrumentID": "Body",
+            "preInspectionIDs": []
+        },
+        {
+            "inspectionID": "ECG",
+            "inspectionName": "心电图检查",
+            "emptyStomach": false,
+            "instrumentID": "ECG",
+            "preInspectionIDs": [
+                "Body",
+                "BloodPressure"
+            ]
+        },
+        {
+            "inspectionID": "BloodPressure",
+            "inspectionName": "血压测量",
+            "emptyStomach": false,
+            "instrumentID": "BloodPressure",
+            "preInspectionIDs": [
+                "Body"
+            ]
+        },
+        {
+            "inspectionID": "HeightWeight",
+            "inspectionName": "身高体重",
+            "emptyStomach": false,
+            "instrumentID": "HeightWeight",
+            "preInspectionIDs": []
+        },
+        {
+            "inspectionID": "BloodSugar",
+            "inspectionName": "血糖检查",
+            "emptyStomach": true,
+            "instrumentID": "BloodAnalyzer",
+            "preInspectionIDs": [
+                "BloodPressure",
+                "HeightWeight"
+            ]
+        },
+        {
+            "inspectionID": "Urine",
+            "inspectionName": "尿液检查",
+            "emptyStomach": false,
+            "instrumentID": "UrineAnalyzer",
+            "preInspectionIDs": [
+                "BloodSugar"
+            ]
+        },
+        {
+            "inspectionID": "BiochemicalBlood",
+            "inspectionName": "生化学血液检查",
+            "emptyStomach": false,
+            "instrumentID": "BloodAnalyzer",
+            "preInspectionIDs": [
+                "BloodSugar",
+                "BloodPressure",
+                "Urine"
+            ]
+        },
+        {
+            "inspectionID": "ChestXRay",
+            "inspectionName": "胸部X射线检查",
+            "emptyStomach": false,
+            "instrumentID": "XRay",
+            "preInspectionIDs": [
+                "Body",
+                "ECG"
+            ]
+        },
+        {
+            "inspectionID": "Colonoscope",
+            "inspectionName": "肠镜",
+            "emptyStomach": true,
+            "instrumentID": "Endoscope",
+            "preInspectionIDs": [
+                "AbdominalXRay"
+            ]
+        },
+        {
+            "inspectionID": "AbdominalXRay",
+            "inspectionName": "腹部X射线",
+            "emptyStomach": true,
+            "instrumentID": "XRay",
+            "preInspectionIDs": [
+                "Body"
+            ]
+        },
+        {
+            "inspectionID": "Gastroscope",
+            "inspectionName": "胃镜",
+            "emptyStomach": true,
+            "instrumentID": "Endoscope",
+            "preInspectionIDs": [
+                "AbdominalXRay"
+            ]
+        },
+        {
+            "inspectionID": "MRI",
+            "inspectionName": "核磁共振成像",
+            "emptyStomach": false,
+            "instrumentID": "MRI_CT",
+            "preInspectionIDs": []
+        },
+        {
+            "inspectionID": "CT",
+            "inspectionName": "计算机断层扫描",
+            "emptyStomach": false,
+            "instrumentID": "MRI_CT",
+            "preInspectionIDs": []
+        },
+        {
+            "inspectionID": "BoneDensity",
+            "inspectionName": "骨密度测试",
+            "emptyStomach": false,
+            "instrumentID": "BoneDensity",
+            "preInspectionIDs": [
+                "HeightWeight"
+            ]
+        },
+        {
+            "inspectionID": "Biopsy",
+            "inspectionName": "组织活检",
+            "emptyStomach": false,
+            "instrumentID": "Body",
+            "preInspectionIDs": [
+                "MRI",
+                "CT"
+            ]
+        },
+        {
+            "inspectionID": "UrineCytology",
+            "inspectionName": "尿液细胞学检查",
+            "emptyStomach": false,
+            "instrumentID": "UrineAnalyzer",
+            "preInspectionIDs": [
+                "Urine",
+                "Biopsy"
+            ]
+        }
+    ]
+}
