@@ -9,13 +9,79 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 03ea50ff804f8e047aa089e7f62cab32, type: 3}
   m_Name: Instrument
-  m_EditorClassIdentifier: Assembly-CSharp::Instrument_SO
+  m_EditorClassIdentifier: 
   instrumentInfos:
-  - instrumentID: PhysicalExamination_instr
-    instrumentName: "\u4F53\u683C\u68C0\u67E5\u4EEA"
+  - instrumentID: Body
+    instrumentName: "\u8EAB\u4F53\u68C0\u67E5\u4EEA"
+    instrumentCount: 8
+    inspectionIDs:
+    - inspectionID: Body
+      periodCountPercent: 0.1
+    - inspectionID: Biopsy
+      periodCountPercent: 0.2
+  - instrumentID: HeightWeight
+    instrumentName: "\u8EAB\u9AD8\u4F53\u91CD\u4EEA"
     instrumentCount: 4
     inspectionIDs:
-    - inspectionID: PhysicalExamination_inspc
+    - inspectionID: HeightWeight
       periodCountPercent: 0.25
+  - instrumentID: BloodPressure
+    instrumentName: "\u8840\u538B\u4EEA"
+    instrumentCount: 3
+    inspectionIDs:
+    - inspectionID: BloodPressure
+      periodCountPercent: 0.15
+  - instrumentID: BloodAnalyzer
+    instrumentName: "\u8840\u6DB2\u5206\u6790\u4EEA"
+    instrumentCount: 3
+    inspectionIDs:
+    - inspectionID: BloodSugar
+      periodCountPercent: 0.1
+    - inspectionID: BiochemicalBlood
+      periodCountPercent: 0.4
+  - instrumentID: UrineAnalyzer
+    instrumentName: "\u5C3F\u6DB2\u5206\u6790\u4EEA"
+    instrumentCount: 4
+    inspectionIDs:
+    - inspectionID: Urine
+      periodCountPercent: 0.2
+    - inspectionID: UrineCytology
+      periodCountPercent: 0.5
+  - instrumentID: ECG
+    instrumentName: "\u5FC3\u7535\u4EEA"
+    instrumentCount: 1
+    inspectionIDs:
+    - inspectionID: ECG
+      periodCountPercent: 0.1
+  - instrumentID: XRay
+    instrumentName: "X\u5C04\u7EBF"
+    instrumentCount: 5
+    inspectionIDs:
+    - inspectionID: ChestXRay
+      periodCountPercent: 0.3
+    - inspectionID: AbdominalXRay
+      periodCountPercent: 0.25
+  - instrumentID: Endoscope
+    instrumentName: "\u5185\u7AA5\u955C"
+    instrumentCount: 3
+    inspectionIDs:
+    - inspectionID: Colonoscope
+      periodCountPercent: 0.5
+    - inspectionID: Gastroscope
+      periodCountPercent: 0.5
+  - instrumentID: MRI_CT
+    instrumentName: "MRI\u548CCT\u626B\u63CF\u4EEA"
+    instrumentCount: 2
+    inspectionIDs:
+    - inspectionID: MRI
+      periodCountPercent: 0.1
+    - inspectionID: CT
+      periodCountPercent: 0.1
+  - instrumentID: BoneDensity
+    instrumentName: "\u9AA8\u5BC6\u5EA6\u4EEA"
+    instrumentCount: 1
+    inspectionIDs:
+    - inspectionID: BoneDensity
+      periodCountPercent: 0.35

@@ -9,12 +9,106 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0a9400ed7ae1cba4d84910ff07340258, type: 3}
   m_Name: Inspection
   m_EditorClassIdentifier: Assembly-CSharp::Inspection_SO
   inspectionInfos:
-  - inspectionID: PhysicalExamination_inspc
-    inspectionName: "\u4F53\u683C\u68C0\u67E5"
+  - inspectionID: Body
+    inspectionName: "\u8EAB\u4F53\u68C0\u67E5"
     emptyStomach: 0
-    instrumentID: PhysicalExamination_instr
+    instrumentID: Body
     preInspectionIDs: []
+  - inspectionID: ECG
+    inspectionName: "\u5FC3\u7535\u56FE\u68C0\u67E5"
+    emptyStomach: 0
+    instrumentID: ECG
+    preInspectionIDs:
+    - Body
+    - BloodPressure
+  - inspectionID: BloodPressure
+    inspectionName: "\u8840\u538B\u6D4B\u91CF"
+    emptyStomach: 0
+    instrumentID: BloodPressure
+    preInspectionIDs:
+    - Body
+  - inspectionID: HeightWeight
+    inspectionName: "\u8EAB\u9AD8\u4F53\u91CD"
+    emptyStomach: 0
+    instrumentID: HeightWeight
+    preInspectionIDs: []
+  - inspectionID: BloodSugar
+    inspectionName: "\u8840\u7CD6\u68C0\u67E5"
+    emptyStomach: 1
+    instrumentID: BloodAnalyzer
+    preInspectionIDs:
+    - BloodPressure
+    - HeightWeight
+  - inspectionID: Urine
+    inspectionName: "\u5C3F\u6DB2\u68C0\u67E5"
+    emptyStomach: 0
+    instrumentID: UrineAnalyzer
+    preInspectionIDs:
+    - BloodSugar
+  - inspectionID: BiochemicalBlood
+    inspectionName: "\u751F\u5316\u5B66\u8840\u6DB2\u68C0\u67E5"
+    emptyStomach: 0
+    instrumentID: BloodAnalyzer
+    preInspectionIDs:
+    - BloodSugar
+    - BloodPressure
+    - Urine
+  - inspectionID: ChestXRay
+    inspectionName: "\u80F8\u90E8X\u5C04\u7EBF\u68C0\u67E5"
+    emptyStomach: 0
+    instrumentID: XRay
+    preInspectionIDs:
+    - Body
+    - ECG
+  - inspectionID: Colonoscope
+    inspectionName: "\u80A0\u955C"
+    emptyStomach: 1
+    instrumentID: Endoscope
+    preInspectionIDs:
+    - AbdominalXRay
+  - inspectionID: AbdominalXRay
+    inspectionName: "\u8179\u90E8X\u5C04\u7EBF"
+    emptyStomach: 1
+    instrumentID: XRay
+    preInspectionIDs:
+    - Body
+  - inspectionID: Gastroscope
+    inspectionName: "\u80C3\u955C"
+    emptyStomach: 1
+    instrumentID: Endoscope
+    preInspectionIDs:
+    - AbdominalXRay
+  - inspectionID: MRI
+    inspectionName: "\u6838\u78C1\u5171\u632F\u6210\u50CF"
+    emptyStomach: 0
+    instrumentID: MRI_CT
+    preInspectionIDs: []
+  - inspectionID: CT
+    inspectionName: "\u8BA1\u7B97\u673A\u65AD\u5C42\u626B\u63CF"
+    emptyStomach: 0
+    instrumentID: MRI_CT
+    preInspectionIDs: []
+  - inspectionID: BoneDensity
+    inspectionName: "\u9AA8\u5BC6\u5EA6\u6D4B\u8BD5"
+    emptyStomach: 0
+    instrumentID: BoneDensity
+    preInspectionIDs:
+    - HeightWeight
+  - inspectionID: Biopsy
+    inspectionName: "\u7EC4\u7EC7\u6D3B\u68C0"
+    emptyStomach: 0
+    instrumentID: Body
+    preInspectionIDs:
+    - MRI
+    - CT
+  - inspectionID: UrineCytology
+    inspectionName: "\u5C3F\u6DB2\u7EC6\u80DE\u5B66\u68C0\u67E5"
+    emptyStomach: 0
+    instrumentID: UrineAnalyzer
+    preInspectionIDs:
+    - Urine
+    - Biopsy
