@@ -29,7 +29,6 @@ public class Patient : MonoBehaviour
         set
         {
             walk_active = value;
-            _agent.isStopped = !value;
             foreach (Animator a in _anims)
                 a.SetBool("walk", walk_active);
         }
@@ -101,20 +100,22 @@ public class Patient : MonoBehaviour
                 }
             }
 
-
-
-            Vector3 lookDirection = (target.position - transform.position).normalized;
-            while (Vector3.Angle(lookDirection, transform.forward) > 45f)
+            if (!target.parent.GetComponent<Patient>())
             {
-                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 4f);
-                yield return null;
+                Vector3 lookDirection = (target.position - transform.position).normalized;
+                while (Vector3.Angle(lookDirection, transform.forward) > 45f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 4f);
+                    yield return null;
+                }
             }
+
+           
 
             Log.Info($"{gameObject.name} 到达目的地 {target.name}");
 
             Walk_Active = false;
-
 
             if (target.parent.TryGetComponent(out Instrument instrument))
             {
