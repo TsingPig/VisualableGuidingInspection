@@ -14,8 +14,9 @@ public class Patient : MonoBehaviour
 
     private bool walk_active = false;
 
-
     private List<Animator> _anims = new List<Animator>();
+
+    private Transform _prePatient;
 
     [SerializeField] private List<Instrument> _instruments;
 
@@ -33,7 +34,6 @@ public class Patient : MonoBehaviour
                 a.SetBool("walk", walk_active);
         }
     }
-
 
     private void Awake()
     {
@@ -55,8 +55,7 @@ public class Patient : MonoBehaviour
     {
         if (_instruments.Count > 0)
         {
-            MoveInstrument(_instruments[0]);
-            _instruments.RemoveAt(0);
+            MoveTarget(_instruments[0].AddMovingPatients(this));
         }
         else
         {
@@ -65,11 +64,6 @@ public class Patient : MonoBehaviour
 
     }
 
-    public void MoveInstrument(Instrument instrument)
-    {
-        StopAllCoroutines();
-        StartCoroutine(Move(instrument.AddPatient(this)));
-    }
 
     public void MoveTarget(Transform target)
     {
@@ -77,6 +71,23 @@ public class Patient : MonoBehaviour
         StartCoroutine(Move(target));
     }
 
+    public void FollowPrePatient(Transform patient)
+    {
+        if (_prePatient == null)
+        {
+            MoveTarget(_instruments[0].transform.GetChild(0));
+        }
+        else if (patient == _prePatient)
+        {
+            _prePatient = null;
+            MoveTarget(_instruments[0].transform.GetChild(0));
+        }
+        else
+        {
+            Log.Info($"{_prePatient.name}");
+            MoveTarget(_prePatient.GetChild(0));
+        }
+    }
     IEnumerator Move(Transform target)
     {
         if (target != null)
@@ -100,36 +111,41 @@ public class Patient : MonoBehaviour
                 }
             }
 
-            if (!target.parent.GetComponent<Patient>())
-            {
-                Vector3 lookDirection = (target.position - transform.position).normalized;
-                while (Vector3.Angle(lookDirection, transform.forward) > 45f)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 4f);
-                    yield return null;
-                }
-            }
-
-           
-
-            Log.Info($"{gameObject.name} 到达目的地 {target.name}");
-
-            Walk_Active = false;
-
-            if (target.parent.TryGetComponent(out Instrument instrument))
-            {
-                Log.Info($"{gameObject.name} 开始治疗");
-
-                yield return StartCoroutine(instrument.Inspection(this));
-
-                Log.Info($"{gameObject.name} 治疗结束");
-
-                MoveNextInspection();
-            }
-
         }
+
+        Log.Info($"{gameObject.name} 到达目的地 {target.name}");
+
+        Walk_Active = false;
+
+        if (target.parent.GetComponent<Patient>())
+        {
+            _prePatient = target.parent;
+            _instruments[0].EnQueue(this);
+        }
+
+        if (target.parent.TryGetComponent(out Instrument instrument))
+        {
+
+            Vector3 lookDirection = (target.position - transform.position).normalized;
+            while (Vector3.Angle(lookDirection, transform.forward) > 45f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 4f);
+                yield return null;
+            }
+
+            Log.Info($"{gameObject.name} 开始治疗");
+
+            yield return StartCoroutine(instrument.Inspection(this));
+
+            Log.Info($"{gameObject.name} 治疗结束");
+
+            _instruments.RemoveAt(0);
+
+            MoveNextInspection();
+        }
+
     }
-
-
 }
+
+

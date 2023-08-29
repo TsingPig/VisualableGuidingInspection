@@ -5,33 +5,48 @@ using UnityEngine;
 
 public class Instrument : MonoBehaviour
 {
-    private List<Patient> patients = new List<Patient>();
-    public List<Patient> Patients { get => patients; set => patients = value; }
 
-    public Action<Transform> PatientChangeTarget_Event;
+    public Action<Transform> InspectionStart_Event;
+
+    public Action<Transform> InspectionEnd_Event;
+
+    public Action<Transform> AddQueueingPatients_Event;
 
     public Transform Target => transform.GetChild(0);
-    public Transform AddPatient(Patient patient)
+
+    public Transform AddMovingPatients(Patient patient)
     {
-        Patients.Add(patient);
-        PatientChangeTarget_Event += patient.MoveTarget;
+        InspectionStart_Event += patient.MoveTarget;
+        AddQueueingPatients_Event += patient.MoveTarget;
+        InspectionEnd_Event += patient.FollowPrePatient;
         return Target;
     }
- 
+
+    public void EnQueue(Patient patient)
+    {
+        InspectionStart_Event -= patient.MoveTarget;
+
+        AddQueueingPatients_Event -= patient.MoveTarget;
+
+        AddQueueingPatients_Event?.Invoke(patient.transform.GetChild(0));
+    }
+
     public IEnumerator Inspection(Patient patient)
     {
-        PatientChangeTarget_Event -= patient.MoveTarget;
+        InspectionStart_Event -= patient.MoveTarget;
 
-        PatientChangeTarget_Event?.Invoke(patient.transform.GetChild(0));
+        AddQueueingPatients_Event-= patient.MoveTarget;
+
+        InspectionEnd_Event-= patient.FollowPrePatient;
+
+        InspectionStart_Event?.Invoke(patient.transform.GetChild(0));
 
         yield return new WaitForSeconds(3f);
 
         Log.Info($"{patient.name} ÷Œ¡∆Ω· ¯");
 
-        Patients.Remove(patient);
+        InspectionEnd_Event?.Invoke(patient.transform);
 
-        PatientChangeTarget_Event?.Invoke(Target);
-     
 
     }
 }
