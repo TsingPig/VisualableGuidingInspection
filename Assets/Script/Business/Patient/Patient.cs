@@ -12,6 +12,8 @@ public class Patient : MonoBehaviour
 
     private NavMeshAgent _agent;
 
+    private NavMeshObstacle _obstacle;
+
     private bool walk_active = false;
 
     private List<Animator> _anims = new List<Animator>();
@@ -39,6 +41,8 @@ public class Patient : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
 
+        _obstacle = GetComponent<NavMeshObstacle>();
+
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
     }
@@ -65,13 +69,22 @@ public class Patient : MonoBehaviour
     }
 
 
-    public void MoveTarget(Transform target)
+
+    public void SetPrePatient(Transform patient)
     {
-        StopAllCoroutines();
-        StartCoroutine(Move(target));
+        if (_prePatient == null)
+        {
+            _prePatient = patient.parent;
+            MoveTarget(patient);
+        }
     }
 
     public void FollowPrePatient(Transform patient)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FollowPrePatientCoroutine(patient));
+    }
+    IEnumerator FollowPrePatientCoroutine(Transform patient)
     {
         if (_prePatient == null)
         {
@@ -84,10 +97,29 @@ public class Patient : MonoBehaviour
         }
         else
         {
-            Log.Info($"{_prePatient.name}");
+            Log.Info($"{transform.name}跟随{_prePatient.name}");
+            if (_instruments[0].Patients.Contains(this))
+            {
+                yield return new WaitForSeconds(_instruments[0].Patients.IndexOf(this) * 0.3f);
+            }
             MoveTarget(_prePatient.GetChild(0));
         }
+        yield break;
     }
+
+
+    public void UpdatePrePatient(Transform patient)
+    {
+        _prePatient = patient.parent;
+        MoveTarget(patient);
+    }
+
+    private void MoveTarget(Transform target)
+    {
+        StopAllCoroutines();
+        StartCoroutine(Move(target));
+    }
+
     IEnumerator Move(Transform target)
     {
         if (target != null)
@@ -95,7 +127,7 @@ public class Patient : MonoBehaviour
 
             Walk_Active = true;
             _agent.SetDestination(target.position);
-            Log.Info($"{gameObject.name} 开始寻路 {target.name}");
+            Log.Info($"{gameObject.name} 开始寻路 {target.parent.name}");
 
             NavMeshHit hit;
             if (NavMesh.SamplePosition(target.position, out hit, 10f, NavMesh.AllAreas))
@@ -119,7 +151,6 @@ public class Patient : MonoBehaviour
 
         if (target.parent.GetComponent<Patient>())
         {
-            _prePatient = target.parent;
             _instruments[0].EnQueue(this);
         }
 
