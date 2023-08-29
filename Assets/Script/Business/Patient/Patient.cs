@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,17 +12,19 @@ public class Patient : MonoBehaviour
 
     private NavMeshAgent _agent;
 
-    private bool walk_active = false;
+    private NavMeshObstacle _obstacle;
 
-    [SerializeField] private Transform _target;
+    private bool walk_active = false;
 
     private List<Animator> _anims = new List<Animator>();
 
+    private Transform _prePatient;
+
+    [SerializeField] private List<Instrument> _instruments;
 
     public PatientInfo PatientInfo => _patientInfo;
 
     public CharacterCustomization CharacterCustomization;
-    public Transform Target { get => _target; set => _target = value; }
 
     public bool Walk_Active
     {
@@ -33,49 +37,127 @@ public class Patient : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+
+        _obstacle = GetComponent<NavMeshObstacle>();
+
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
     }
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            StartCoroutine(MoveNext());
+            MoveNextInspection();
         }
     }
-    IEnumerator MoveNext()
+
+    public void MoveNextInspection()
     {
-        if (Target != null)
+        if (_instruments.Count > 0)
         {
+            MoveTarget(_instruments[0].AddMovingPatients(this));
+        }
+        else
+        {
+            Log.Info($"{gameObject.name} 所有治疗已完成");
+        }
+
+    }
+
+
+
+    public void SetPrePatient(Transform patient)
+    {
+        if (_prePatient == null)
+        {
+            _prePatient = patient.parent;
+            MoveTarget(patient);
+        }
+    }
+
+    public void FollowPrePatient(Transform patient)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FollowPrePatientCoroutine(patient));
+    }
+    IEnumerator FollowPrePatientCoroutine(Transform patient)
+    {
+        if (_prePatient == null)
+        {
+            MoveTarget(_instruments[0].transform.GetChild(0));
+        }
+        else if (patient == _prePatient)
+        {
+            _prePatient = null;
+            MoveTarget(_instruments[0].transform.GetChild(0));
+        }
+        else
+        {
+            Log.Info($"{transform.name}跟随{_prePatient.name}");
+            if (_instruments[0].Patients.Contains(this))
+            {
+                yield return new WaitForSeconds(_instruments[0].Patients.IndexOf(this) * 0.3f);
+            }
+            MoveTarget(_prePatient.GetChild(0));
+        }
+        yield break;
+    }
+
+
+    public void UpdatePrePatient(Transform patient)
+    {
+        _prePatient = patient.parent;
+        MoveTarget(patient);
+    }
+
+    private void MoveTarget(Transform target)
+    {
+        StopAllCoroutines();
+        StartCoroutine(Move(target));
+    }
+
+    IEnumerator Move(Transform target)
+    {
+        if (target != null)
+        {
+
             Walk_Active = true;
-            _agent.SetDestination(_target.position);
+            _agent.SetDestination(target.position);
+            Log.Info($"{gameObject.name} 开始寻路 {target.parent.name}");
 
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(_target.position, out hit, 10f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(target.position, out hit, 10f, NavMesh.AllAreas))
             {
                 Vector3 reachablePosition = hit.position;
                 _agent.SetDestination(reachablePosition);
                 while (Vector3.Distance(transform.position, reachablePosition) > _agent.stoppingDistance)
                 {
-              
+
                     foreach (Animator a in _anims)
                         a.speed = (_agent.velocity.magnitude / _agent.speed) / 2f + 0.5f;
                     yield return null;
                 }
             }
 
-            Debug.Log("到达目的");
-            _agent.isStopped = true;
-            Walk_Active = false;
+        }
 
+        Log.Info($"{gameObject.name} 到达目的地 {target.name}");
 
-            Vector3 lookDirection = (Target.position - transform.position).normalized;
+        Walk_Active = false;
+
+        if (target.parent.GetComponent<Patient>())
+        {
+            _instruments[0].EnQueue(this);
+        }
+
+        if (target.parent.TryGetComponent(out Instrument instrument))
+        {
+
+            Vector3 lookDirection = (target.position - transform.position).normalized;
             while (Vector3.Angle(lookDirection, transform.forward) > 45f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
@@ -83,8 +165,18 @@ public class Patient : MonoBehaviour
                 yield return null;
             }
 
+            Log.Info($"{gameObject.name} 开始治疗");
+
+            yield return StartCoroutine(instrument.Inspection(this));
+
+            Log.Info($"{gameObject.name} 治疗结束");
+
+            _instruments.RemoveAt(0);
+
+            MoveNextInspection();
         }
+
     }
-
-
 }
+
+
