@@ -24,6 +24,11 @@ namespace TsingPigSDK
             string result = string.Join(" ", strings);
             Debug.Log(result);
         }
-
+        
+        public static void Warning(params string[] strings)
+        {
+            string result = string.Join(" ", strings);
+            Debug.LogWarning(result);
+        }
     }
 }

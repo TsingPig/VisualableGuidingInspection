@@ -14,7 +14,6 @@ public class PatientInfo
     public int patientAge;
     public string patientAddress;
     public string patientPhoneNumber;
-
 }
 namespace TsingPigSDK
 {
