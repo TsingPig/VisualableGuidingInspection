@@ -78,7 +78,7 @@ namespace TsingPigSDK
                 else
                 {
                     Log.Info("InstantiateSingleUI");
-                    GameObject uiAsset = Res.Load<GameObject>(type.Path);
+                    GameObject uiAsset = Res.Load<GameObject>(type.Name);
                     GameObject ui = GameObject.Instantiate(uiAsset, parent.transform);
                     ui.name = type.Name;
                     _dicUI.Add(type, ui);
@@ -95,10 +95,6 @@ namespace TsingPigSDK
 
         public void DestroyUI(UIType type)
         {
-            foreach (var item in _dicUI.Values)
-            {
-                Log.Info(item.ToString());
-            }
             if (_dicUI.ContainsKey(type))
             {
                 GameObject.Destroy(_dicUI[type]);

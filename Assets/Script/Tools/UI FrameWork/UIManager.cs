@@ -22,13 +22,7 @@ namespace TsingPigSDK
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.A))
-            {
-                Enter(Str_Def.PATIENT_INFO_PANEL_DATA_PATH);
-            }else if(Input.GetKeyUp(KeyCode.B))
-            {
-                Pop();
-            }
+          
         }
 
         /// <summary>

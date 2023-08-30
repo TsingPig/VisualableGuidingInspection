@@ -1,14 +1,11 @@
 namespace TsingPigSDK
 {
-
     public class UIType
     {
         public string Name { get; private set; }
-        public string Path { get; private set; }
-        public UIType(string path)
+        public UIType(string name)
         {
-            Path = path;
-            Name = path.Substring(path.LastIndexOf("/") + 1);
+            Name = name;
         }
     }
 }
