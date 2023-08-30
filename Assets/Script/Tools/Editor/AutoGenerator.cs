@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,51 +15,50 @@ namespace TsingPigSDK
             if (selectedObject != null && selectedObject is GameObject)
             {
                 GameObject prefabObj = (GameObject)selectedObject;
+
                 string objectName = prefabObj.name;
 
-                string codeLine = $"public const string {objectName}_DATA_PATH = \"{objectName}\";";
+                string codeLine = $"    public const string {Split(objectName)}_DATA_PATH = \"{objectName}\";";
 
                 string scriptPath = "Assets/Script/Configs/Str_Def.cs";
 
-                bool exist = true;
-
                 if (!File.Exists(scriptPath))
-                {
-                    exist = false;
-                }
-
-                if (!exist)
                 {
                     using (StreamWriter writer = File.CreateText(scriptPath))
                     {
                         writer.WriteLine("public static class Str_Def");
                         writer.WriteLine("{");
-                    }
-                }
-
-                using (StreamWriter writer = File.AppendText(scriptPath))
-                {
-                    writer.WriteLine($"    {codeLine}");
-                }
-
-                if (!exist)
-                {
-                    using (StreamWriter writer = File.AppendText(scriptPath))
-                    {
+                        writer.WriteLine(codeLine);
                         writer.WriteLine("}");
+                        Log.Info($"创建脚本: {scriptPath}");
+                        AssetDatabase.Refresh();
+
+                        return;
                     }
                 }
+                string[] contexts=File.ReadAllLines(scriptPath);
 
-                Log.Info($"增加代码: {codeLine.ToUpper()} to {scriptPath}");
+                if (contexts.Contains(codeLine))
+                {
+                    Log.Warning($"{scriptPath} 已经存在{codeLine}");
+                    return;
+                }
 
+                contexts[contexts.Length - 1] = codeLine+"\n}";
+                File.WriteAllLines(scriptPath, contexts);
+                Log.Info($"增加代码:{codeLine} 到 {scriptPath}");
                 AssetDatabase.Refresh();
-
             }
             else
             {
                 Log.Warning("请选择一个预制体再生成代码");
             }
         }
-
+        
+        private static string Split(string name)
+        {
+           return string.Concat(name.Select((x, i) => i > 0 && char.IsUpper(x) ? "_" + x.ToString() : x.ToString())).ToUpper();
+        }
     }
+   
 }
