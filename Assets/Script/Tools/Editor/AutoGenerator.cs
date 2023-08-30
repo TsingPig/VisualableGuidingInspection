@@ -8,7 +8,9 @@ namespace TsingPigSDK
 
     public class AutoGenerator : Editor
     {
-        [MenuItem("我的工具/AA写入Str_Def #W")]
+        private const string fileName = "Str_Def1";
+
+        [MenuItem("我的工具/Prefab名配置 #W")]
         public static void AddressableAutoGen()
         {
             Object selectedObject = Selection.activeObject;
@@ -20,13 +22,13 @@ namespace TsingPigSDK
 
                 string codeLine = $"    public const string {Split(objectName)}_DATA_PATH = \"{objectName}\";";
 
-                string scriptPath = "Assets/Script/Configs/Str_Def.cs";
+                string scriptPath = $"Assets/Script/Configs/{fileName}.cs";
 
                 if (!File.Exists(scriptPath))
                 {
                     using (StreamWriter writer = File.CreateText(scriptPath))
                     {
-                        writer.WriteLine("public static class Str_Def");
+                        writer.WriteLine($"public static class {fileName}");
                         writer.WriteLine("{");
                         writer.WriteLine(codeLine);
                         writer.WriteLine("}");
