@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using TMPro;
+using TsingPigSDK;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,7 +32,7 @@ public class Patient : MonoBehaviour
 
 
     [SerializeField] private List<Instrument> _instruments;
-    
+
     private PatientInfo _patientInfo;
     public PatientInfo PatientInfo => _patientInfo;
 

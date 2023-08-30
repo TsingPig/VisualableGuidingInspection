@@ -1,17 +1,28 @@
 using System.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine;
-
-public static class Res
+namespace TsingPigSDK
 {
-    public static async Task<T> Load<T>(string path) where T : ScriptableObject
+    public static class Res
     {
-        AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
-        await handle.Task;
-        Log.CallInfo($"{handle.Result.name}加载完成");
-        T result = handle.Result;
-        Addressables.Release(handle);
-        return result;
+        public static T Load<T>(string path)
+        {
+            AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
+            Log.CallInfo($"{handle.Result}异步加载完成");
+            T result = handle.WaitForCompletion();
+            Addressables.Release(handle);
+            return result;
+        }
+
+        public static async Task<T> LoadAsync<T>(string path)
+        {
+            AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
+            await handle.Task;
+            Log.CallInfo($"{handle.Result}异步加载完成");
+            T result = handle.Result;
+            Addressables.Release(handle);
+            return result;
+        }
     }
 }
