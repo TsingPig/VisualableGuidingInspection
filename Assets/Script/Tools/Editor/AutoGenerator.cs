@@ -18,9 +18,16 @@ namespace TsingPigSDK
 
                 string codeLine = $"public const string {objectName}_DATA_PATH = \"{objectName}\";";
 
-                string scriptPath = "Assets/Script/Config/Str_Def.cs";
+                string scriptPath = "Assets/Script/Configs/Str_Def.cs";
+
+                bool exist = true;
 
                 if (!File.Exists(scriptPath))
+                {
+                    exist = false;
+                }
+
+                if (!exist)
                 {
                     using (StreamWriter writer = File.CreateText(scriptPath))
                     {
@@ -34,11 +41,22 @@ namespace TsingPigSDK
                     writer.WriteLine($"    {codeLine}");
                 }
 
-                Log.Info($"Added code: {codeLine} to {scriptPath}");
+                if (!exist)
+                {
+                    using (StreamWriter writer = File.AppendText(scriptPath))
+                    {
+                        writer.WriteLine("}");
+                    }
+                }
+
+                Log.Info($"增加代码: {codeLine.ToUpper()} to {scriptPath}");
+
+                AssetDatabase.Refresh();
+
             }
             else
             {
-                Log.Warning("Select a GameObject to generate code.");
+                Log.Warning("请选择一个预制体再生成代码");
             }
         }
 
