@@ -1,30 +1,34 @@
+using System;
 using UnityEngine;
 namespace TsingPigSDK
 {
 
     public class UIManager : Singleton<UIManager>
     {
-        [HideInInspector] public static PanelManager panelManager;
-        
+        private PanelBuffer _panelBuffer;
         public GameObject ActivePanelObject
         {
-            get { return panelManager.TopPanelObject; }
+            get { return _panelBuffer.TopPanelObject; }
         }
-
         private new void Awake()
         {
             base.Awake();
-            panelManager = new PanelManager();
+            _panelBuffer = new PanelBuffer();
         }
 
         private void Start()
         {
-            LoadMainPanel();
         }
 
         private void Update()
         {
-
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                Enter(Str_Def.PATIENT_INFO_PANEL_DATA_PATH);
+            }else if(Input.GetKeyUp(KeyCode.B))
+            {
+                Pop();
+            }
         }
 
         /// <summary>
@@ -81,9 +85,29 @@ namespace TsingPigSDK
             return null;
         }
 
-        public void LoadMainPanel()
+        public void Enter(string panelName)
         {
+            Type type = Type.GetType(panelName);
 
+            if (type != null)
+            {
+                object panelInstance = Activator.CreateInstance(type);
+                _panelBuffer.Push(panelInstance as BasePanel);
+            }
+            else
+            {
+                Log.Error($"Œ¥’“µΩ¿‡–Õ£∫{panelName}");
+            }
+        }
+
+        public void Pop()
+        {
+            _panelBuffer.Pop();
+        }
+
+        public GameObject GetSingleUI(UIType uiType)
+        {
+            return _panelBuffer.GetSingleUI(uiType);
         }
     }
 }

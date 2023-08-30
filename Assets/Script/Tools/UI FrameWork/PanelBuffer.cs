@@ -5,7 +5,7 @@ namespace TsingPigSDK
     /// <summary>
     /// 面板管理器，用栈来存储UI
     /// </summary>
-    public class PanelManager
+    public class PanelBuffer
     {
         public GameObject TopPanelObject
         {
@@ -23,7 +23,7 @@ namespace TsingPigSDK
         private BasePanel _topPanel;
 
         private Dictionary<UIType, GameObject> _dicUI;
-        public PanelManager()
+        public PanelBuffer()
         {
             _panelStack = new Stack<BasePanel>();
             _dicUI = new Dictionary<UIType, GameObject>();
