@@ -1,6 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
+using TsingPigSDK;
 using UnityEngine;
+public class PeriodManager : Singleton<PeriodManager>
+{
+    public const float DAY_PERIOD_DURATION = 3f;
+
+    private float _currentTime;
+
+    private Period _currentPeriod;
+
+    private void Init()
+    {
+        _currentTime = 0;
+        _currentPeriod = new Period();
+        StartCoroutine(UpdateTime());
+        Log.Info("初始化时间段：", _currentPeriod.GetPeriod());
+    }
+    private IEnumerator UpdateTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(DAY_PERIOD_DURATION);
+            _currentPeriod.MoveNext();
+        }
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        Init();
+    }
+    private void Update()
+    {
+
+    }
+    public void LogPeriod()
+    {
+        Log.Info("当前时间段：", _currentPeriod.GetPeriod());
+    }
+}
 
 public enum Date
 {
@@ -94,42 +131,7 @@ public class Period
         return $"{day} {period}";
     }
 }
-public class PeriodManager : Singleton<PeriodManager>
-{
-    public const float DAY_PERIOD_DURATION = 3f;
 
-    private float _currentTime;
 
-    private Period _currentPeriod;
-
-    private void Init()
-    {
-        _currentTime = 0;
-        _currentPeriod = new Period();
-        StartCoroutine(UpdateTime());
-        Log.Info("初始化时间段：", _currentPeriod.GetPeriod());
-    }
-    private IEnumerator UpdateTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(DAY_PERIOD_DURATION);
-            _currentPeriod.MoveNext();
-        }
-    }
-    protected override void Awake()
-    {
-        base.Awake();
-        Init();
-    }
-    private void Update()
-    {
-
-    }
-    public void LogPeriod()
-    {
-        Log.Info("当前时间段：", _currentPeriod.GetPeriod());
-    }
-}
 
 

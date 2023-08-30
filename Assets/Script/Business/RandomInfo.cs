@@ -1,3 +1,4 @@
+using TsingPigSDK;
 using UnityEngine;
 
 public static partial class RandomInfo

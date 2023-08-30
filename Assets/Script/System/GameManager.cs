@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TsingPigSDK;
 using UnityEngine;
 
 public sealed class GameManager : Singleton<GameManager>
