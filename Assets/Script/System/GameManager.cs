@@ -8,6 +8,7 @@ public sealed class GameManager : Singleton<GameManager>
         Log.CallInfo($"{DataManager.Instance.name}生成");
         Log.CallInfo($"{PeriodManager.Instance.name}生成");
         Log.CallInfo($"{InspectionManager.Instance.name}生成");
+        Log.CallInfo($"{InstrumentManager.Instance.name}生成");
     }
     private void GameEntry()
     {
@@ -23,7 +24,7 @@ public sealed class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            RandomInfo.RandomPatientInfo();
+            RandomSystem.RandomPatientInfo();
         }
         if (Input.GetKeyUp(KeyCode.T))
         {

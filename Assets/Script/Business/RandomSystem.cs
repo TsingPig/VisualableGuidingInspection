@@ -1,7 +1,7 @@
 using TsingPigSDK;
 using UnityEngine;
 
-public static partial class RandomInfo
+public static partial class RandomSystem
 {
     public static string RandomPatientID(int idLength = 8)
     {
@@ -59,12 +59,12 @@ public static partial class RandomInfo
     }
     public static PatientInfo RandomPatientInfo()
     {
-        var patientID = RandomInfo.RandomPatientID();
-        var patientGender = RandomInfo.RandomGender;
-        var patientName = RandomInfo.RandomPatientName(patientGender);
-        var patientAge = RandomInfo.RandomAge;
-        var patientAddress = RandomInfo.RandomAddress;
-        var patientPhoneNumber = RandomInfo.RandomPhoneNumber;
+        var patientID = RandomSystem.RandomPatientID();
+        var patientGender = RandomSystem.RandomGender;
+        var patientName = RandomSystem.RandomPatientName(patientGender);
+        var patientAge = RandomSystem.RandomAge;
+        var patientAddress = RandomSystem.RandomAddress;
+        var patientPhoneNumber = RandomSystem.RandomPhoneNumber;
         PatientInfo patientInfo = new PatientInfo()
         {
             patientID = patientID,

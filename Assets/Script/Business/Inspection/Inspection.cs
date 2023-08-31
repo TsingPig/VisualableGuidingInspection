@@ -6,6 +6,8 @@ public class Inspection
 {
     private List<InspectionInfo> _inspectionInfos;
 
+    private bool[] _visited;
+
     private bool[,] _matrix;
     private int Len => _inspectionInfos.Count;
 
@@ -31,8 +33,7 @@ public class Inspection
     /// <summary>
     /// 返回入度为0的所有节点的索引。
     /// </summary>
-    private List<int> GetIndexs => Enumerable.Range(0, Len).Where(j => Enumerable.Range(0, Len).All(i => !_matrix[i, j])).ToList();
-
+    private List<int> GetIndexs => Enumerable.Range(0, Len).Where(j => Enumerable.Range(0, Len).All(i => !_matrix[i, j] && !_visited[j])).ToList();
 
     private void LogMatrix()
     {
@@ -55,9 +56,11 @@ public class Inspection
     private void Init()
     {
         _inspectionInfos = InspectionManager.Instance.InspectionInfos;
+        _visited = new bool[Len];
         _matrix = new bool[Len, Len];
         for (int i = 0; i < Len; i++)
         {
+            _visited[i] = false;
             for (int j = 0; j < Len; j++)
             {
                 _matrix[i, j] = false;
@@ -72,9 +75,19 @@ public class Inspection
                 _matrix[u, v] = true;
             }
         }
-        LogMatrix();
+        //LogMatrix();
     }
 
+    public void GetCurInspectionInfo()
+    {
+        int curInspectionIdx = GetIndexs.GetRandomItem();
+        _visited[curInspectionIdx] = true;
+        for (int j = 0; j < Len; j++)
+            _matrix[curInspectionIdx, j] = false;
+        _curInspectionInfo = _inspectionInfos[curInspectionIdx];
+        Log.Info($"当前选择{_curInspectionInfo.inspectionName}");
+        LogMatrix();
+    }
     public Inspection()
     {
         Init();

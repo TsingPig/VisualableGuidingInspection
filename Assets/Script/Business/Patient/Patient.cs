@@ -46,7 +46,6 @@ public class Patient : MonoBehaviour
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
 
-
     }
 
     private void Start()
@@ -59,6 +58,10 @@ public class Patient : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             MoveNextInspection();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            _inspection.GetCurInspectionInfo();
         }
     }
 

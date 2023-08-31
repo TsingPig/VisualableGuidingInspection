@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Instrument : MonoBehaviour
 {
-
     private InstrumentInfo _instrumentInfo;
 
     private List<Patient> _patients = new List<Patient>();
@@ -21,19 +20,32 @@ public class Instrument : MonoBehaviour
 
     private void Start()
     {
-        _instrumentInfo = InstrumentManager.Instance.
+        _instrumentInfo = InstrumentManager.Instance.GetInfo(this);
     }
+
+    /// <summary>
+    /// 获得某项检查在该机器中的检查时间。
+    /// </summary>
+    /// <param name="inspectionInfo">检查项目的ID</param>
+    /// <returns></returns>
     private float GetTime(InspectionInfo inspectionInfo)
     {
-
+        float periodCountPercent = _instrumentInfo.InspectionIDs.Find(info => info.inspectionID == inspectionInfo.instrumentID).periodCountPercent;
+        float periodDuration = PeriodManager.DAY_PERIOD_DURATION;
+        return periodCountPercent * periodDuration;
     }
-    public int PatientCount => Patients.Count;
 
+    public int PatientCount => Patients.Count;
     public float WaitingTime
     {
         get
         {
-
+            float waitingTIme = 0f;
+            foreach (var patient in Patients)
+            {
+                waitingTIme += GetTime(patient.Inspection.CurInspectionInfo);
+            }
+            return waitingTIme;
         }
     }
 
@@ -66,7 +78,9 @@ public class Instrument : MonoBehaviour
 
         InspectionStart_Event?.Invoke(patient.transform.GetChild(0));
 
-        yield return new WaitForSeconds();
+        float time = GetTime(patient.Inspection.CurInspectionInfo);
+
+        yield return new WaitForSeconds(time);
 
         Log.Info($"{patient.name} 治疗结束");
 
