@@ -36,6 +36,7 @@ public class Patient : MonoBehaviour
 
     private PatientInfo _patientInfo;
     public PatientInfo PatientInfo => _patientInfo;
+    public Inspection Inspection { get => _inspection; set => _inspection = value; }
 
 
     private void Awake()
@@ -184,7 +185,7 @@ public class Patient : MonoBehaviour
 
             Log.Info($"{gameObject.name} 开始治疗");
 
-            yield return StartCoroutine(instrument.Inspection(this));
+            yield return StartCoroutine(instrument.StartInspection(this));
 
             Log.Info($"{gameObject.name} 治疗结束");
 

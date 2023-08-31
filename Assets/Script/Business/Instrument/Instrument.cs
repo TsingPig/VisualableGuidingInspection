@@ -1,26 +1,44 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TsingPigSDK;
+using UnityEngine;
 
 public class Instrument : MonoBehaviour
 {
+
+    private InstrumentInfo _instrumentInfo;
+
     private List<Patient> _patients = new List<Patient>();
-    public int PatientCount => Patients.Count;
 
     public Action<Transform> InspectionStart_Event;
 
     public Action<Transform> InspectionEnd_Event;
 
     public Action<Transform> AddQueueingPatients_Event;
-
     public Transform Target => transform.GetChild(0);
     public List<Patient> Patients { get => _patients; }
 
-    public Transform AddMovingPatients(Patient patient)
+    private void Start()
+    {
+        _instrumentInfo = InstrumentManager.Instance.
+    }
+    private float GetTime(InspectionInfo inspectionInfo)
     {
 
+    }
+    public int PatientCount => Patients.Count;
+
+    public float WaitingTime
+    {
+        get
+        {
+
+        }
+    }
+
+    public Transform AddMovingPatients(Patient patient)
+    {
         InspectionStart_Event += patient.SetPrePatient;
         AddQueueingPatients_Event += patient.UpdatePrePatient;
         InspectionEnd_Event += patient.FollowPrePatient;
@@ -38,7 +56,7 @@ public class Instrument : MonoBehaviour
         AddQueueingPatients_Event?.Invoke(patient.transform.GetChild(0));
     }
 
-    public IEnumerator Inspection(Patient patient)
+    public IEnumerator StartInspection(Patient patient)
     {
         InspectionStart_Event -= patient.SetPrePatient;
 
@@ -48,7 +66,7 @@ public class Instrument : MonoBehaviour
 
         InspectionStart_Event?.Invoke(patient.transform.GetChild(0));
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds();
 
         Log.Info($"{patient.name} ÷Œ¡∆Ω· ¯");
 

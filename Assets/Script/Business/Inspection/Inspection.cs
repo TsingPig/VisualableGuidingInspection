@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using TsingPigSDK;
-using UnityEngine;
 
-public class Inspection 
+public class Inspection
 {
     private List<InspectionInfo> _inspectionInfos;
 
     private bool[,] _matrix;
     private int Len => _inspectionInfos.Count;
+
+    private InspectionInfo _curInspectionInfo;
+    public InspectionInfo CurInspectionInfo { get => _curInspectionInfo; set => _curInspectionInfo = value; }
 
     /// <summary>
     /// 根据检查项目ID获得对应列表中的索引。
@@ -31,6 +33,7 @@ public class Inspection
     /// </summary>
     private List<int> GetIndexs => Enumerable.Range(0, Len).Where(j => Enumerable.Range(0, Len).All(i => !_matrix[i, j])).ToList();
 
+
     private void LogMatrix()
     {
         //for (int i = 0; i < Len; i++)
@@ -51,8 +54,7 @@ public class Inspection
 
     private void Init()
     {
-        Inspection_SO inspectionData = InspectionManager.Instance.InspectionData;
-        _inspectionInfos = inspectionData.inspectionInfos;
+        _inspectionInfos = InspectionManager.Instance.InspectionInfos;
         _matrix = new bool[Len, Len];
         for (int i = 0; i < Len; i++)
         {
