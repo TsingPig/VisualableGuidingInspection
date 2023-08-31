@@ -29,7 +29,7 @@ public class Patient : MonoBehaviour
     }
 
     #endregion
-
+    
 
     [SerializeField] private List<Instrument> _instruments;
 
