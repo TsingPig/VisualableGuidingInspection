@@ -29,7 +29,8 @@ public class Patient : MonoBehaviour
     }
 
     #endregion
-    
+
+    private Inspection _inspection;
 
     [SerializeField] private List<Instrument> _instruments;
 
@@ -43,8 +44,15 @@ public class Patient : MonoBehaviour
 
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
+
+
     }
 
+    private void Start()
+    {
+        _inspection = new Inspection();
+
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))

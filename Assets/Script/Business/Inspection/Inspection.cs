@@ -3,7 +3,7 @@ using System.Linq;
 using TsingPigSDK;
 using UnityEngine;
 
-public class Inspection : MonoBehaviour
+public class Inspection 
 {
     private List<InspectionInfo> _inspectionInfos;
 
@@ -49,9 +49,9 @@ public class Inspection : MonoBehaviour
         }
     }
 
-    private async void Init()
+    private void Init()
     {
-        Inspection_SO inspectionData = await Res.LoadAsync<Inspection_SO>(Str_Def.INSPECTION_DATA_PATH);
+        Inspection_SO inspectionData = InspectionManager.Instance.InspectionData;
         _inspectionInfos = inspectionData.inspectionInfos;
         _matrix = new bool[Len, Len];
         for (int i = 0; i < Len; i++)
@@ -73,10 +73,9 @@ public class Inspection : MonoBehaviour
         LogMatrix();
     }
 
-    private void Awake()
+    public Inspection()
     {
         Init();
-
     }
 }
 
