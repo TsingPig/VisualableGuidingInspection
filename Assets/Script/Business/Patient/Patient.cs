@@ -129,11 +129,21 @@ public class Patient : MonoBehaviour
         }
         yield break;
     }
+
+    /// <summary>
+    /// 更新自己前面的病人
+    /// </summary>
+    /// <param name="target">目标病人</param>
     public void UpdatePrePatient(Transform target)
     {
         _prePatient = target.parent;
         MoveTarget(target);
     }
+
+    /// <summary>
+    /// 向目标点（队列中前一个人、下一个检查点设备位置）移动
+    /// </summary>
+    /// <param name="target"></param>
     private void MoveTarget(Transform target)
     {
         StopAllCoroutines();

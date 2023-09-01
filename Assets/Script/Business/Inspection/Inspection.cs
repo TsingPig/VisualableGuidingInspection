@@ -40,7 +40,6 @@ public class Inspection
     private int GetIndex(List<int> indexs, Instrument instrument)
     {
         InstrumentInfo info = instrument.InstrumentInfo;
-        //Log.Info($"{info.InspectionIDs.Count}");
         foreach (var idx in indexs)
         {
             foreach (var idItem in instrument.InstrumentInfo.InspectionIDs)
@@ -66,16 +65,6 @@ public class Inspection
 
     private void LogMatrix()
     {
-        //for (int i = 0; i < Len; i++)
-        //{
-        //    for (int j = 0; j < Len; j++)
-        //    {
-        //        if (_matrix[i, j])
-        //        {
-        //         Log.Info($"{_inspectionInfos[i].inspectionName}({_inspectionInfos[i].instrumentID})-->{_inspectionInfos[j].inspectionName}({_inspectionInfos[j].instrumentID})");
-        //        }
-        //    }
-        //}
         foreach (var i in GetIndexs)
         {
             Log.Info($"{_inspectionInfos[i].inspectionName}({_inspectionInfos[i].instrumentID})");
@@ -103,7 +92,6 @@ public class Inspection
                 _matrix[u, v] = true;
             }
         }
-        //LogMatrix();
     }
     public Inspection()
     {
@@ -137,7 +125,6 @@ public class Inspection
             _matrix[curInspectionIdx, j] = false;
         _curInspectionInfo = _inspectionInfos[curInspectionIdx];
         Log.Info($"µ±Ç°Ñ¡Ôñ{_curInspectionInfo.inspectionName}");
-        //LogMatrix();
         return nextInstrument;
     }
 }

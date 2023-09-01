@@ -4,8 +4,6 @@ public enum Gender
     Male = 1
 }
 
-
-
 public class PatientInfo
 {
     public string patientID;

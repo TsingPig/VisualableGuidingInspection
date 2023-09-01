@@ -38,6 +38,10 @@ public class Instrument : MonoBehaviour
     }
 
     public int PatientCount => Patients.Count;
+
+    /// <summary>
+    /// 获得当前设备队伍的实际等待时间。
+    /// </summary>
     public float WaitingTime
     {
         get
@@ -51,7 +55,11 @@ public class Instrument : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 监听注册
+    /// </summary>
+    /// <param name="patient"></param>
+    /// <returns></returns>
     public Transform AddMovingPatients(Patient patient)
     {
         InspectionStart_Event += patient.SetPrePatient;
@@ -60,6 +68,11 @@ public class Instrument : MonoBehaviour
         return Target;
     }
 
+    /// <summary>
+    /// 添加病人到设备排队队列
+    /// </summary>
+    /// <param name="patient"></param>
+    /// <returns></returns>
     public void EnQueue(Patient patient)
     {
         Patients.Add(patient);
@@ -71,6 +84,11 @@ public class Instrument : MonoBehaviour
         AddQueueingPatients_Event?.Invoke(patient.transform.GetChild(0));
     }
 
+    /// <summary>
+    /// 开始检查过程
+    /// </summary>
+    /// <param name="patient"></param>
+    /// <returns></returns>
     public IEnumerator StartInspection(Patient patient)
     {
         InspectionStart_Event -= patient.SetPrePatient;

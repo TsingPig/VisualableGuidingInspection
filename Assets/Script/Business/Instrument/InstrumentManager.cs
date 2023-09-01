@@ -6,20 +6,12 @@ using UnityEngine.AI;
 public class InstrumentManager : Singleton<InstrumentManager>
 {
     private const float w1 = 0.2f;
-    private const float w2 = 0.8f;
 
-    private float GetAttraction(Instrument instrument, NavMeshAgent agent)
-    {
-        float waitingTime = instrument.WaitingTime;
-        float pathLength = MyExtensions.CalculatePathLength(agent.transform, instrument.transform);
-        float pathTime = pathLength / agent.velocity.magnitude;
-        return w1 * waitingTime + w2 * pathTime;
-    }
+    private const float w2 = 0.8f;
 
     private List<InstrumentInfo> _instrumentInfos;
 
     private Dictionary<string, List<Instrument>> _dicInstruments = new Dictionary<string, List<Instrument>>();
-    public List<InstrumentInfo> InstrumentInfos { get => _instrumentInfos; set => _instrumentInfos = value; }
 
     /// <summary>
     /// 设备初始化：双向注册（Info绑定到设备、设备绑定到管理器）
@@ -45,15 +37,8 @@ public class InstrumentManager : Singleton<InstrumentManager>
         return info;
     }
 
-    //public Instrument Recommend(List<Instrument> instruments, NavMeshAgent agent)
-    //{
-    //    instruments.OrderBy(instr => GetAttraction(instr, agent));
-    //    return instruments.First();
-    //}
-
-
     /// <summary>
-    /// 根据治疗信息，推断处最合适的设备以及治疗项目。
+    /// 推荐算法：根据治疗信息，推断处最合适的设备以及治疗项目。
     /// </summary>
     /// <param name="inspectionInfos">治疗信息</param>
     /// <param name="agent">当前病人的智能体</param>
@@ -97,5 +82,19 @@ public class InstrumentManager : Singleton<InstrumentManager>
     private InstrumentInfo GetInfo(string instrumentID)
     {
         return _instrumentInfos.Find(info => info.instrumentID == instrumentID);
+    }
+
+    /// <summary>
+    /// 计算某台设备对每个病人的吸引程度
+    /// </summary>
+    /// <param name="instrument">设备脚本</param>
+    /// <param name="agent">病人智能体</param>
+    /// <returns></returns>
+    private float GetAttraction(Instrument instrument, NavMeshAgent agent)
+    {
+        float waitingTime = instrument.WaitingTime;
+        float pathLength = MyExtensions.CalculatePathLength(agent.transform, instrument.transform);
+        float pathTime = pathLength / agent.velocity.magnitude;
+        return w1 * waitingTime + w2 * pathTime;
     }
 }
