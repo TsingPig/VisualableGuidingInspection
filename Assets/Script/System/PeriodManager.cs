@@ -3,7 +3,7 @@ using TsingPigSDK;
 using UnityEngine;
 public class PeriodManager : Singleton<PeriodManager>
 {
-    public const float DAY_PERIOD_DURATION = 3f;
+    public const float DAY_PERIOD_DURATION = 10f;
 
     private float _currentTime;
 

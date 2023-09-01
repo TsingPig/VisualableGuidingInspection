@@ -16,7 +16,7 @@ public class InstrumentInfo
     public string instrumentName;
     public int instrumentCount;
 
-    public List<InspectionID> inspectionIDs;
+    public List<InspectionID> InspectionIDs;
 
 
 }

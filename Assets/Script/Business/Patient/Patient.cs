@@ -30,27 +30,36 @@ public class Patient : MonoBehaviour
 
     #endregion
 
+    private Inspection _inspection;
 
     [SerializeField] private List<Instrument> _instruments;
 
     private PatientInfo _patientInfo;
     public PatientInfo PatientInfo => _patientInfo;
+    public Inspection Inspection { get => _inspection; set => _inspection = value; }
 
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
+
     }
 
+    private void Start()
+    {
+        _inspection = new Inspection();
+
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            _instruments.Add(_inspection.GetNext(_agent));
             MoveNextInspection();
         }
+
     }
 
     /// <summary>
@@ -58,12 +67,13 @@ public class Patient : MonoBehaviour
     /// </summary>
     public void MoveNextInspection()
     {
-        if (_instruments.Count > 0)
+        if (_instruments.Count > 0 && _instruments[0] != null)
         {
             MoveTarget(_instruments[0].AddMovingPatients(this));
         }
         else
         {
+            MoveTarget(InspectionManager.Instance.InspectionExit);
             Log.Info($"{gameObject.name} 所有治疗已完成");
         }
 
@@ -119,11 +129,21 @@ public class Patient : MonoBehaviour
         }
         yield break;
     }
+
+    /// <summary>
+    /// 更新自己前面的病人
+    /// </summary>
+    /// <param name="target">目标病人</param>
     public void UpdatePrePatient(Transform target)
     {
         _prePatient = target.parent;
         MoveTarget(target);
     }
+
+    /// <summary>
+    /// 向目标点（队列中前一个人、下一个检查点设备位置）移动
+    /// </summary>
+    /// <param name="target"></param>
     private void MoveTarget(Transform target)
     {
         StopAllCoroutines();
@@ -176,13 +196,17 @@ public class Patient : MonoBehaviour
 
             Log.Info($"{gameObject.name} 开始治疗");
 
-            yield return StartCoroutine(instrument.Inspection(this));
+            yield return StartCoroutine(instrument.StartInspection(this));
 
             Log.Info($"{gameObject.name} 治疗结束");
 
             _instruments.RemoveAt(0);
 
+            _instruments.Add(_inspection.GetNext(_agent));
+
             MoveNextInspection();
+
+
         }
 
     }
