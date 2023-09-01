@@ -18,7 +18,7 @@ public class InspectionManager : Singleton<InspectionManager>
     {
         base.Awake();
         Init();
-
     }
+
 }
 

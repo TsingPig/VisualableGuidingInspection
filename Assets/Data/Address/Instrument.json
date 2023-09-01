@@ -4,14 +4,14 @@
             "instrumentID": "Body",
             "instrumentName": "身体检查仪",
             "instrumentCount": 8,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "Body",
-                    "periodCountPercent": 0.10000000149011612
+                    "periodCountPercent": 0.15000000596046449
                 },
                 {
                     "inspectionID": "Biopsy",
-                    "periodCountPercent": 0.20000000298023225
+                    "periodCountPercent": 0.6000000238418579
                 }
             ]
         },
@@ -19,10 +19,10 @@
             "instrumentID": "HeightWeight",
             "instrumentName": "身高体重仪",
             "instrumentCount": 4,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "HeightWeight",
-                    "periodCountPercent": 0.25
+                    "periodCountPercent": 0.10000000149011612
                 }
             ]
         },
@@ -30,10 +30,10 @@
             "instrumentID": "BloodPressure",
             "instrumentName": "血压仪",
             "instrumentCount": 3,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "BloodPressure",
-                    "periodCountPercent": 0.15000000596046449
+                    "periodCountPercent": 0.10000000149011612
                 }
             ]
         },
@@ -41,14 +41,14 @@
             "instrumentID": "BloodAnalyzer",
             "instrumentName": "血液分析仪",
             "instrumentCount": 3,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "BloodSugar",
-                    "periodCountPercent": 0.10000000149011612
+                    "periodCountPercent": 0.25
                 },
                 {
                     "inspectionID": "BiochemicalBlood",
-                    "periodCountPercent": 0.4000000059604645
+                    "periodCountPercent": 0.3499999940395355
                 }
             ]
         },
@@ -56,14 +56,14 @@
             "instrumentID": "UrineAnalyzer",
             "instrumentName": "尿液分析仪",
             "instrumentCount": 4,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "Urine",
-                    "periodCountPercent": 0.20000000298023225
+                    "periodCountPercent": 0.30000001192092898
                 },
                 {
                     "inspectionID": "UrineCytology",
-                    "periodCountPercent": 0.5
+                    "periodCountPercent": 0.25
                 }
             ]
         },
@@ -71,10 +71,10 @@
             "instrumentID": "ECG",
             "instrumentName": "心电仪",
             "instrumentCount": 1,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "ECG",
-                    "periodCountPercent": 0.10000000149011612
+                    "periodCountPercent": 0.3499999940395355
                 }
             ]
         },
@@ -82,14 +82,10 @@
             "instrumentID": "XRay",
             "instrumentName": "X射线",
             "instrumentCount": 5,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "ChestXRay",
-                    "periodCountPercent": 0.30000001192092898
-                },
-                {
-                    "inspectionID": "AbdominalXRay",
-                    "periodCountPercent": 0.25
+                    "periodCountPercent": 0.20000000298023225
                 }
             ]
         },
@@ -97,14 +93,18 @@
             "instrumentID": "Endoscope",
             "instrumentName": "内窥镜",
             "instrumentCount": 3,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "Colonoscope",
                     "periodCountPercent": 0.5
                 },
                 {
+                    "inspectionID": "AbdominalXRay",
+                    "periodCountPercent": 0.4000000059604645
+                },
+                {
                     "inspectionID": "Gastroscope",
-                    "periodCountPercent": 0.5
+                    "periodCountPercent": 0.3499999940395355
                 }
             ]
         },
@@ -112,14 +112,14 @@
             "instrumentID": "MRI_CT",
             "instrumentName": "MRI和CT扫描仪",
             "instrumentCount": 2,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "MRI",
-                    "periodCountPercent": 0.10000000149011612
+                    "periodCountPercent": 0.20000000298023225
                 },
                 {
                     "inspectionID": "CT",
-                    "periodCountPercent": 0.10000000149011612
+                    "periodCountPercent": 0.20000000298023225
                 }
             ]
         },
@@ -127,10 +127,10 @@
             "instrumentID": "BoneDensity",
             "instrumentName": "骨密度仪",
             "instrumentCount": 1,
-            "inspectionIDs": [
+            "InspectionIDs": [
                 {
                     "inspectionID": "BoneDensity",
-                    "periodCountPercent": 0.3499999940395355
+                    "periodCountPercent": 0.6000000238418579
                 }
             ]
         }

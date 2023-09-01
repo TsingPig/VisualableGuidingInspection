@@ -9,6 +9,7 @@ public class Instrument : MonoBehaviour
     private InstrumentInfo _instrumentInfo;
 
     private List<Patient> _patients = new List<Patient>();
+    public InstrumentInfo InstrumentInfo { get => _instrumentInfo; set => _instrumentInfo = value; }
 
     public Action<Transform> InspectionStart_Event;
 
@@ -48,6 +49,7 @@ public class Instrument : MonoBehaviour
             return waitingTIme;
         }
     }
+
 
     public Transform AddMovingPatients(Patient patient)
     {

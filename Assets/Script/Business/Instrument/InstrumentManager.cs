@@ -1,17 +1,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using TsingPigSDK;
+using UnityEngine.AI;
+
 public class InstrumentManager : Singleton<InstrumentManager>
 {
-    private Instrument_SO _instrumentData;
+    private const float w1 = 0.2f;
+    private const float w2 = 0.8f;
+
+    private float GetAttraction(Instrument instrument, NavMeshAgent agent)
+    {
+        float waitingTime = instrument.WaitingTime;
+        float pathLength = MyExtensions.CalculatePathLength(agent.transform, instrument.transform);
+        float pathTime = pathLength / agent.velocity.magnitude;
+        return w1 * waitingTime + w2 * pathTime;
+    }
 
     private List<InstrumentInfo> _instrumentInfos;
 
-    private Dictionary<InstrumentInfo, List<Instrument>> _dicInstruments = new Dictionary<InstrumentInfo, List<Instrument>>();
+    private Dictionary<string, List<Instrument>> _dicInstruments = new Dictionary<string, List<Instrument>>();
     public List<InstrumentInfo> InstrumentInfos { get => _instrumentInfos; set => _instrumentInfos = value; }
 
     /// <summary>
-    /// 根据设备，双向注册（Info绑定到设备、设备绑定到管理器）
+    /// 设备初始化：双向注册（Info绑定到设备、设备绑定到管理器）
     /// </summary>
     /// <param name="instrument">设备脚本</param>
     /// <returns></returns>
@@ -21,24 +32,51 @@ public class InstrumentManager : Singleton<InstrumentManager>
         instrumentID = instrumentID.Substring(0, instrumentID.IndexOf(" ") == -1 ? instrumentID.Length : instrumentID.IndexOf(" "));
         InstrumentInfo info = _instrumentInfos.Find(info => info.instrumentID == instrumentID);
 
-        if (_dicInstruments.ContainsKey(info))
+        if (_dicInstruments.ContainsKey(info.instrumentID))
         {
-            _dicInstruments[info].Add(instrument);
+            _dicInstruments[info.instrumentID].Add(instrument);
         }
         else
         {
             List<Instrument> lstInstrument = new List<Instrument>() { instrument };
-            _dicInstruments.Add(info, lstInstrument);
+            _dicInstruments.Add(info.instrumentID, lstInstrument);
         }
+        Log.Info($"ID : {instrumentID}注册{info.instrumentName}");
         return info;
     }
-    public Instrument Recommend(InspectionInfo inspectionInfo)
+
+    //public Instrument Recommend(List<Instrument> instruments, NavMeshAgent agent)
+    //{
+    //    instruments.OrderBy(instr => GetAttraction(instr, agent));
+    //    return instruments.First();
+    //}
+
+
+    /// <summary>
+    /// 根据治疗信息，推断处最合适的设备以及治疗项目。
+    /// </summary>
+    /// <param name="inspectionInfos">治疗信息</param>
+    /// <param name="agent">当前病人的智能体</param>
+    /// <returns></returns>
+    public Instrument Recommend(List<InspectionInfo> inspectionInfos, NavMeshAgent agent)
     {
-        InstrumentInfo info = GetInfo(inspectionInfo.instrumentID);
-        List<Instrument> lstInstrument = _dicInstruments[info];
-        lstInstrument.OrderBy(instr => instr.WaitingTime);
-        return lstInstrument.First();
+        List<InstrumentInfo> instrumentInfos = new List<InstrumentInfo>();
+        foreach (var inspcInfo in inspectionInfos)
+        {
+            instrumentInfos.Add(GetInfo(inspcInfo.instrumentID));
+        }
+        List<Instrument> instruments = new List<Instrument>();
+
+        foreach (var instrInfo in instrumentInfos)
+        {
+            List<Instrument> instrs = _dicInstruments[instrInfo.instrumentID];
+            instruments.AddRange(instrs);
+        }
+        instruments.OrderBy(instr => GetAttraction(instr, agent));
+        Log.Info($"推荐 {instruments[0].InstrumentInfo.instrumentName}");
+        return instruments[0];
     }
+
     private new void Awake()
     {
         base.Awake();
@@ -46,8 +84,8 @@ public class InstrumentManager : Singleton<InstrumentManager>
     }
     private void Init()
     {
-        _instrumentData = Res.Load<Instrument_SO>(Str_Def.INSTRUMENT_DATA_PATH);
-        _instrumentInfos = _instrumentData.instrumentInfos;
+        Instrument_SO instrumentData = Res.Load<Instrument_SO>(Str_Def.INSTRUMENT_DATA_PATH);
+        _instrumentInfos = instrumentData.instrumentInfos;
 
     }
 

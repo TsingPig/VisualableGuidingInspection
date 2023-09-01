@@ -42,7 +42,6 @@ public class Patient : MonoBehaviour
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
 
@@ -51,7 +50,6 @@ public class Patient : MonoBehaviour
     private void Start()
     {
         _inspection = new Inspection();
-
     }
     private void Update()
     {
@@ -61,7 +59,7 @@ public class Patient : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            _inspection.GetCurInspectionInfo();
+            _instruments.Insert(0, _inspection.GetNext(_agent));
         }
     }
 

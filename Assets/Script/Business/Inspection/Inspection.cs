@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TsingPigSDK;
+using UnityEngine.AI;
 
 public class Inspection
 {
@@ -31,10 +32,34 @@ public class Inspection
     }
 
     /// <summary>
+    /// 根据要前往的设备反向匹配检查项目。
+    /// </summary>
+    /// <param name="indexs">当前可以检查的项目ID</param>
+    /// <param name="instrument">当前最优吸引设备</param>
+    /// <returns>设备中匹配到的应检项目</returns>
+    private int GetIndex(List<int> indexs, Instrument instrument)
+    {
+        InstrumentInfo info = instrument.InstrumentInfo;
+        Log.Info($"{info.InspectionIDs.Count}");
+        foreach (var idx in indexs)
+        {
+            foreach (var idItem in instrument.InstrumentInfo.InspectionIDs)
+            {
+                if (_inspectionInfos[idx].inspectionID == idItem.inspectionID)
+                {
+                    Log.Info($"当前要前往{instrument.InstrumentInfo.instrumentName} 检查 {_inspectionInfos[idx].inspectionName}");
+                    return idx;
+                }
+            }
+        }
+        Log.Error($" {instrument.InstrumentInfo.instrumentName} 匹配失败");
+        return -1;
+    }
+
+    /// <summary>
     /// 返回入度为0的所有节点的索引。
     /// </summary>
     private List<int> GetIndexs => Enumerable.Range(0, Len).Where(j => Enumerable.Range(0, Len).All(i => !_matrix[i, j] && !_visited[j])).ToList();
-
     private void LogMatrix()
     {
         //for (int i = 0; i < Len; i++)
@@ -52,7 +77,6 @@ public class Inspection
             Log.Info($"{_inspectionInfos[i].inspectionName}({_inspectionInfos[i].instrumentID})");
         }
     }
-
     private void Init()
     {
         _inspectionInfos = InspectionManager.Instance.InspectionInfos;
@@ -77,20 +101,35 @@ public class Inspection
         }
         //LogMatrix();
     }
-
-    public void GetCurInspectionInfo()
+    public Inspection()
     {
-        int curInspectionIdx = GetIndexs.GetRandomItem();
+        Init();
+    }
+
+    /// <summary>
+    ///  根据智能体和检查表，寻找最优检查设备、匹配项目。
+    /// </summary>
+    /// <param name="agent">病人智能体</param>
+    /// <returns>下一个前往的设备</returns>
+    public Instrument GetNext(NavMeshAgent agent)
+    {
+        List<int> indexs = GetIndexs;
+        int curInspectionIdx = 0;
+        List<InspectionInfo> infos = new List<InspectionInfo>();
+        foreach (var idx in indexs)
+        {
+            infos.Add(_inspectionInfos[idx]);
+        }
+        Instrument nextInstrument = InstrumentManager.Instance.Recommend(infos, agent);
+
+        curInspectionIdx = GetIndex(indexs, nextInstrument);
         _visited[curInspectionIdx] = true;
         for (int j = 0; j < Len; j++)
             _matrix[curInspectionIdx, j] = false;
         _curInspectionInfo = _inspectionInfos[curInspectionIdx];
         Log.Info($"当前选择{_curInspectionInfo.inspectionName}");
         LogMatrix();
-    }
-    public Inspection()
-    {
-        Init();
+        return nextInstrument;
     }
 }
 
