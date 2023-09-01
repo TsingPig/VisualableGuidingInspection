@@ -50,17 +50,16 @@ public class Patient : MonoBehaviour
     private void Start()
     {
         _inspection = new Inspection();
+
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            _instruments.Add(_inspection.GetNext(_agent));
             MoveNextInspection();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            _instruments.Insert(0, _inspection.GetNext(_agent));
-        }
+
     }
 
     /// <summary>
@@ -68,12 +67,13 @@ public class Patient : MonoBehaviour
     /// </summary>
     public void MoveNextInspection()
     {
-        if (_instruments.Count > 0)
+        if (_instruments.Count > 0 && _instruments[0] != null)
         {
             MoveTarget(_instruments[0].AddMovingPatients(this));
         }
         else
         {
+            MoveTarget(InspectionManager.Instance.InspectionExit);
             Log.Info($"{gameObject.name} 所有治疗已完成");
         }
 
@@ -192,7 +192,11 @@ public class Patient : MonoBehaviour
 
             _instruments.RemoveAt(0);
 
+            _instruments.Add(_inspection.GetNext(_agent));
+
             MoveNextInspection();
+
+
         }
 
     }

@@ -86,6 +86,10 @@
                 {
                     "inspectionID": "ChestXRay",
                     "periodCountPercent": 0.20000000298023225
+                },
+                {
+                    "inspectionID": "AbdominalXRay",
+                    "periodCountPercent": 0.20000000298023225
                 }
             ]
         },
@@ -96,11 +100,7 @@
             "InspectionIDs": [
                 {
                     "inspectionID": "Colonoscope",
-                    "periodCountPercent": 0.5
-                },
-                {
-                    "inspectionID": "AbdominalXRay",
-                    "periodCountPercent": 0.4000000059604645
+                    "periodCountPercent": 0.44999998807907107
                 },
                 {
                     "inspectionID": "Gastroscope",

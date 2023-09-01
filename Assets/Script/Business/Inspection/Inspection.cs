@@ -40,7 +40,7 @@ public class Inspection
     private int GetIndex(List<int> indexs, Instrument instrument)
     {
         InstrumentInfo info = instrument.InstrumentInfo;
-        Log.Info($"{info.InspectionIDs.Count}");
+        //Log.Info($"{info.InspectionIDs.Count}");
         foreach (var idx in indexs)
         {
             foreach (var idItem in instrument.InstrumentInfo.InspectionIDs)
@@ -59,7 +59,11 @@ public class Inspection
     /// <summary>
     /// 返回入度为0的所有节点的索引。
     /// </summary>
-    private List<int> GetIndexs => Enumerable.Range(0, Len).Where(j => Enumerable.Range(0, Len).All(i => !_matrix[i, j] && !_visited[j])).ToList();
+    private List<int> GetIndexs => Enumerable.Range(0, Len).
+        Where(j => Enumerable.Range(0, Len).
+        All(i => !_matrix[i, j] && !_visited[j])).
+        ToList();
+
     private void LogMatrix()
     {
         //for (int i = 0; i < Len; i++)
@@ -114,6 +118,11 @@ public class Inspection
     public Instrument GetNext(NavMeshAgent agent)
     {
         List<int> indexs = GetIndexs;
+        if (indexs.Count == 0)
+        {
+            Log.Info("所有检查已完成");
+            return null;
+        }
         int curInspectionIdx = 0;
         List<InspectionInfo> infos = new List<InspectionInfo>();
         foreach (var idx in indexs)
@@ -128,7 +137,7 @@ public class Inspection
             _matrix[curInspectionIdx, j] = false;
         _curInspectionInfo = _inspectionInfos[curInspectionIdx];
         Log.Info($"当前选择{_curInspectionInfo.inspectionName}");
-        LogMatrix();
+        //LogMatrix();
         return nextInstrument;
     }
 }

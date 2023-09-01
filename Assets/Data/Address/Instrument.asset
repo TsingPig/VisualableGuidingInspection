@@ -61,14 +61,14 @@ MonoBehaviour:
     InspectionIDs:
     - inspectionID: ChestXRay
       periodCountPercent: 0.2
+    - inspectionID: AbdominalXRay
+      periodCountPercent: 0.2
   - instrumentID: Endoscope
     instrumentName: "\u5185\u7AA5\u955C"
     instrumentCount: 3
     InspectionIDs:
     - inspectionID: Colonoscope
-      periodCountPercent: 0.5
-    - inspectionID: AbdominalXRay
-      periodCountPercent: 0.4
+      periodCountPercent: 0.45
     - inspectionID: Gastroscope
       periodCountPercent: 0.35
   - instrumentID: MRI_CT
