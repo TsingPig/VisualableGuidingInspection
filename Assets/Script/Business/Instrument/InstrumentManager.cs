@@ -97,4 +97,5 @@ public class InstrumentManager : Singleton<InstrumentManager>
         float pathTime = pathLength / agent.velocity.magnitude;
         return w1 * waitingTime + w2 * pathTime;
     }
+
 }

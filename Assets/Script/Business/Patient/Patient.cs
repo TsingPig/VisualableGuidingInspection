@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TsingPigSDK;
@@ -17,6 +18,9 @@ public class Patient : MonoBehaviour
     private Transform _prePatient;
 
     public CharacterCustomization CharacterCustomization;
+
+    public Action<Transform> FinishAllInspection_Event;
+
     public bool Walk_Active
     {
         get { return walk_active; }
@@ -50,15 +54,15 @@ public class Patient : MonoBehaviour
     private void Start()
     {
         _inspection = new Inspection();
-
+        _instruments.Add(_inspection.GetNext(_agent));
+        MoveNextInspection();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            _instruments.Add(_inspection.GetNext(_agent));
-            MoveNextInspection();
-        }
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
+        //{
+        //    MoveNextInspection();
+        //}
 
     }
 
@@ -149,6 +153,7 @@ public class Patient : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(Move(target));
     }
+
     IEnumerator Move(Transform target)
     {
         if (target != null)
@@ -177,6 +182,11 @@ public class Patient : MonoBehaviour
         Log.Info($"{gameObject.name} 到达目的地 {target.name}");
 
         Walk_Active = false;
+
+        if (target.parent.Equals("Exit"))
+        {
+            FinishAllInspection_Event?.Invoke(transform);
+        }
 
         if (target.parent.GetComponent<Patient>())
         {
