@@ -8,11 +8,21 @@ public class PeriodManager : Singleton<PeriodManager>
     private float _currentTime;
 
     private Period _currentPeriod;
+    public float CurrentTime => _currentTime;
 
+    private void StopTime()
+    {
+        StopCoroutine(UpdatePeriod());
+        StopCoroutine(UpdateTime());
+        int totalPatientCount = PatientManager.Instance.TotalPatientCount;
+        Log.Info($"总共用时：{CurrentTime}，检查了{totalPatientCount}个病人");
+    }
     private void Init()
     {
+        PatientManager.Instance.AllPatientFinish_Event += StopTime;
         _currentTime = 0;
         _currentPeriod = new Period();
+        StartCoroutine(UpdatePeriod());
         StartCoroutine(UpdateTime());
         Log.Info("初始化时间段：", _currentPeriod.GetPeriod());
     }
@@ -20,14 +30,25 @@ public class PeriodManager : Singleton<PeriodManager>
     {
         while (true)
         {
+            //Log.Info($"当前时间：{_currentTime}");
+            _currentTime+= Time.deltaTime;  
+            yield return null;
+        }
+    }
+    private IEnumerator UpdatePeriod()
+    {
+        while (true)
+        {
+            //Log.Info($"当前周期时间：{_currentTime}");
             yield return new WaitForSeconds(DAY_PERIOD_DURATION);
             _currentPeriod.MoveNext();
         }
     }
-    protected override void Awake()
+
+    private void Start()
     {
-        base.Awake();
         Init();
+
     }
     private void Update()
     {
@@ -85,6 +106,10 @@ public class Period
         }
     }
 
+    /// <summary>
+    /// 返回当前Period对象的字符串显示
+    /// </summary>
+    /// <returns></returns>
     public string GetPeriod()
     {
         string day = "";

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TsingPigSDK;
@@ -5,9 +6,30 @@ using UnityEngine;
 
 public class PatientManager : Singleton<PatientManager>
 {
-    public int TotalPatientCount = 60;
 
-    public float GenDurationPeriodPercent = 0.1f;
+    public Action AllPatientFinish_Event;
+    public int TotalPatientCount  => _totalPatientCount; 
+
+    private int _curDestroyCount = 0;
+    private int CurDestroyCount
+    {
+        get => _curDestroyCount;
+        set
+        {
+            _curDestroyCount = (value <= _totalPatientCount) ? value : _totalPatientCount;
+            if (_curDestroyCount >= _totalPatientCount)
+            {
+                AllPatientFinish_Event?.Invoke();
+                Log.CallInfo("所有病人完成检查");
+
+            }
+        }
+    }
+
+
+    private int _totalPatientCount = 10;
+
+    private float _genDurationPeriodPercent = 0.1f;
 
     private List<GameObject> _patientPrefabs = new List<GameObject>();
 
@@ -27,7 +49,7 @@ public class PatientManager : Singleton<PatientManager>
             GameObject parent = new GameObject();
             _parent = parent.transform;
         }
-        StartCoroutine(GenPatient(0, GenDurationPeriodPercent, _parent));
+        StartCoroutine(GenPatient(0, _genDurationPeriodPercent, _parent));
     }
 
     IEnumerator GenPatient(int idx, float genDurationPeriodPercent, Transform parent)
@@ -36,21 +58,21 @@ public class PatientManager : Singleton<PatientManager>
         float genDuration = genDurationPeriodPercent * PeriodManager.DAY_PERIOD_DURATION;
         WaitForSeconds duration = new WaitForSeconds(genDuration);
         yield return new WaitForSeconds(2f);
-        while (patientCount < TotalPatientCount)
+        while (patientCount < _totalPatientCount)
         {
             yield return duration;
             Log.Info($"生成病人{_patientPrefabs[idx].name}");
             var patient = Instantiate(_patientPrefabs[idx], parent).GetComponent<Patient>();
-            patient.FinishAllInspection_Event += FinishAllInspection;
+            patient.FinishInspection_Event += FinishInspection;
             patient.MoveNextInspection();
             patientCount++;
         }
     }
 
-    private void FinishAllInspection(Transform patient)
+    private void FinishInspection(Transform patient)
     {
-        Destroy(patient, 1f);
+        Destroy(patient.gameObject, 1f);
+        CurDestroyCount++;
         Log.Info($"{patient.name} 回收");
-
     }
 }

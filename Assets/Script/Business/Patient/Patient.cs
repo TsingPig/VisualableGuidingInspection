@@ -19,7 +19,7 @@ public class Patient : MonoBehaviour
 
     public CharacterCustomization CharacterCustomization;
 
-    public Action<Transform> FinishAllInspection_Event;
+    public Action<Transform> FinishInspection_Event;
 
     public bool Walk_Active
     {
@@ -183,9 +183,9 @@ public class Patient : MonoBehaviour
 
         Walk_Active = false;
 
-        if (target.parent.Equals("Exit"))
+        if (target.parent.name.Equals("Exit"))
         {
-            FinishAllInspection_Event?.Invoke(transform);
+            FinishInspection_Event?.Invoke(transform);
         }
 
         if (target.parent.GetComponent<Patient>())
