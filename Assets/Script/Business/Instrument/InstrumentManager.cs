@@ -5,9 +5,9 @@ using UnityEngine.AI;
 
 public class InstrumentManager : Singleton<InstrumentManager>
 {
-    private const float w1 = 0.2f;
+    private const float w1 = 0.8f;
 
-    private const float w2 = 0.8f;
+    private const float w2 = 0.2f;
 
     private List<InstrumentInfo> _instrumentInfos;
 
@@ -20,6 +20,7 @@ public class InstrumentManager : Singleton<InstrumentManager>
     /// <returns></returns>
     public InstrumentInfo GetInfo(Instrument instrument)
     {
+
         string instrumentID = instrument.name;
         instrumentID = instrumentID.Substring(0, instrumentID.IndexOf(" ") == -1 ? instrumentID.Length : instrumentID.IndexOf(" "));
         InstrumentInfo info = _instrumentInfos.Find(info => info.instrumentID == instrumentID);
@@ -52,12 +53,16 @@ public class InstrumentManager : Singleton<InstrumentManager>
         }
         List<Instrument> instruments = new List<Instrument>();
 
+
+
         foreach (var instrInfo in instrumentInfos)
         {
             List<Instrument> instrs = _dicInstruments[instrInfo.instrumentID];
             instruments.AddRange(instrs);
         }
-        instruments.OrderBy(instr => GetAttraction(instr, agent));
+        instruments = instruments.OrderBy(instr => GetAttraction(instr, agent)).ToList();
+
+        //instruments.OrderBy(instr => GetAttraction(instr, agent));
         Log.Info($"推荐 {instruments[0].InstrumentInfo.instrumentName}");
         return instruments[0];
     }
@@ -93,8 +98,11 @@ public class InstrumentManager : Singleton<InstrumentManager>
     private float GetAttraction(Instrument instrument, NavMeshAgent agent)
     {
         float waitingTime = instrument.WaitingTime;
-        float pathLength = MyExtensions.CalculatePathLength(agent.transform, instrument.transform);
-        float pathTime = pathLength / agent.velocity.magnitude;
-        return w1 * waitingTime + w2 * pathTime;
+        float pathLength = MyExtensions.CalculatePathLength(agent.transform, instrument.Target);
+        float pathTime = pathLength / agent.speed;
+        float attraction = w1 * waitingTime + w2 * pathTime;
+        Log.Info($"{instrument.name}对{agent.name}的吸引力为{attraction}，其中pathLength：{pathLength}/pathTime：{pathTime}/waitingTime：{waitingTime}");
+        return attraction;
     }
+
 }

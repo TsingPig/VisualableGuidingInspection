@@ -6,4 +6,5 @@ public static class Str_Def
     public const string INSTRUMENT_DATA_PATH = "Instrument";
     public const string INSPECTION_DATA_PATH = "Inspection";
     public const string PATIENT_INFO_PANEL_DATA_PATH = "PatientInfoPanel";
+    public const string PATIENT_1_DATA_PATH = "Patient_1";
 }

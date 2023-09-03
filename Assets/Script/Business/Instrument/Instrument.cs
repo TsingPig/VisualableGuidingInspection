@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TsingPigSDK;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Instrument : MonoBehaviour
 {
@@ -33,7 +34,6 @@ public class Instrument : MonoBehaviour
     {
         float periodCountPercent = _instrumentInfo.InspectionIDs.Find(info => info.inspectionID == inspectionInfo.inspectionID).periodCountPercent;
         float periodDuration = PeriodManager.DAY_PERIOD_DURATION;
-        Log.CallInfo($"periodCountPercent£º{periodCountPercent}_periodDuration£º{periodDuration}");
         return periodCountPercent * periodDuration;
     }
 
@@ -51,9 +51,11 @@ public class Instrument : MonoBehaviour
             {
                 waitingTIme += GetTime(patient.Inspection.CurInspectionInfo);
             }
+            Log.Info($"{gameObject.name}µ±Ç°WaitingTimeÎª£º{waitingTIme}");
             return waitingTIme;
         }
     }
+
 
     /// <summary>
     /// ¼àÌý×¢²á

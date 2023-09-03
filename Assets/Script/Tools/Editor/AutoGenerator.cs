@@ -8,7 +8,7 @@ namespace TsingPigSDK
 
     public class AutoGenerator : Editor
     {
-        private const string fileName = "Str_Def1";
+        private const string fileName = "Str_Def";
 
         [MenuItem("我的工具/Prefab名配置 #W")]
         public static void AddressableAutoGen()

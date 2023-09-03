@@ -37,6 +37,14 @@ MonoBehaviour:
     m_Address: PatientInfoPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6eb195e1a680f4641b52bd7a43aaddd7
+    m_Address: Patient_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0643931fa54bf443b85eb3a63a07d6c
+    m_Address: WorldCanvas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 565dfcdfef6f5d840a14ad4774feeab9, type: 2}
   m_SchemaSet:
