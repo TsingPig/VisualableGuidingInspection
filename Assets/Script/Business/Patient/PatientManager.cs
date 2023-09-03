@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PatientManager : Singleton<PatientManager>
 {
-    public float _genDurationPeriodPercent = 0.15f;
+    public int TotalPatientCount = 20;
+
+    public float GenDurationPeriodPercent = 0.15f;
 
     private List<GameObject> _patientPrefabs = new List<GameObject>();
 
@@ -25,21 +27,23 @@ public class PatientManager : Singleton<PatientManager>
             GameObject parent = new GameObject();
             _parent = parent.transform;
         }
-        StartCoroutine(GenPatient(0, _genDurationPeriodPercent, _parent));
+        StartCoroutine(GenPatient(0, GenDurationPeriodPercent, _parent));
     }
 
     IEnumerator GenPatient(int idx, float genDurationPeriodPercent, Transform parent)
     {
+        int patientCount = 0;
         float genDuration = genDurationPeriodPercent * PeriodManager.DAY_PERIOD_DURATION;
         WaitForSeconds duration = new WaitForSeconds(genDuration);
         yield return new WaitForSeconds(2f);
-        while (true)
+        while (patientCount < TotalPatientCount)
         {
             yield return duration;
             Log.Info($"Éú³É²¡ÈË{_patientPrefabs[idx].name}");
             var patient = Instantiate(_patientPrefabs[idx], parent).GetComponent<Patient>();
             patient.FinishAllInspection_Event += FinishAllInspection;
             patient.MoveNextInspection();
+            patientCount++;
         }
     }
 
