@@ -34,7 +34,6 @@ public class Instrument : MonoBehaviour
     {
         float periodCountPercent = _instrumentInfo.InspectionIDs.Find(info => info.inspectionID == inspectionInfo.inspectionID).periodCountPercent;
         float periodDuration = PeriodManager.DAY_PERIOD_DURATION;
-        Log.CallInfo($"periodCountPercent£º{periodCountPercent} periodDuration£º{periodDuration}");
         return periodCountPercent * periodDuration;
     }
 
