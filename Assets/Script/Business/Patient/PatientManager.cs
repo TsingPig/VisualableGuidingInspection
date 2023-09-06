@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PatientManager : Singleton<PatientManager>
 {
-    public int TotalPatientCount = 20;
+    public int TotalPatientCount = 40;
 
-    public float GenDurationPeriodPercent = 0.15f;
+    public float GenDurationPeriodPercent = 0.12f;
 
     private List<GameObject> _patientPrefabs = new List<GameObject>();
 
