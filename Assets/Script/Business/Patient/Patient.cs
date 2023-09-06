@@ -19,7 +19,7 @@ public class Patient : MonoBehaviour
 
     public CharacterCustomization CharacterCustomization;
 
-    public Action<Transform> FinishAllInspection_Event;
+    public Action<Transform> FinishInspection_Event;
 
     public bool Walk_Active
     {
@@ -183,9 +183,9 @@ public class Patient : MonoBehaviour
 
         Walk_Active = false;
 
-        if (target.parent.Equals("Exit"))
+        if (target.parent.name.Equals("Exit"))
         {
-            FinishAllInspection_Event?.Invoke(transform);
+            FinishInspection_Event?.Invoke(transform);
         }
 
         if (target.parent.GetComponent<Patient>())
@@ -195,14 +195,24 @@ public class Patient : MonoBehaviour
 
         if (target.parent.TryGetComponent(out Instrument instrument))
         {
+            float factor = 0f;
+            Vector3 targetPos = target.position;
+            targetPos.y = 0f;
+            Vector3 pos = transform.position;
+            pos.y = 0f;
 
-            Vector3 lookDirection = (target.position - transform.position).normalized;
-            while (Vector3.Angle(lookDirection, transform.forward) > 45f)
+            //Vector3 lookDirection = (targetPos - pos).normalized;
+            Vector3 lookDirection = target.forward.normalized;
+            while (Vector3.Angle(lookDirection, transform.forward) > 15f)
             {
+                Log.Info($"{gameObject.name} 旋转中");
+
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 4f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, factor);
+                factor += Time.deltaTime / 3f;
                 yield return null;
             }
+
 
             Log.Info($"{gameObject.name} 开始治疗");
 
