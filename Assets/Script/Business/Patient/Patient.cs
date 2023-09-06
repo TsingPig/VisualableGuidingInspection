@@ -205,7 +205,6 @@ public class Patient : MonoBehaviour
             Vector3 lookDirection = target.forward.normalized;
             while (Vector3.Angle(lookDirection, transform.forward) > 15f)
             {
-                Log.Info($"{gameObject.name} а§зЊжа");
 
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, factor);
