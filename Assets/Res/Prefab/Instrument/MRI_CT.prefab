@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5608656171062609524}
   - component: {fileID: 5608656171062609525}
   - component: {fileID: 5608656171062609530}
+  - component: {fileID: 9137067330857243611}
   m_Layer: 0
   m_Name: MRI_CT
   m_TagString: Untagged
@@ -110,6 +111,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9970c7896f435e643b302aef4354ca00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9137067330857243611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5608656171062609528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0970a923eff145744a66a980e20b235c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighterSettings:
+    depthMask: 3
+    infoRenderScale: 1
+    useOuterGlow: 0
+    useSingleOuterGlow: 1
+    outerGlowColorFront: {r: 0.7924528, g: 0.64214903, b: 0.12459945, a: 1}
+    outerGlowColorBack: {r: 0, g: 0, b: 0, a: 1}
+    outlineVisibleBeforeObject: 1
+    blurType: 1
+    blendType: 0
+    boxBlurSize: 0.0806
+    blurIterations: 17.7
+    blurRenderScale: 0.42
+    blurIntensity: 5.11
+    blurIntensityMultiplier: 1
+    blurAdaptiveThickness: 0.8
+    cameraDistanceMultiplier: 1
+    useMeshOutline: 0
+    useSingleMeshOutline: 1
+    meshOutlineFront:
+      color: {r: 1, g: 1, b: 1, a: 1}
+    meshOutlineBack:
+      color: {r: 1, g: 1, b: 1, a: 1}
+    meshOutlineThickness: 0.1
+    meshOutlineAdaptiveThickness: 0
+    useInnerGlow: 0
+    useSingleInnerGlow: 1
+    innerGlowFront:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      power: 4
+    innerGlowBack:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      power: 4
+    useOverlay: 0
+    useSingleOverlay: 1
+    overlayFront:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      useTexture: 0
+      texture: {fileID: 0}
+      background: 0
+      tilling: 60
+      rotation: 0
+    overlayBack:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      useTexture: 0
+      texture: {fileID: 0}
+      background: 0
+      tilling: 60
+      rotation: 0
+    RenderingBoundsSizeIncrease: 0.2
+    RenderingBoundsDistanceFix: 0
+    RenderingBoundsMaxDistanceFix: 1
+    RenderingBoundsMinDistanceFix: 0
+  findRenderers: 0
+  renderers:
+  - renderer: {fileID: 6490925886191947004}
+    useCutout: 0
+    clippingThreshold: 0
+    clippingSource: 0
+    clipTexture: {fileID: 0}
+    submeshIndexes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+    cullMode: 2
+  - renderer: {fileID: 2669448171175644672}
+    useCutout: 0
+    clippingThreshold: 0
+    clippingSource: 0
+    clipTexture: {fileID: 0}
+    submeshIndexes: 000000000100000002000000030000000400000005000000
+    cullMode: 2
+  - renderer: {fileID: 8388622610619349935}
+    useCutout: 0
+    clippingThreshold: 0
+    clippingSource: 0
+    clipTexture: {fileID: 0}
+    submeshIndexes: 000000000100000002000000030000000400000005000000
+    cullMode: 2
+  id: -1
+  showRenderBounds: 0
+  showScreenAdjustedRenderBounds: 0
 --- !u!1 &5608656171493254685
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,9 +290,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4539a70aa15bbf4bbffe2daca2afc5b, type: 3}
+--- !u!23 &2669448171175644672 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7556543082843889274, guid: d4539a70aa15bbf4bbffe2daca2afc5b, type: 3}
+  m_PrefabInstance: {fileID: 5608656170197045370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5359083923762100113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d4539a70aa15bbf4bbffe2daca2afc5b, type: 3}
+  m_PrefabInstance: {fileID: 5608656170197045370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8388622610619349935 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4161234538244303829, guid: d4539a70aa15bbf4bbffe2daca2afc5b, type: 3}
   m_PrefabInstance: {fileID: 5608656170197045370}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5608656170391261304
@@ -263,5 +365,10 @@ PrefabInstance:
 --- !u!4 &5359083923567818643 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3fb79ba2ea9e39941a2630d63ced4bf4, type: 3}
+  m_PrefabInstance: {fileID: 5608656170391261304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6490925886191947004 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 3fb79ba2ea9e39941a2630d63ced4bf4, type: 3}
   m_PrefabInstance: {fileID: 5608656170391261304}
   m_PrefabAsset: {fileID: 0}

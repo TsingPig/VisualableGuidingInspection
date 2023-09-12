@@ -6125,6 +6125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -8463047671877807047, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
+      propertyPath: id
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 9109635736701073800, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
       propertyPath: m_Name
       value: HeightWeight  (2)
@@ -6525,6 +6529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -8463047671877807047, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
+      propertyPath: id
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 9109635736701073800, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
       propertyPath: m_Name
       value: 'HeightWeight '
@@ -6859,6 +6867,10 @@ PrefabInstance:
     - target: {fileID: 5453074803999368497, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
       propertyPath: m_Name
       value: UrineAnalyzer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735716075251408001, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
+      propertyPath: id
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
@@ -18368,6 +18380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UrineAnalyzer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5735716075251408001, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
+      propertyPath: id
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
 --- !u!4 &805061770 stripped
@@ -18382,6 +18398,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: 7970141417201019954, guid: a5461f77902a1f740aaa511166424624, type: 3}
+      propertyPath: id
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8265131625317583272, guid: a5461f77902a1f740aaa511166424624, type: 3}
       propertyPath: m_Name
       value: Body (3)
@@ -22928,6 +22948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BloodAnalyzer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6272527102448157730, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
+      propertyPath: id
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
 --- !u!4 &919025613 stripped
@@ -24433,6 +24457,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -215079339578327921, guid: e03d9f292a0e1864e9f6c515eb69fc2b, type: 3}
+      propertyPath: id
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3493186662853476936, guid: e03d9f292a0e1864e9f6c515eb69fc2b, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -26559,6 +26587,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -8463047671877807047, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
+      propertyPath: id
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 9109635736701073800, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
       propertyPath: m_Name
       value: HeightWeight  (1)
@@ -27260,6 +27292,10 @@ PrefabInstance:
     - target: {fileID: 550249358663129203, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
       propertyPath: m_Name
       value: BloodAnalyzer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272527102448157730, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
+      propertyPath: id
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
@@ -34529,6 +34565,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9137067330857243611, guid: 0027f9e141d66a94ca4d74253d0af607, type: 3}
+      propertyPath: id
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0027f9e141d66a94ca4d74253d0af607, type: 3}
 --- !u!4 &1399445106 stripped
@@ -40099,6 +40139,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -4414840793787472191, guid: 1bbcd97e3931b284398724236e4e5335, type: 3}
+      propertyPath: id
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4643799454867333814, guid: 1bbcd97e3931b284398724236e4e5335, type: 3}
       propertyPath: m_Name
       value: Endoscope (1)
@@ -40465,6 +40509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: 7970141417201019954, guid: a5461f77902a1f740aaa511166424624, type: 3}
+      propertyPath: id
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8265131625317583272, guid: a5461f77902a1f740aaa511166424624, type: 3}
       propertyPath: m_Name
       value: Body (1)
@@ -43332,6 +43380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: 4414900144455769215, guid: 188b30135988ecf40bbafb4a5c82fc5e, type: 3}
+      propertyPath: id
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6186202305752925188, guid: 188b30135988ecf40bbafb4a5c82fc5e, type: 3}
       propertyPath: m_Name
       value: ECG (1)
@@ -47114,6 +47166,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -8463047671877807047, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
+      propertyPath: id
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9109635736701073800, guid: d0167d37b031e294299e4d23dfe7ea8c, type: 3}
       propertyPath: m_Name
       value: HeightWeight  (3)
@@ -47863,6 +47919,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: 7970141417201019954, guid: a5461f77902a1f740aaa511166424624, type: 3}
+      propertyPath: id
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8265131625317583272, guid: a5461f77902a1f740aaa511166424624, type: 3}
       propertyPath: m_Name
       value: Body (2)
@@ -50255,6 +50315,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -4476856409574599491, guid: 7181cc9495982fc46bd26cc81770c981, type: 3}
+      propertyPath: id
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4388833691080461118, guid: 7181cc9495982fc46bd26cc81770c981, type: 3}
       propertyPath: m_Name
       value: BoneDensity (1)
@@ -54788,6 +54852,10 @@ PrefabInstance:
     - target: {fileID: 550249358663129203, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
       propertyPath: m_Name
       value: BloodAnalyzer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272527102448157730, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
+      propertyPath: id
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3a6c9b88a7f7840800ea0d672ca293, type: 3}
@@ -59858,6 +59926,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -215079339578327921, guid: e03d9f292a0e1864e9f6c515eb69fc2b, type: 3}
+      propertyPath: id
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3493186662853476936, guid: e03d9f292a0e1864e9f6c515eb69fc2b, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -67938,6 +68010,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -4476856409574599491, guid: 7181cc9495982fc46bd26cc81770c981, type: 3}
+      propertyPath: id
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4388833691080461118, guid: 7181cc9495982fc46bd26cc81770c981, type: 3}
       propertyPath: m_Name
       value: BoneDensity
@@ -67995,6 +68071,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: -4414840793787472191, guid: 1bbcd97e3931b284398724236e4e5335, type: 3}
+      propertyPath: id
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4643799454867333814, guid: 1bbcd97e3931b284398724236e4e5335, type: 3}
       propertyPath: m_Name
       value: Endoscope
@@ -68235,6 +68315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UrineAnalyzer
       objectReference: {fileID: 0}
+    - target: {fileID: 5735716075251408001, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
+      propertyPath: id
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9e6dcdc2e1c35a47902c58732ba136f, type: 3}
 --- !u!1001 &5608656171571878381
@@ -68292,6 +68376,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9137067330857243611, guid: 0027f9e141d66a94ca4d74253d0af607, type: 3}
+      propertyPath: id
+      value: 24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0027f9e141d66a94ca4d74253d0af607, type: 3}
 --- !u!1001 &6186202305730059971
@@ -68301,6 +68389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: 4414900144455769215, guid: 188b30135988ecf40bbafb4a5c82fc5e, type: 3}
+      propertyPath: id
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6186202305752925188, guid: 188b30135988ecf40bbafb4a5c82fc5e, type: 3}
       propertyPath: m_Name
       value: ECG
@@ -72353,6 +72445,10 @@ PrefabInstance:
       propertyPath: m_Carve
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7970141417201019954, guid: a5461f77902a1f740aaa511166424624, type: 3}
+      propertyPath: id
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8265131625317583272, guid: a5461f77902a1f740aaa511166424624, type: 3}
       propertyPath: m_Name
       value: Body
@@ -72403,93 +72499,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5461f77902a1f740aaa511166424624, type: 3}
---- !u!23 &8265131626360048747 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7309958804571806124, guid: a5461f77902a1f740aaa511166424624, type: 3}
-  m_PrefabInstance: {fileID: 8265131626360048746}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8265131626360048748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8265131625317583272, guid: a5461f77902a1f740aaa511166424624, type: 3}
-  m_PrefabInstance: {fileID: 8265131626360048746}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8265131626360048749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8265131626360048748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0970a923eff145744a66a980e20b235c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlighterSettings:
-    depthMask: 3
-    infoRenderScale: 1
-    useOuterGlow: 1
-    useSingleOuterGlow: 1
-    outerGlowColorFront: {r: 0.8962264, g: 0.76633006, b: 0.17473589, a: 1}
-    outerGlowColorBack: {r: 0, g: 0, b: 0, a: 1}
-    outlineVisibleBeforeObject: 1
-    blurType: 0
-    blendType: 0
-    boxBlurSize: 0.077
-    blurIterations: 21.9
-    blurRenderScale: 1
-    blurIntensity: 3.92
-    blurIntensityMultiplier: 1
-    blurAdaptiveThickness: 0.338
-    cameraDistanceMultiplier: 2.77
-    useMeshOutline: 0
-    useSingleMeshOutline: 1
-    meshOutlineFront:
-      color: {r: 1, g: 1, b: 1, a: 1}
-    meshOutlineBack:
-      color: {r: 1, g: 1, b: 1, a: 1}
-    meshOutlineThickness: 0.1
-    meshOutlineAdaptiveThickness: 0
-    useInnerGlow: 0
-    useSingleInnerGlow: 1
-    innerGlowFront:
-      color: {r: 0, g: 1, b: 1, a: 1}
-      power: 4
-    innerGlowBack:
-      color: {r: 0, g: 1, b: 1, a: 1}
-      power: 4
-    useOverlay: 0
-    useSingleOverlay: 1
-    overlayFront:
-      color: {r: 0, g: 1, b: 1, a: 1}
-      useTexture: 0
-      texture: {fileID: 0}
-      background: 0
-      tilling: 60
-      rotation: 0
-    overlayBack:
-      color: {r: 0, g: 1, b: 1, a: 1}
-      useTexture: 0
-      texture: {fileID: 0}
-      background: 0
-      tilling: 60
-      rotation: 0
-    RenderingBoundsSizeIncrease: 0.2
-    RenderingBoundsDistanceFix: 0
-    RenderingBoundsMaxDistanceFix: 1
-    RenderingBoundsMinDistanceFix: 0
-  findRenderers: 0
-  renderers:
-  - renderer: {fileID: 8265131626360048747}
-    useCutout: 0
-    clippingThreshold: 0
-    clippingSource: 0
-    clipTexture: {fileID: 0}
-    submeshIndexes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
-    cullMode: 2
-  id: 1
-  showRenderBounds: 0
-  showScreenAdjustedRenderBounds: 0
 --- !u!1001 &8532548559150719547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72497,6 +72506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56485530}
     m_Modifications:
+    - target: {fileID: 3687500963788823813, guid: 44c6be3f5f4335d419708ce522eaeac7, type: 3}
+      propertyPath: id
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8532548559993922956, guid: 44c6be3f5f4335d419708ce522eaeac7, type: 3}
       propertyPath: m_RootOrder
       value: 8
