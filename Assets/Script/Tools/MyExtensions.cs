@@ -53,7 +53,6 @@ namespace TsingPigSDK
             }
             else
             {
-                Log.Error($"{source.name}没有到{target.name}的路径");
                 return float.MaxValue;
             }
 
