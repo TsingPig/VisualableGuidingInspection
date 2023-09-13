@@ -9,7 +9,7 @@ namespace TsingPigSDK
         {
             get
             {
-                return UIManager.Instance.GetSingleUI(UIType);
+                return UISystem.Instance.GetSingleUI(UIType);
             }
         }
         public BasePanel()

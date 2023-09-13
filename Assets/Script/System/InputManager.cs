@@ -26,6 +26,10 @@ public class InputManager : Singleton<InputManager>
         {
             ScreenPointToRay("Selectable");
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            EnterInfoPanel();
+        }
     }
     private void ScreenPointToRay(string layerName)
     {
@@ -51,7 +55,13 @@ public class InputManager : Singleton<InputManager>
             }
         }
     }
-  
+    private void EnterInfoPanel()
+    {
+        if (SelectMode == SelectMode.Single && _selectables.Count > 0)
+        {
+            _selectables[0].EnterInfoPanel();
+        }
+    }
     private void OnClick(ISelectable selectable)
     {
         if (SelectMode == SelectMode.Single)
@@ -74,7 +84,7 @@ public class InputManager : Singleton<InputManager>
             }
         }
     }
-  
+
     private void Init()
     {
         _selectables.OnItemAdded_Event += (ISelectable selectable) => selectable.OnSelected();

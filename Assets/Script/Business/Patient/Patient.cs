@@ -48,6 +48,7 @@ public class Patient : MonoBehaviour, ISelectable
 
     private void Awake()
     {
+        _patientInfo=RandomSystem.RandomPatientInfo();
         _agent = GetComponent<NavMeshAgent>();
         _highlighter = transform.GetComponent<Highlighter>();
         foreach (Animator a in CharacterCustomization.animators)
@@ -236,7 +237,6 @@ public class Patient : MonoBehaviour, ISelectable
     {
         Highlighter.Settings.UseMeshOutline = true;
         Highlighter.HighlighterValidate();
-
     }
 
     public void OffSelected()
@@ -244,6 +244,10 @@ public class Patient : MonoBehaviour, ISelectable
         Highlighter.Settings.UseMeshOutline = false;
         Highlighter.HighlighterValidate();
 
+    }
+    public void EnterInfoPanel()
+    {
+        UIManager.Instance.Enter(new PatientInfoPanel(_patientInfo));
     }
 }
 

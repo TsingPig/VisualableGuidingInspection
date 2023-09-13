@@ -3,9 +3,9 @@ using UnityEngine;
 namespace TsingPigSDK
 {
 
-    public class UIManager : Singleton<UIManager>
+    public class UISystem : Singleton<UISystem>
     {
-        private PanelBuffer _panelBuffer;
+        protected PanelBuffer _panelBuffer;
         public GameObject ActivePanelObject
         {
             get { return _panelBuffer.TopPanelObject; }
@@ -14,10 +14,6 @@ namespace TsingPigSDK
         {
             base.Awake();
             _panelBuffer = new PanelBuffer();
-        }
-
-        private void Start()
-        {
         }
 
         private void Update()
@@ -79,6 +75,10 @@ namespace TsingPigSDK
             return null;
         }
 
+        public void Enter(BasePanel panel)
+        {
+            _panelBuffer.Push(panel);
+        }
         public void Enter(string panelName)
         {
             Type type = Type.GetType(panelName);

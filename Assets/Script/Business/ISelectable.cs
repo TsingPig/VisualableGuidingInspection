@@ -6,4 +6,5 @@ public interface ISelectable {
 	Highlighter Highlighter { get; }
 	void OnSelected();
 	void OffSelected();
+	void EnterInfoPanel();
 }
