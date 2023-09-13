@@ -554,7 +554,7 @@ namespace Highlighters
             set
             {
                 useMeshOutline = value;
-                overlayMaterial.SetInt("_UseMeshOutline", useMeshOutline ? 1 : 0);
+                //overlayMaterial.SetInt("_UseMeshOutline", useMeshOutline ? 1 : 0);
             }
         }
 
