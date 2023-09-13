@@ -36734,11 +36734,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93be5e7ee5a703e439d15778fad77c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useDepthMask: 0
+  useDepthMask: 1
   DepthLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
-  DepthRenderScale: 1
+    m_Bits: 55
+  DepthRenderScale: 0.752
   cameraEvent: 17
 --- !u!1 &1479030900
 GameObject:
