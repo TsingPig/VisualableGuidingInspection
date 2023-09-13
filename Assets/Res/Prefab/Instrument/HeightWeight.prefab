@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9109635736701073804}
   - component: {fileID: 9109635736701073802}
   - component: {fileID: 8186708061730789632}
+  - component: {fileID: -8463047671877807047}
   m_Layer: 0
   m_Name: HeightWeight
   m_TagString: Untagged
@@ -77,6 +78,90 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-8463047671877807047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9109635736701073800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0970a923eff145744a66a980e20b235c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighterSettings:
+    depthMask: 3
+    infoRenderScale: 1
+    useOuterGlow: 0
+    useSingleOuterGlow: 1
+    outerGlowColorFront: {r: 0.7924528, g: 0.64214903, b: 0.12459945, a: 1}
+    outerGlowColorBack: {r: 0, g: 0, b: 0, a: 1}
+    outlineVisibleBeforeObject: 1
+    blurType: 1
+    blendType: 0
+    boxBlurSize: 0.0806
+    blurIterations: 17.7
+    blurRenderScale: 0.42
+    blurIntensity: 5.11
+    blurIntensityMultiplier: 1
+    blurAdaptiveThickness: 0.8
+    cameraDistanceMultiplier: 1
+    useMeshOutline: 0
+    useSingleMeshOutline: 1
+    meshOutlineFront:
+      color: {r: 1, g: 1, b: 1, a: 1}
+    meshOutlineBack:
+      color: {r: 1, g: 1, b: 1, a: 1}
+    meshOutlineThickness: 0.1
+    meshOutlineAdaptiveThickness: 0
+    useInnerGlow: 0
+    useSingleInnerGlow: 1
+    innerGlowFront:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      power: 4
+    innerGlowBack:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      power: 4
+    useOverlay: 0
+    useSingleOverlay: 1
+    overlayFront:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      useTexture: 0
+      texture: {fileID: 0}
+      background: 0
+      tilling: 60
+      rotation: 0
+    overlayBack:
+      color: {r: 0, g: 1, b: 1, a: 1}
+      useTexture: 0
+      texture: {fileID: 0}
+      background: 0
+      tilling: 60
+      rotation: 0
+    RenderingBoundsSizeIncrease: 0.2
+    RenderingBoundsDistanceFix: 0
+    RenderingBoundsMaxDistanceFix: 1
+    RenderingBoundsMinDistanceFix: 0
+  findRenderers: 0
+  renderers:
+  - renderer: {fileID: 7614030961326171700}
+    useCutout: 0
+    clippingThreshold: 0
+    clippingSource: 0
+    clipTexture: {fileID: 0}
+    submeshIndexes: 00000000010000000200000003000000
+    cullMode: 2
+  - renderer: {fileID: 7614030962146085252}
+    useCutout: 0
+    clippingThreshold: 0
+    clippingSource: 0
+    clipTexture: {fileID: 0}
+    submeshIndexes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+    cullMode: 2
+  id: -1
+  showRenderBounds: 0
+  showScreenAdjustedRenderBounds: 0
 --- !u!1 &9109635737243026285
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578bc56dee376648ab206e1d4705cd7, type: 3}
+--- !u!23 &7614030961326171700 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5578bc56dee376648ab206e1d4705cd7, type: 3}
+  m_PrefabInstance: {fileID: 9109635737989331632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8782393163876916571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5578bc56dee376648ab206e1d4705cd7, type: 3}
@@ -284,6 +374,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6da9233e37948e747acf6bb4db6c71f4, type: 3}
+--- !u!23 &7614030962146085252 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6da9233e37948e747acf6bb4db6c71f4, type: 3}
+  m_PrefabInstance: {fileID: 9109635738276304128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8782393163623232235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6da9233e37948e747acf6bb4db6c71f4, type: 3}

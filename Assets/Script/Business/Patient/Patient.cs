@@ -1,3 +1,4 @@
+using Highlighters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using TsingPigSDK;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Patient : MonoBehaviour
+public class Patient : MonoBehaviour, ISelectable
 {
     #region 导航系统
 
@@ -42,10 +43,13 @@ public class Patient : MonoBehaviour
     public PatientInfo PatientInfo => _patientInfo;
     public Inspection Inspection { get => _inspection; set => _inspection = value; }
 
+    private Highlighter _highLighter;
+    public Highlighter HighLighter { get => _highLighter; set => _highLighter = value; }
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _highLighter = transform.GetChild(1).GetComponent<Highlighter>();
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
 
@@ -227,6 +231,24 @@ public class Patient : MonoBehaviour
 
 
         }
+
+    }
+
+    public void OnSelected()
+    {
+        Log.Info($"{transform.name} 被选中");
+        _highLighter.Settings.UseOuterGlow = true;
+        _highLighter.Settings.UseMeshOutline = true;
+        _highLighter.HighlighterValidate();
+
+    }
+
+    public void OffSelected()
+    {
+        Log.Info($"{transform.name} 取消选中");
+        _highLighter.Settings.UseOuterGlow = false;
+        _highLighter.Settings.UseMeshOutline = false;
+        _highLighter.HighlighterValidate();
 
     }
 }

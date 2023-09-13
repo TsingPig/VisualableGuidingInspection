@@ -10,6 +10,7 @@ public sealed class GameManager : Singleton<GameManager>
         Log.CallInfo($"{InspectionManager.Instance.name}生成");
         Log.CallInfo($"{InstrumentManager.Instance.name}生成");
         Log.CallInfo($"{PatientManager.Instance.name}生成");
+        Log.CallInfo($"{InputManager.Instance.name}生成");
     }
     private void GameEntry()
     {
