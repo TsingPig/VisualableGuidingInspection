@@ -18,7 +18,10 @@ namespace TsingPigSDK
 
         private void Update()
         {
-          
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Pop();
+            }
         }
 
         /// <summary>
