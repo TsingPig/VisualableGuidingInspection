@@ -1,7 +1,5 @@
 using UnityEngine;
 using TsingPigSDK;
-using System.Collections.Generic;
-using UnityEngine.UI;
 
 public enum SelectMode
 {
@@ -12,9 +10,8 @@ public enum SelectMode
 
 public class InputManager : Singleton<InputManager>
 {
-    //private Dictionary<string, List<ISelectable>> _dic_selectables = new Dictionary<string, List<ISelectable>>();
-    
-    List<ISelectable> _selectables = new List<ISelectable>();    
+
+    MyList<ISelectable> _selectables = new MyList<ISelectable>();
 
     private bool _canSelect = false;
 
@@ -36,7 +33,7 @@ public class InputManager : Singleton<InputManager>
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject.layer==LayerMask.NameToLayer(layerName))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(layerName))
             {
                 ISelectable selectable = hit.collider.transform.GetComponent<ISelectable>();
                 if (selectable != null)
@@ -50,15 +47,11 @@ public class InputManager : Singleton<InputManager>
             }
             else
             {
-                foreach(var selectable in _selectables)
-                {
-                    selectable.OffSelected();
-                }
                 _selectables.Clear();
-                Log.Info("Çå¿Õ_selectables");
             }
         }
     }
+  
     private void OnClick(ISelectable selectable)
     {
         if (SelectMode == SelectMode.Single)
@@ -66,27 +59,26 @@ public class InputManager : Singleton<InputManager>
             if (_selectables.Count == 0)
             {
                 _selectables.Add(selectable);
-                selectable.OnSelected();
             }
             else
             {
                 if (_selectables[0] == selectable)
                 {
                     _selectables.Clear();
-                    selectable.OffSelected();
                 }
                 else
                 {
-                    _selectables[0].OffSelected();
-                    _selectables[0] = selectable;
-                    selectable.OnSelected();
+                    _selectables.Pop();
+                    _selectables.Add(selectable);
                 }
             }
         }
     }
+  
     private void Init()
     {
-
+        _selectables.OnItemAdded_Event += (ISelectable selectable) => selectable.OnSelected();
+        _selectables.OnItemRemoved_Event += (ISelectable selectable) => selectable.OffSelected();
     }
 
     private new void Awake()
