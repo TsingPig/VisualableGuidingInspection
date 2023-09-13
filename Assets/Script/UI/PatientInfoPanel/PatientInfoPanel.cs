@@ -28,7 +28,7 @@ public class PatientInfoPanel : BasePanel
         _patientID.text = _patientInfo.patientID;
         _patientName.text= _patientInfo.patientName;
         _patientAddress.text= _patientInfo.patientAddress;
-        _patientGender.text=_patientInfo.patientGender.ToString();
+        _patientGender.text = _patientInfo.patientGender == Gender.Male ? "ÄÐ" : "Å®";
         _patientPhone.text = _patientInfo.patientPhoneNumber;
         _patientAge.text= _patientInfo.patientAge.ToString();   
     }

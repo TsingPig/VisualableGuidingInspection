@@ -123,7 +123,7 @@ namespace Michsky.MUIP
 
                 currentWindowIndex = 0;
                 currentButtonIndex = 0;
-               
+
                 currentWindow = windows[currentWindowIndex].windowObject;
                 currentWindowAnimator = currentWindow.GetComponent<Animator>();
                 currentWindowAnimator.Play(windowFadeIn);
@@ -198,9 +198,16 @@ namespace Michsky.MUIP
 
                     currentButtonAnimator = currentButton.GetComponent<Animator>();
                     nextButtonAnimator = nextButton.GetComponent<Animator>();
+                    if (nextButtonAnimator != null)
+                    {
+                        nextButtonAnimator.Play(buttonFadeIn);
 
-                    currentButtonAnimator.Play(buttonFadeOut);
-                    nextButtonAnimator.Play(buttonFadeIn);
+                    }
+                    if (currentButtonAnimator != null)
+                    {
+
+                        currentButtonAnimator.Play(buttonFadeOut);
+                    }
                 }
 
                 onWindowChange.Invoke(currentWindowIndex);
@@ -231,7 +238,7 @@ namespace Michsky.MUIP
             {
                 if (cullWindows == true)
                     StopCoroutine("DisablePreviousWindow");
-               
+
                 currentWindow = windows[currentWindowIndex].windowObject;
                 currentWindow.gameObject.SetActive(true);
 
@@ -239,20 +246,20 @@ namespace Michsky.MUIP
                 {
                     currentButton = windows[currentButtonIndex].buttonObject;
                     nextButton = windows[currentButtonIndex + 1].buttonObject;
-                   
+
                     currentButtonAnimator = currentButton.GetComponent<Animator>();
                     currentButtonAnimator.Play(buttonFadeOut);
                 }
 
                 currentWindowAnimator = currentWindow.GetComponent<Animator>();
                 currentWindowAnimator.Play(windowFadeOut);
-               
+
                 currentWindowIndex += 1;
                 currentButtonIndex += 1;
-               
+
                 nextWindow = windows[currentWindowIndex].windowObject;
                 nextWindow.gameObject.SetActive(true);
-                
+
                 nextWindowAnimator = nextWindow.GetComponent<Animator>();
                 nextWindowAnimator.Play(windowFadeIn);
 
@@ -282,20 +289,20 @@ namespace Michsky.MUIP
                 {
                     currentButton = windows[currentButtonIndex].buttonObject;
                     nextButton = windows[currentButtonIndex - 1].buttonObject;
-                   
+
                     currentButtonAnimator = currentButton.GetComponent<Animator>();
                     currentButtonAnimator.Play(buttonFadeOut);
                 }
 
                 currentWindowAnimator = currentWindow.GetComponent<Animator>();
                 currentWindowAnimator.Play(windowFadeOut);
-               
+
                 currentWindowIndex -= 1;
                 currentButtonIndex -= 1;
-               
+
                 nextWindow = windows[currentWindowIndex].windowObject;
                 nextWindow.gameObject.SetActive(true);
-                
+
                 nextWindowAnimator = nextWindow.GetComponent<Animator>();
                 nextWindowAnimator.Play(windowFadeIn);
 
@@ -342,13 +349,13 @@ namespace Michsky.MUIP
             if (windows.Count != 0 && windows[windows.Count - 1].windowObject != null)
             {
                 int tempIndex = windows.Count - 1;
-               
+
                 GameObject tempWindow = windows[tempIndex].windowObject.transform.parent.GetChild(tempIndex).gameObject;
                 GameObject newWindow = Instantiate(tempWindow, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-               
+
                 newWindow.transform.SetParent(windows[tempIndex].windowObject.transform.parent, false);
                 newWindow.gameObject.name = "New Window " + tempIndex.ToString();
-               
+
                 window.windowName = "New Window " + tempIndex.ToString();
                 window.windowObject = newWindow;
 
