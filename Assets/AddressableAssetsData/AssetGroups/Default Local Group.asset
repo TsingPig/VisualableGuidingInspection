@@ -37,12 +37,20 @@ MonoBehaviour:
     m_Address: PatientInfoPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6eb195e1a680f4641b52bd7a43aaddd7
-    m_Address: Patient_1
+  - m_GUID: 33fb970f2239c0144a605da138cb6aee
+    m_Address: PatientPrefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d0643931fa54bf443b85eb3a63a07d6c
     m_Address: WorldCanvas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8949565f134292149a64e775b4f75193
+    m_Address: Cube
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 008db34284409c148b4147327564e693
+    m_Address: Mat
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -1,17 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TsingPigSDK;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PatientManager : Singleton<PatientManager>
 {
-    private int _totalPatientCount = 120;
+    private int _totalPatientCount = 32;
 
     private float _genDurationPeriodPercent = 0.1f;
 
     public Action AllPatientFinish_Event;
-    public int TotalPatientCount  => _totalPatientCount; 
+    public int TotalPatientCount => _totalPatientCount;
 
     private int _curDestroyCount = 0;
     private int CurDestroyCount
@@ -40,7 +43,8 @@ public class PatientManager : Singleton<PatientManager>
     private new void Awake()
     {
         base.Awake();
-        GameObject prefab = Res.Load<GameObject>(Str_Def.PATIENT_1_DATA_PATH);
+
+        GameObject prefab = Res.Load<GameObject>(Str_Def.PATIENT_PREFAB_DATA_PATH);
         _patientPrefabs.Add(prefab);
     }
     private void Start()
@@ -56,6 +60,8 @@ public class PatientManager : Singleton<PatientManager>
 
     IEnumerator GenPatient(int idx, float genDurationPeriodPercent, Transform parent)
     {
+        //handle.Completed += (AsyncOperationHandle<GameObject> h) => { Instantiate(h.Result, _parent); };
+
         int patientCount = 0;
         float genDuration = genDurationPeriodPercent * PeriodManager.DAY_PERIOD_DURATION;
         WaitForSeconds duration = new WaitForSeconds(genDuration);
