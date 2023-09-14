@@ -79,7 +79,11 @@ namespace Michsky.MUIP
             {
                 currentButton = windows[currentWindowIndex].buttonObject;
                 currentButtonAnimator = currentButton.GetComponent<Animator>();
-                currentButtonAnimator.Play(buttonFadeIn);
+                if (currentButtonAnimator != null)
+                {
+
+                    currentButtonAnimator.Play(buttonFadeIn);
+                }
             }
 
             currentWindow = windows[currentWindowIndex].windowObject;
