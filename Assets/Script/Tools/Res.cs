@@ -11,7 +11,7 @@ namespace TsingPigSDK
             AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
             Log.CallInfo($"{path}加载完成");
             T result = handle.WaitForCompletion();
-            Addressables.Release(handle);
+            //Addressables.Release(handle);
             return result;
         }
 
@@ -21,7 +21,7 @@ namespace TsingPigSDK
             await handle.Task;
             Log.CallInfo($"{handle.Result}异步加载完成");
             T result = handle.Result;
-            Addressables.Release(handle);
+            //Addressables.Release(handle);
             return result;
         }
     }

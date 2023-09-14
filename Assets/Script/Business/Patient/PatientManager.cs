@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TsingPigSDK;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -42,6 +43,7 @@ public class PatientManager : Singleton<PatientManager>
     private new void Awake()
     {
         base.Awake();
+
         GameObject prefab = Res.Load<GameObject>(Str_Def.PATIENT_PREFAB_DATA_PATH);
         _patientPrefabs.Add(prefab);
     }
@@ -58,9 +60,7 @@ public class PatientManager : Singleton<PatientManager>
 
     IEnumerator GenPatient(int idx, float genDurationPeriodPercent, Transform parent)
     {
-        var handle = Addressables.LoadAssetAsync<GameObject>(Str_Def.CUBE_DATA_PATH);
-        handle.Completed += (AsyncOperationHandle<GameObject> h) => { Instantiate(h.Result, _parent); };
-
+        //handle.Completed += (AsyncOperationHandle<GameObject> h) => { Instantiate(h.Result, _parent); };
 
         int patientCount = 0;
         float genDuration = genDurationPeriodPercent * PeriodManager.DAY_PERIOD_DURATION;
