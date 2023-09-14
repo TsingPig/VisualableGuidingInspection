@@ -14,11 +14,13 @@ public class Patient : MonoBehaviour, ISelectable
 
     private bool walk_active = false;
 
-    private List<Animator> _anims = new List<Animator>();
+    //private List<Animator> _anims = new List<Animator>();
+
+    private Animator _animator;
 
     private Transform _prePatient;
 
-    public CharacterCustomization CharacterCustomization;
+    //public CharacterCustomization CharacterCustomization;
 
     public Action<Transform> FinishInspection_Event;
 
@@ -28,8 +30,9 @@ public class Patient : MonoBehaviour, ISelectable
         set
         {
             walk_active = value;
-            foreach (Animator a in _anims)
-                a.SetBool("walk", walk_active);
+            //foreach (Animator a in _anims)
+            //    a.SetBool("walk", walk_active);
+            _animator.SetBool("walk", walk_active);
         }
     }
 
@@ -51,8 +54,9 @@ public class Patient : MonoBehaviour, ISelectable
         _patientInfo=RandomSystem.RandomPatientInfo();
         _agent = GetComponent<NavMeshAgent>();
         _highlighter = transform.GetComponent<Highlighter>();
-        foreach (Animator a in CharacterCustomization.animators)
-            _anims.Add(a);
+        //foreach (Animator a in CharacterCustomization.animators)
+        //    _anims.Add(a);
+        _animator =  transform.GetChild(2).GetComponent<Animator>();
     }
 
     private void Start()
@@ -174,9 +178,9 @@ public class Patient : MonoBehaviour, ISelectable
                 _agent.SetDestination(reachablePosition);
                 while (Vector3.Distance(transform.position, reachablePosition) > _agent.stoppingDistance)
                 {
-
-                    foreach (Animator a in _anims)
-                        a.speed = (_agent.velocity.magnitude / _agent.speed) / 2f + 0.5f;
+                    _animator.speed = (_agent.velocity.magnitude / _agent.speed) / 2f + 0.5f;
+                    //foreach (Animator a in _anims)
+                    //    a.speed = (_agent.velocity.magnitude / _agent.speed) / 2f + 0.5f;
                     yield return null;
                 }
             }

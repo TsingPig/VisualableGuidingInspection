@@ -37,7 +37,7 @@ MonoBehaviour:
     m_Address: PatientInfoPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6eb195e1a680f4641b52bd7a43aaddd7
+  - m_GUID: 33fb970f2239c0144a605da138cb6aee
     m_Address: PatientPrefab
     m_ReadOnly: 0
     m_SerializedLabels: []
