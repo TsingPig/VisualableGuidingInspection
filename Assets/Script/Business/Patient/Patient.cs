@@ -43,16 +43,16 @@ public class Patient : MonoBehaviour, ISelectable
     public PatientInfo PatientInfo => _patientInfo;
     public Inspection Inspection { get => _inspection; set => _inspection = value; }
 
-    private Highlighter _highLighter;
-    public Highlighter HighLighter { get => _highLighter; set => _highLighter = value; }
+    private Highlighter _highlighter;
+    public Highlighter Highlighter => _highlighter;
 
     private void Awake()
     {
+        _patientInfo=RandomSystem.RandomPatientInfo();
         _agent = GetComponent<NavMeshAgent>();
-        _highLighter = transform.GetChild(1).GetComponent<Highlighter>();
+        _highlighter = transform.GetComponent<Highlighter>();
         foreach (Animator a in CharacterCustomization.animators)
             _anims.Add(a);
-
     }
 
     private void Start()
@@ -233,23 +233,21 @@ public class Patient : MonoBehaviour, ISelectable
         }
 
     }
-
     public void OnSelected()
     {
-        Log.Info($"{transform.name} 被选中");
-        _highLighter.Settings.UseOuterGlow = true;
-        _highLighter.Settings.UseMeshOutline = true;
-        _highLighter.HighlighterValidate();
-
+        Highlighter.Settings.UseMeshOutline = true;
+        Highlighter.HighlighterValidate();
     }
 
     public void OffSelected()
     {
-        Log.Info($"{transform.name} 取消选中");
-        _highLighter.Settings.UseOuterGlow = false;
-        _highLighter.Settings.UseMeshOutline = false;
-        _highLighter.HighlighterValidate();
+        Highlighter.Settings.UseMeshOutline = false;
+        Highlighter.HighlighterValidate();
 
+    }
+    public void EnterInfoPanel()
+    {
+        UIManager.Instance.Enter(new PatientInfoPanel(_patientInfo));
     }
 }
 
