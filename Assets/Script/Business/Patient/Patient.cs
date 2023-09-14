@@ -14,13 +14,9 @@ public class Patient : MonoBehaviour, ISelectable
 
     private bool walk_active = false;
 
-    //private List<Animator> _anims = new List<Animator>();
-
     private Animator _animator;
 
     private Transform _prePatient;
-
-    //public CharacterCustomization CharacterCustomization;
 
     public Action<Transform> FinishInspection_Event;
 
@@ -179,8 +175,6 @@ public class Patient : MonoBehaviour, ISelectable
                 while (Vector3.Distance(transform.position, reachablePosition) > _agent.stoppingDistance)
                 {
                     _animator.speed = (_agent.velocity.magnitude / _agent.speed) / 2f + 0.5f;
-                    //foreach (Animator a in _anims)
-                    //    a.speed = (_agent.velocity.magnitude / _agent.speed) / 2f + 0.5f;
                     yield return null;
                 }
             }
