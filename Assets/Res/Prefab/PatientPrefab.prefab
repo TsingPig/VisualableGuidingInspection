@@ -16394,7 +16394,7 @@ GameObject:
   - component: {fileID: 6762314433484028662}
   - component: {fileID: 6178429382382036002}
   m_Layer: 6
-  m_Name: Patient_1
+  m_Name: PatientPrefab
   m_TagString: Patient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
