@@ -235,12 +235,15 @@ public class Patient : MonoBehaviour, ISelectable
     {
         Highlighter.Settings.UseMeshOutline = true;
         Highlighter.HighlighterValidate();
+        InputManager.Instance.CinemachineVirtualCameraTarget = transform;
+
     }
 
     public void OffSelected()
     {
         Highlighter.Settings.UseMeshOutline = false;
         Highlighter.HighlighterValidate();
+        InputManager.Instance.CinemachineVirtualCameraTarget = null;
 
     }
     public void EnterInfoPanel()

@@ -10,10 +10,10 @@ namespace TsingPigSDK
     {
         public static void CallInfo(string msg = "")
         {
-            MethodBase callingMethod = new StackTrace().GetFrame(1).GetMethod();
-            Type callingType = callingMethod.DeclaringType;
+            //MethodBase callingMethod = new StackTrace().GetFrame(1).GetMethod();
+            //Type callingType = callingMethod.DeclaringType;
             //Debug.Log($"{callingType.Name} : {callingMethod.Name}    Msg:{msg}");
-            Info(callingType.Name, callingMethod.Name, $"  Msg : {msg}");
+            //Info(callingType.Name, callingMethod.Name, $"  Msg : {msg}");
         }
         public static void Error(string msg = "")
         {
@@ -21,14 +21,14 @@ namespace TsingPigSDK
         }
         public static void Info(params string[] strings)
         {
-            string result = string.Join(" ", strings);
-            Debug.Log(result);
+            //string result = string.Join(" ", strings);
+            //Debug.Log(result);
         }
         
         public static void Warning(params string[] strings)
         {
-            string result = string.Join(" ", strings);
-            Debug.LogWarning(result);
+            //string result = string.Join(" ", strings);
+            //Debug.LogWarning(result);
         }
     }
 }

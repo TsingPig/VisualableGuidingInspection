@@ -1,5 +1,7 @@
 using UnityEngine;
 using TsingPigSDK;
+using Cinemachine;
+using System;
 
 public enum SelectMode
 {
@@ -10,6 +12,23 @@ public enum SelectMode
 
 public class InputManager : Singleton<InputManager>
 {
+    private int _curCamIdx = 0;
+
+    private CinemachineBrain _brain;
+
+    private CinemachineVirtualCameraBase[] _cams;
+
+    private Transform _cinemachineVirtualCameraTarget;
+    public Transform CinemachineVirtualCameraTarget
+    {
+        get => _cinemachineVirtualCameraTarget;
+        set
+        {
+            _cams[1].Follow = value;
+            _cams[1].LookAt = value;
+        }
+
+    }
 
     MyList<ISelectable> _selectables = new MyList<ISelectable>();
 
@@ -21,6 +40,12 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            _cams[_curCamIdx].enabled = false;
+            _curCamIdx = (_curCamIdx + 1) % _cams.Length;
+             _cams[_curCamIdx].enabled=true;
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -87,6 +112,8 @@ public class InputManager : Singleton<InputManager>
 
     private void Init()
     {
+        _brain = FindObjectOfType<CinemachineBrain>();
+        _cams = FindObjectsOfType<CinemachineVirtualCameraBase>();
         _selectables.OnItemAdded_Event += (ISelectable selectable) => selectable.OnSelected();
         _selectables.OnItemRemoved_Event += (ISelectable selectable) => selectable.OffSelected();
     }
