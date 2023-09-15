@@ -9,7 +9,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PatientManager : Singleton<PatientManager>
 {
-    private int _totalPatientCount = 44;
+    private int _totalPatientCount = 37;
 
     private float _genDurationPeriodPercent = 0.1f;
 
