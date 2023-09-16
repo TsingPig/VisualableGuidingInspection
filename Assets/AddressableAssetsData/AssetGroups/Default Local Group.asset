@@ -53,6 +53,10 @@ MonoBehaviour:
     m_Address: Mat
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7b714fa02cf29944cab0e5534ef0401f
+    m_Address: MainPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 565dfcdfef6f5d840a14ad4774feeab9, type: 2}
   m_SchemaSet:

@@ -2,6 +2,7 @@ using UnityEngine;
 using TsingPigSDK;
 using Cinemachine;
 using System;
+using UnityEngine.Playables;
 
 public enum SelectMode
 {
@@ -14,8 +15,6 @@ public class InputManager : Singleton<InputManager>
 {
     private int _curCamIdx = 0;
 
-    private CinemachineBrain _brain;
-
     private CinemachineVirtualCameraBase[] _cams;
 
     private Transform _cinemachineVirtualCameraTarget;
@@ -24,10 +23,12 @@ public class InputManager : Singleton<InputManager>
         get => _cinemachineVirtualCameraTarget;
         set
         {
-            _cams[1].Follow = value;
-            _cams[1].LookAt = value;
+            for (int i = 1; i < _cams.Length; i++)
+            {
+                _cams[i].Follow = value;
+                _cams[i].LookAt = value;
+            }
         }
-
     }
 
     MyList<ISelectable> _selectables = new MyList<ISelectable>();
@@ -42,12 +43,21 @@ public class InputManager : Singleton<InputManager>
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
+            
             _cams[_curCamIdx].enabled = false;
             _curCamIdx = (_curCamIdx + 1) % _cams.Length;
-             _cams[_curCamIdx].enabled=true;
+            _cams[_curCamIdx].enabled = true;
+            if (_curCamIdx == 2)
+            {
+                UIManager.Instance.CursorState = CursorState.Lock;
+            }
+            else
+            {
+                UIManager.Instance.CursorState = CursorState.None;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (UIManager.Instance.CursorState==CursorState.None &&  Input.GetKeyDown(KeyCode.Mouse0))
         {
             ScreenPointToRay("Selectable");
         }
@@ -112,8 +122,16 @@ public class InputManager : Singleton<InputManager>
 
     private void Init()
     {
-        _brain = FindObjectOfType<CinemachineBrain>();
-        _cams = FindObjectsOfType<CinemachineVirtualCameraBase>();
+        _cams = new CinemachineVirtualCameraBase[]
+        {
+            GameObject.Find("CMWorld").GetComponent<CinemachineVirtualCamera>(),
+            GameObject.Find("CMLock").GetComponent<CinemachineVirtualCamera>(),
+            GameObject.Find("CMFree").GetComponent<CinemachineFreeLook>()
+        };
+        //_cams[0] = GameObject.Find("CMWorld").GetComponent<CinemachineVirtualCamera>();
+        //_cams[1] = GameObject.Find("CMLock").GetComponent<CinemachineVirtualCamera>();
+        //_cams[2] = GameObject.Find("CMFree").GetComponent<CinemachineFreeLook>();
+
         _selectables.OnItemAdded_Event += (ISelectable selectable) => selectable.OnSelected();
         _selectables.OnItemRemoved_Event += (ISelectable selectable) => selectable.OffSelected();
     }

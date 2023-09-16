@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace TsingPigSDK
 {
@@ -7,6 +8,9 @@ namespace TsingPigSDK
     /// </summary>
     public class PanelBuffer
     {
+        private CursorState _stateRecord;
+        public CursorState StateRecord { get => _stateRecord; set => _stateRecord = value; }
+
         public GameObject TopPanelObject
         {
             get { return GetSingleUI(_topPanel.UIType); }
@@ -35,8 +39,11 @@ namespace TsingPigSDK
         /// <param name="nextPanel">要显示的面板</param>
         public void Push(BasePanel nextPanel)
         {
-            Debug.Log(nextPanel.UIType.Name);
-            if (_panelStack.Count > 0)
+            if (_panelStack.Count == 0)
+            {
+                UISystem.Instance.CursorState = CursorState.UI;
+            }
+            if (nextPanel.UIType.FloatingPanel == false && _panelStack.Count > 0)
             {
                 _topPanel = _panelStack.Peek();
                 _topPanel.OnPause();
@@ -49,15 +56,21 @@ namespace TsingPigSDK
         }
         public void Pop()
         {
+            bool floatingPanel = false;
             if (_panelStack.Count > 0)
             {
+                floatingPanel = _panelStack.Peek().UIType.FloatingPanel;
                 _panelStack.Peek().OnExit();
                 DestroyUI(_panelStack.Peek().UIType);
                 _panelStack.Pop();
             }
-            if (_panelStack.Count > 0)
+            if (floatingPanel==false && _panelStack.Count > 0)
             {
                 _panelStack.Peek().OnResume();
+            }
+            else
+            {
+                UISystem.Instance.CursorState = _stateRecord;
             }
         }
 

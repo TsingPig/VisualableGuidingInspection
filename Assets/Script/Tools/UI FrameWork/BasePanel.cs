@@ -12,14 +12,14 @@ namespace TsingPigSDK
                 return UISystem.Instance.GetSingleUI(UIType);
             }
         }
-        public BasePanel()
+        public BasePanel(bool floatingPanel = false)
         {
-            UIType = new UIType(this.GetType().Name);
+            UIType = new UIType(this.GetType().Name, floatingPanel);
         }
 
         public virtual void OnEntry()
         {
-            Debug.Log($"打开{UIType.Name}面板");
+            Log.Info($"打开{UIType.Name}面板");
         }
         public virtual void OnPause()
         {
