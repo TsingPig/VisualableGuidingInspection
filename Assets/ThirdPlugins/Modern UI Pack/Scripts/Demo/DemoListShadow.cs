@@ -92,30 +92,38 @@ namespace Michsky.MUIP
 
         IEnumerator LeftCGFadeOut()
         {
-            leftCG.interactable = false;
-            leftCG.blocksRaycasts = false;
-
-            while (leftCG.alpha > 0.01f)
+            if (leftCG != null)
             {
-                leftCG.alpha -= Time.unscaledDeltaTime * transitionSpeed;
-                yield return new WaitForEndOfFrame();
+                leftCG.interactable = false;
+                leftCG.blocksRaycasts = false;
+
+                while (leftCG.alpha > 0.01f)
+                {
+                    leftCG.alpha -= Time.unscaledDeltaTime * transitionSpeed;
+                    yield return new WaitForEndOfFrame();
+                }
+
+                leftCG.alpha = 0;
             }
 
-            leftCG.alpha = 0;
         }
 
         IEnumerator RightCGFadeIn()
         {
-            rightCG.interactable = true;
-            rightCG.blocksRaycasts = true;
-
-            while (rightCG.alpha < 0.99f)
+            if (rightCG != null)
             {
-                rightCG.alpha += Time.unscaledDeltaTime * transitionSpeed;
-                yield return new WaitForEndOfFrame();
+                rightCG.interactable = true;
+                rightCG.blocksRaycasts = true;
+
+                while (rightCG.alpha < 0.99f)
+                {
+                    rightCG.alpha += Time.unscaledDeltaTime * transitionSpeed;
+                    yield return new WaitForEndOfFrame();
+                }
+
+                rightCG.alpha = 1;
             }
 
-            rightCG.alpha = 1;
         }
 
         IEnumerator RightCGFadeOut()
