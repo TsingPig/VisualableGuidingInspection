@@ -21,8 +21,14 @@ public class Main : MonoBehaviour
         CanvasGroup targetPanel = Panels.First((CanvasGroup item) => item.name == name);
        ClosePanel(targetPanel);
     }
-    private void Awake()
+   
+    private void Start()
     {
+        for (int i = 1; i < Panels.Length; i++)
+        {
+            ClosePanel(Panels[i]);
+        }
+
         _txtsInfoPanel = new TMP_Text[] {
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("已模拟时间"),
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("模拟日历"),
@@ -33,13 +39,7 @@ public class Main : MonoBehaviour
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("使用中"),
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("维修中"),
         };
-    }
-    private void Start()
-    {
-        for(int i=1;i< Panels.Length; i++)
-        {
-            ClosePanel(Panels[i]);
-        }
+       
     }
     private void OpenPanel(CanvasGroup targetPanel)
     {
