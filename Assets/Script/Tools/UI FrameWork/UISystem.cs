@@ -24,7 +24,7 @@ namespace TsingPigSDK
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.Locked;
                 }
-                else if(value==CursorState.UI)
+                else if (value == CursorState.UI)
                 {
                     _panelBuffer.StateRecord = _cursorState;
                     Cursor.visible = true;
@@ -74,7 +74,7 @@ namespace TsingPigSDK
         /// </summary>
         /// <param name="name">子对象名称</param>
         /// <returns></returns>
-        public GameObject FindChildGameObject(string name)
+        private GameObject FindChildGameObject(string name)
         {
             Transform[] transforms = ActivePanelObject.GetComponentsInChildren<Transform>();
             foreach (var item in transforms)
@@ -87,7 +87,19 @@ namespace TsingPigSDK
             Debug.LogWarning($"{ActivePanelObject.name}里找不到名为{name}的子物体");
             return null;
         }
-
+        private GameObject FindChildGameObject(string name, Transform target)
+        {
+            Transform[] transforms = target.GetComponentsInChildren<Transform>();
+            foreach (var item in transforms)
+            {
+                if (item.gameObject.name == name)
+                {
+                    return item.gameObject;
+                }
+            }
+            Debug.LogWarning($"{ActivePanelObject.name}里找不到名为{name}的子物体");
+            return null;
+        }
         /// <summary>
         /// 根据名称获取子对象的组件
         /// </summary>
@@ -97,6 +109,20 @@ namespace TsingPigSDK
         public T GetOrAddComponentInChilden<T>(string name) where T : Component
         {
             GameObject child = FindChildGameObject(name);
+            if (child != null)
+            {
+                if (child.GetComponent<T>() != null)
+                {
+                    return child.GetComponent<T>();
+                }
+                child.AddComponent<T>();
+            }
+            return null;
+        }
+
+        public T GetOrAddComponentInChilden<T>(string name, Transform target) where T : Component
+        {
+            GameObject child = FindChildGameObject(name, target);
             if (child != null)
             {
                 if (child.GetComponent<T>() != null)

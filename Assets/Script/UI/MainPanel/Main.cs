@@ -30,14 +30,14 @@ public class Main : MonoBehaviour
         }
 
         _txtsInfoPanel = new TMP_Text[] {
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("已模拟时间"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("模拟日历"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("治疗中人数"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("完成人数"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("完成检查数"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("总设备数"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("使用中"),
-                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("维修中"),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("已模拟时间",transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("模拟日历",transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("治疗中人数", transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("完成人数", transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("完成检查数", transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("总设备数", transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("使用中", transform),
+                UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("维修中", transform),
         };
        
     }
