@@ -17,6 +17,7 @@ public class PatientInfoPanel : BasePanel
     }
     public override void OnEntry()
     {
+        base.OnEntry();
         _patientID = UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("ID");
         _patientName = UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("ĞÕÃû");
         _patientAge = UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("ÄêÁä");

@@ -1,10 +1,40 @@
 using System;
+using UnityEditor;
 using UnityEngine;
+
 namespace TsingPigSDK
 {
 
     public class UISystem : Singleton<UISystem>
     {
+        private CursorState _cursorState = CursorState.None;
+
+        public CursorState CursorState
+        {
+            get => _cursorState;
+            set
+            {
+                if (value == CursorState.None)
+                {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else if (value == CursorState.Lock)
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+                else if(value==CursorState.UI)
+                {
+                    _panelBuffer.StateRecord = _cursorState;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                _cursorState = value;
+                Debug.Log(_cursorState);
+            }
+        }
+
         protected PanelBuffer _panelBuffer;
         public GameObject ActivePanelObject
         {

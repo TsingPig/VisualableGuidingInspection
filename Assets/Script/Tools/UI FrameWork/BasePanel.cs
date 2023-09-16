@@ -19,7 +19,7 @@ namespace TsingPigSDK
 
         public virtual void OnEntry()
         {
-            Debug.Log($"打开{UIType.Name}面板");
+            Log.Info($"打开{UIType.Name}面板");
         }
         public virtual void OnPause()
         {

@@ -7,6 +7,9 @@ namespace TsingPigSDK
     /// </summary>
     public class PanelBuffer
     {
+        private CursorState _stateRecord;
+        public CursorState StateRecord { get => _stateRecord; set => _stateRecord = value; }
+
         public GameObject TopPanelObject
         {
             get { return GetSingleUI(_topPanel.UIType); }
@@ -35,7 +38,10 @@ namespace TsingPigSDK
         /// <param name="nextPanel">要显示的面板</param>
         public void Push(BasePanel nextPanel)
         {
-            Debug.Log(nextPanel.UIType.Name);
+            if (_panelStack.Count == 0)
+            {
+                UISystem.Instance.CursorState = CursorState.UI;
+            }
             if (_panelStack.Count > 0)
             {
                 _topPanel = _panelStack.Peek();
@@ -49,6 +55,7 @@ namespace TsingPigSDK
         }
         public void Pop()
         {
+           
             if (_panelStack.Count > 0)
             {
                 _panelStack.Peek().OnExit();
@@ -58,6 +65,10 @@ namespace TsingPigSDK
             if (_panelStack.Count > 0)
             {
                 _panelStack.Peek().OnResume();
+            }
+            else
+            {
+                UISystem.Instance.CursorState = _stateRecord;
             }
         }
 
