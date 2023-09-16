@@ -1,3 +1,4 @@
+using Michsky.MUIP;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,45 @@ public class Main : MonoBehaviour
 
     private TMP_Text[] _txtsInfoPanel;
 
-    public void OpenPanel(string name)
-    {
-        CanvasGroup targetPanel= Panels.First((CanvasGroup item) => item.name == name);
-        OpenPanel(targetPanel);
-    }
- 
-    public void ClosePanel(string name)
+    public void SwitchPanel(string name)
     {
         CanvasGroup targetPanel = Panels.First((CanvasGroup item) => item.name == name);
-       ClosePanel(targetPanel);
+        if (targetPanel != null)
+        {
+            var elemManager = UIManager.Instance.GetOrAddComponentInChilden<DemoElementSway>($"Btn_{name}", transform);
+            bool wmSelect = elemManager.wmSelected;
+            if (wmSelect)
+            {
+                ClosePanel(name);
+
+            }
+            else
+            {
+                OpenPanel(name);
+            }
+        }
     }
-   
+    private void OpenPanel(string name)
+    {
+        CanvasGroup targetPanel = Panels.First((CanvasGroup item) => item.name == name);
+        if (targetPanel != null)
+        {
+            OpenPanel(targetPanel);
+            var elemManager = UIManager.Instance.GetOrAddComponentInChilden<DemoElementSway>($"Btn_{name}", transform);
+            elemManager.WindowManagerSelect();
+        }
+    }
+
+    private void ClosePanel(string name)
+    {
+        CanvasGroup targetPanel = Panels.First((CanvasGroup item) => item.name == name);
+        if (targetPanel != null)
+        {
+            ClosePanel(targetPanel);
+            UIManager.Instance.GetOrAddComponentInChilden<DemoElementSway>($"Btn_{name}", transform).WindowManagerDeselect();
+        }
+    }
+
     private void Start()
     {
         for (int i = 1; i < Panels.Length; i++)
@@ -39,16 +67,20 @@ public class Main : MonoBehaviour
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("使用中", transform),
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("维修中", transform),
         };
-       
+
     }
     private void OpenPanel(CanvasGroup targetPanel)
     {
+        var animator = targetPanel.GetComponent<Animator>();
+        animator?.Play("In");
         targetPanel.alpha = 1f;
         targetPanel.interactable = true;
         targetPanel.blocksRaycasts = true;
     }
     private void ClosePanel(CanvasGroup targetPanel)
     {
+        var animator = targetPanel.GetComponent<Animator>();
+        animator?.Play("Out");
         targetPanel.alpha = 0f;
         targetPanel.interactable = false;
         targetPanel.blocksRaycasts = false;
