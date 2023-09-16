@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace TsingPigSDK
 {
@@ -42,7 +43,7 @@ namespace TsingPigSDK
             {
                 UISystem.Instance.CursorState = CursorState.UI;
             }
-            if (_panelStack.Count > 0)
+            if (nextPanel.UIType.FloatingPanel == false && _panelStack.Count > 0)
             {
                 _topPanel = _panelStack.Peek();
                 _topPanel.OnPause();
@@ -55,14 +56,15 @@ namespace TsingPigSDK
         }
         public void Pop()
         {
-           
+            bool floatingPanel = false;
             if (_panelStack.Count > 0)
             {
+                floatingPanel = _panelStack.Peek().UIType.FloatingPanel;
                 _panelStack.Peek().OnExit();
                 DestroyUI(_panelStack.Peek().UIType);
                 _panelStack.Pop();
             }
-            if (_panelStack.Count > 0)
+            if (floatingPanel==false && _panelStack.Count > 0)
             {
                 _panelStack.Peek().OnResume();
             }

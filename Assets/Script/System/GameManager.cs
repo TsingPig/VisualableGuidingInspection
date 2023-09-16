@@ -14,12 +14,17 @@ public sealed class GameManager : Singleton<GameManager>
     }
     private void GameEntry()
     {
+        UIManager.Instance.Enter(new MainPanel());
 
     }
     protected override void Awake()
     {
         base.Awake();
         Init();
+ 
+    }
+    private void Start()
+    {
         GameEntry();
     }
     private void Update()

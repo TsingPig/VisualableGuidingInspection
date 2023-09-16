@@ -10,4 +10,5 @@ public static class Str_Def
     public const string TARGET_DATA_PATH = "Target";
     public const string PATIENT_PREFAB_DATA_PATH = "PatientPrefab";
     public const string CUBE_DATA_PATH = "Cube";
+    public const string MAIN_PANEL_DATA_PATH = "MainPanel";
 }
