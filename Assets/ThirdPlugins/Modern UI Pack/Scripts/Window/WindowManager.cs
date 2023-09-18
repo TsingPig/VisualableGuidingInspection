@@ -61,7 +61,7 @@ namespace Michsky.MUIP
         {
             if (isInitialized == true && nextWindowAnimator == null)
             {
-                currentWindowAnimator.Play(windowFadeIn);
+                if (currentWindowAnimator != null) currentWindowAnimator.Play(windowFadeIn);
                 if (currentButtonAnimator != null) { currentButtonAnimator.Play(buttonFadeIn); }
             }
 
@@ -87,8 +87,16 @@ namespace Michsky.MUIP
             }
 
             currentWindow = windows[currentWindowIndex].windowObject;
-            currentWindowAnimator = currentWindow.GetComponent<Animator>();
-            currentWindowAnimator.Play(windowFadeIn);
+            if (currentWindow != null)
+            {
+                currentWindowAnimator = currentWindow.GetComponent<Animator>();
+                if (currentButtonAnimator != null)
+                {
+                    currentWindowAnimator.Play(windowFadeIn);
+
+                }
+            }
+
             onWindowChange.Invoke(currentWindowIndex);
 
             isInitialized = true;
