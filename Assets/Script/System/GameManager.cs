@@ -35,7 +35,7 @@ public sealed class GameManager : Singleton<GameManager>
         }
         if (Input.GetKeyUp(KeyCode.T))
         {
-            PeriodManager.Instance.LogPeriod();
+           
         }
     }
 }

@@ -29,6 +29,7 @@ public class Main : MonoBehaviour
             }
         }
     }
+ 
     private void OpenPanel(string name)
     {
         CanvasGroup targetPanel = Panels.First((CanvasGroup item) => item.name == name);
@@ -50,6 +51,7 @@ public class Main : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
         for (int i = 1; i < Panels.Length; i++)
@@ -67,7 +69,12 @@ public class Main : MonoBehaviour
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("使用中", transform),
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("维修中", transform),
         };
+    }
 
+    private void Update()
+    {
+        _txtsInfoPanel[0].text = PeriodManager.Instance.CurrentTimeString;
+        _txtsInfoPanel[1].text = PeriodManager.Instance.CurrentPeriodString;
     }
     private void OpenPanel(CanvasGroup targetPanel)
     {
@@ -79,10 +86,14 @@ public class Main : MonoBehaviour
     }
     private void ClosePanel(CanvasGroup targetPanel)
     {
-        var animator = targetPanel.GetComponent<Animator>();
-        animator?.Play("Out");
-        targetPanel.alpha = 0f;
-        targetPanel.interactable = false;
-        targetPanel.blocksRaycasts = false;
+        if(targetPanel.interactable)
+        {
+            var animator = targetPanel.GetComponent<Animator>();
+            animator?.Play("Out");
+            targetPanel.alpha = 0f;
+            targetPanel.interactable = false;
+            targetPanel.blocksRaycasts = false;
+        }
+  
     }
 }

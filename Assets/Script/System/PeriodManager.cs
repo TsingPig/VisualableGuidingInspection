@@ -3,35 +3,49 @@ using TsingPigSDK;
 using UnityEngine;
 public class PeriodManager : Singleton<PeriodManager>
 {
-    public const float DAY_PERIOD_DURATION = 10f;
+    public const float DAY_PERIOD_DURATION = 2f;
 
-    private float _currentTime;
+    private float _currentSeconds;
 
     private Period _currentPeriod;
-    public float CurrentTime => _currentTime;
+
+    public float CurrentSeconds => _currentSeconds;
+
+    public string CurrentTimeString => GetTimeString((int)_currentSeconds);
+    public string CurrentPeriodString => _currentPeriod.GetPeriodString();
+    private static string GetTimeString(int seconds)
+    {
+        string timeString = string.Empty;
+
+        int hours = seconds / 3600;
+        timeString += hours.ToString().PadLeft(2, '0') + ":";
+        seconds -= 3600 * hours;
+
+        int minutes = seconds / 60;
+        timeString += minutes.ToString().PadLeft(2, '0') + ":";
+        seconds -= minutes * 60;
+        timeString += seconds.ToString().PadLeft(2, '0');
+
+        return timeString;
+    }
 
     private void StopTime()
     {
         StopCoroutine(UpdatePeriod());
         StopCoroutine(UpdateTime());
         int totalPatientCount = PatientManager.Instance.TotalPatientCount;
-        Log.Info($"总共用时：{CurrentTime}，检查了{totalPatientCount}个病人");
+        Log.Info($"总共用时：{CurrentSeconds}，检查了{totalPatientCount}个病人");
     }
     private void Init()
     {
-        PatientManager.Instance.AllPatientFinish_Event += StopTime;
-        _currentTime = 0;
         _currentPeriod = new Period();
-        StartCoroutine(UpdatePeriod());
-        StartCoroutine(UpdateTime());
-        Log.Info("初始化时间段：", _currentPeriod.GetPeriod());
     }
     private IEnumerator UpdateTime()
     {
         while (true)
         {
             //Log.Info($"当前时间：{_currentTime}");
-            _currentTime+= Time.deltaTime;  
+            _currentSeconds += Time.deltaTime;
             yield return null;
         }
     }
@@ -47,16 +61,20 @@ public class PeriodManager : Singleton<PeriodManager>
 
     private void Start()
     {
-        Init();
+        PatientManager.Instance.AllPatientFinish_Event += StopTime;
+        _currentSeconds = 0;
+        StartCoroutine(UpdatePeriod());
+        StartCoroutine(UpdateTime());
 
     }
     private void Update()
     {
 
     }
-    public void LogPeriod()
+    private new void Awake()
     {
-        Log.Info("当前时间段：", _currentPeriod.GetPeriod());
+        base.Awake();
+        Init();
     }
 }
 
@@ -79,13 +97,20 @@ public enum DayPeriod
 }
 public class Period
 {
+
+    private int _weekCount;
+
     private Date _date;
+
     private DayPeriod _dayPeriod;
     public Date Date { get => _date; }
     public DayPeriod DayPeriod { get => _dayPeriod; }
+    public int WeekCount { get => _weekCount; }
+
     public Period()
     {
         _date = Date.Monday;
+        _weekCount = 1;
         _dayPeriod = DayPeriod.BeforeDown;
     }
     public Period(Date date, DayPeriod dayPeriod)
@@ -99,6 +124,10 @@ public class Period
         {
             _dayPeriod = DayPeriod.BeforeDown; // 切换到下一天的 BeforeDown
             _date = (Date)(((int)_date % 7) + 1); // 切换到下一天
+            if (_date == Date.Monday)
+            {
+                _weekCount++;
+            }
         }
         else
         {
@@ -110,7 +139,7 @@ public class Period
     /// 返回当前Period对象的字符串显示
     /// </summary>
     /// <returns></returns>
-    public string GetPeriod()
+    public string GetPeriodString()
     {
         string day = "";
         string period = "";
@@ -153,7 +182,7 @@ public class Period
                 period = "晚上";
                 break;
         }
-        return $"{day} {period}";
+        return $"{day}_{period}";
     }
 }
 
