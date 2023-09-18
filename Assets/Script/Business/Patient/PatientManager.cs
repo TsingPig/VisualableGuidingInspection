@@ -11,13 +11,17 @@ public class PatientManager : Singleton<PatientManager>
 {
     private int _totalPatientCount = 37;
 
-    private float _genDurationPeriodPercent = 0.1f;
+    private float _genDurationPeriodPercent = 0.5f;
 
     public Action AllPatientFinish_Event;
     public int TotalPatientCount => _totalPatientCount;
 
     private int _curDestroyCount = 0;
-    private int CurDestroyCount
+    
+    /// <summary>
+    /// 已经完成治疗的人数
+    /// </summary>
+    public int CurDestroyCount
     {
         get => _curDestroyCount;
         set
@@ -32,9 +36,13 @@ public class PatientManager : Singleton<PatientManager>
         }
     }
 
-
-
-
+    /// <summary>
+    /// 当前治疗中的数量
+    /// </summary>
+    public int CurInspectingCount
+    {
+        get => _totalPatientCount - _curDestroyCount;
+    }
 
     private List<GameObject> _patientPrefabs = new List<GameObject>();
 

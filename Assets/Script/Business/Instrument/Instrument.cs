@@ -107,6 +107,8 @@ public class Instrument : MonoBehaviour
 
         Log.Info($"{patient.name} ÖÎÁÆ½áÊø");
 
+        InspectionManager.Instance.CurFinishedInspectionsCount++;
+
         InspectionEnd_Event?.Invoke(patient.transform);
 
         Patients.Remove(patient);

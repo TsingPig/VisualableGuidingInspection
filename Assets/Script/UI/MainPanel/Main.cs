@@ -11,6 +11,10 @@ public class Main : MonoBehaviour
 
     private TMP_Text[] _txtsInfoPanel;
 
+    /// <summary>
+    /// 根据面板名字，切换Panel面板
+    /// </summary>
+    /// <param name="name">面板名字</param>
     public void SwitchPanel(string name)
     {
         CanvasGroup targetPanel = Panels.First((CanvasGroup item) => item.name == name);
@@ -70,11 +74,14 @@ public class Main : MonoBehaviour
                 UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("维修中", transform),
         };
     }
-
     private void Update()
     {
         _txtsInfoPanel[0].text = PeriodManager.Instance.CurrentTimeString;
         _txtsInfoPanel[1].text = PeriodManager.Instance.CurrentPeriodString;
+        _txtsInfoPanel[2].text = PatientManager.Instance.CurInspectingCount.ToString();
+        _txtsInfoPanel[3].text = PatientManager.Instance.CurDestroyCount.ToString();
+        _txtsInfoPanel[4].text = InspectionManager.Instance.CurFinishedInspectionsCount.ToString();
+        _txtsInfoPanel[5].text = InstrumentManager.Instance.InstrumentCount.ToString();
     }
     private void OpenPanel(CanvasGroup targetPanel)
     {
