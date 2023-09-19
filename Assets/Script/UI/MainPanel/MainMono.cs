@@ -79,7 +79,7 @@ public class MainMono : MonoBehaviour
         _txtsInfoPanel[0].text = PeriodManager.Instance.CurrentTimeString;
         _txtsInfoPanel[1].text = PeriodManager.Instance.CurrentPeriodString;
         _txtsInfoPanel[2].text = PatientManager.Instance.CurInspectingCount.ToString();
-        _txtsInfoPanel[3].text = PatientManager.Instance.CurDestroyCount.ToString();
+        _txtsInfoPanel[3].text = PatientManager.Instance.DestroyedCount.ToString();
         _txtsInfoPanel[4].text = InspectionManager.Instance.CurFinishedInspectionsCount.ToString();
         _txtsInfoPanel[5].text = InstrumentManager.Instance.InstrumentCount.ToString();
     }

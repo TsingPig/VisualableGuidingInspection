@@ -53,10 +53,12 @@ namespace Michsky.MUIP
         }
         public void InitializeItems(int count)
         {
-            listItems = new List<ListItem>(count)
+            listItems.Clear();
+            for (int i = 0; i < count; i++)
             {
-                new ListItem()
-            };
+                listItems.Add(new ListItem());
+            }
+            
             InitializeItems();
         }
         public void InitializeItems()
@@ -67,7 +69,6 @@ namespace Michsky.MUIP
 #else
             foreach (Transform child in itemParent) { Destroy(child.gameObject); }
 #endif
-            Debug.Log(listItems.Count);
             for (int i = 0; i < listItems.Count; ++i)
             {
                 GameObject go = Instantiate(itemPreset, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;

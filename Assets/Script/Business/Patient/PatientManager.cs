@@ -9,25 +9,29 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PatientManager : Singleton<PatientManager>
 {
-    private int _totalPatientCount = 37;
+    private int _totalPatientCount = 44;
 
     private float _genDurationPeriodPercent = 0.5f;
 
     public Action AllPatientFinish_Event;
+
+    private int _destroyedCount = 0;
+
+    private int _genPatientCount;
+
     public int TotalPatientCount => _totalPatientCount;
 
-    private int _curDestroyCount = 0;
-    
+
     /// <summary>
     /// 已经完成治疗的人数
-    /// </summary>
-    public int CurDestroyCount
+    /// </summary>c
+    public int DestroyedCount
     {
-        get => _curDestroyCount;
+        get => _destroyedCount;
         set
         {
-            _curDestroyCount = (value <= _totalPatientCount) ? value : _totalPatientCount;
-            if (_curDestroyCount >= _totalPatientCount)
+            _destroyedCount = (value <= _totalPatientCount) ? value : _totalPatientCount;
+            if (_destroyedCount >= _totalPatientCount)
             {
                 AllPatientFinish_Event?.Invoke();
                 Log.CallInfo("所有病人完成检查");
@@ -41,7 +45,7 @@ public class PatientManager : Singleton<PatientManager>
     /// </summary>
     public int CurInspectingCount
     {
-        get => _totalPatientCount - _curDestroyCount;
+        get => _genPatientCount - _destroyedCount;
     }
 
     private List<GameObject> _patientPrefabs = new List<GameObject>();
@@ -82,13 +86,14 @@ public class PatientManager : Singleton<PatientManager>
             patient.FinishInspection_Event += FinishInspection;
             patient.MoveNextInspection();
             patientCount++;
+            _genPatientCount++;
         }
     }
 
     private void FinishInspection(Transform patient)
     {
         Destroy(patient.gameObject, 1f);
-        CurDestroyCount++;
+        DestroyedCount++;
         Log.Info($"{patient.name} 回收");
     }
 }

@@ -221,7 +221,6 @@ namespace Michsky.MUIP
                         currentButtonAnimator.Play(buttonFadeOut);
                     }
                 }
-
                 onWindowChange.Invoke(currentWindowIndex);
             }
         }
