@@ -22,13 +22,13 @@ namespace Michsky.MUIP
             else if (rowCount == ListView.RowCount.Three) { row0.gameObject.SetActive(true); row1.gameObject.SetActive(true); row2.gameObject.SetActive(true); }
 
             // Row 1
-            if (row0Ref.rowType == ListView.RowType.Icon)
-            { 
-                row0.iconImage.sprite = row0Ref.rowIcon; 
-                row0.iconImage.gameObject.SetActive(true); 
-                row0.textObject.gameObject.SetActive(false);
-                row0.iconImage.transform.localScale = new Vector3(row0Ref.iconScale, row0Ref.iconScale, row0Ref.iconScale);
-            }
+            //if (row0Ref.rowType == ListView.RowType.Icon)
+            //{ 
+            //    row0.iconImage.sprite = row0Ref.rowIcon; 
+            //    row0.iconImage.gameObject.SetActive(true); 
+            //    row0.textObject.gameObject.SetActive(false);
+            //    row0.iconImage.transform.localScale = new Vector3(row0Ref.iconScale, row0Ref.iconScale, row0Ref.iconScale);
+            //}
 
             else if (row0Ref.rowType == ListView.RowType.Text) 
             {
@@ -37,20 +37,20 @@ namespace Michsky.MUIP
                 row0.textObject.gameObject.SetActive(true); 
             }
 
-            if (row0Ref.usePreferredWidth == true) { row0.layoutElement.preferredWidth = row0Ref.preferredWidth; }
-            else { row0.layoutElement.preferredWidth = -1; }
+            //if (row0Ref.usePreferredWidth == true) { row0.layoutElement.preferredWidth = row0Ref.preferredWidth; }
+            //else { row0.layoutElement.preferredWidth = -1; }
 
             // Row 2
             if (row1Ref == null)
                 return;
 
-            if (row1Ref.rowType == ListView.RowType.Icon) 
-            {
-                row1.iconImage.sprite = row1Ref.rowIcon; 
-                row1.iconImage.gameObject.SetActive(true);
-                row1.textObject.gameObject.SetActive(false);
-                row1.iconImage.transform.localScale = new Vector3(row1Ref.iconScale, row1Ref.iconScale, row1Ref.iconScale);
-            }
+            //if (row1Ref.rowType == ListView.RowType.Icon) 
+            //{
+            //    row1.iconImage.sprite = row1Ref.rowIcon; 
+            //    row1.iconImage.gameObject.SetActive(true);
+            //    row1.textObject.gameObject.SetActive(false);
+            //    row1.iconImage.transform.localScale = new Vector3(row1Ref.iconScale, row1Ref.iconScale, row1Ref.iconScale);
+            //}
 
             else if (row1Ref.rowType == ListView.RowType.Text) 
             {
@@ -59,20 +59,20 @@ namespace Michsky.MUIP
                 row1.textObject.gameObject.SetActive(true);
             }
 
-            if (row1Ref.usePreferredWidth == true) { row1.layoutElement.preferredWidth = row1Ref.preferredWidth; }
-            else { row1.layoutElement.preferredWidth = -1; }
+            //if (row1Ref.usePreferredWidth == true) { row1.layoutElement.preferredWidth = row1Ref.preferredWidth; }
+            //else { row1.layoutElement.preferredWidth = -1; }
 
             // Row 3
             if (row2Ref == null)
                 return;
 
-            if (row2Ref.rowType == ListView.RowType.Icon) 
-            { 
-                row2.iconImage.sprite = row2Ref.rowIcon; 
-                row2.iconImage.gameObject.SetActive(true);
-                row2.textObject.gameObject.SetActive(false);
-                row2.iconImage.transform.localScale = new Vector3(row2Ref.iconScale, row2Ref.iconScale, row2Ref.iconScale);
-            }
+            //if (row2Ref.rowType == ListView.RowType.Icon) 
+            //{ 
+            //    row2.iconImage.sprite = row2Ref.rowIcon; 
+            //    row2.iconImage.gameObject.SetActive(true);
+            //    row2.textObject.gameObject.SetActive(false);
+            //    row2.iconImage.transform.localScale = new Vector3(row2Ref.iconScale, row2Ref.iconScale, row2Ref.iconScale);
+            //}
 
             else if (row2Ref.rowType == ListView.RowType.Text)
             { 
@@ -81,8 +81,8 @@ namespace Michsky.MUIP
                 row2.textObject.gameObject.SetActive(true); 
             }
 
-            if (row2Ref.usePreferredWidth == true) { row2.layoutElement.preferredWidth = row2Ref.preferredWidth; }
-            else { row2.layoutElement.preferredWidth = -1; }
+            //if (row2Ref.usePreferredWidth == true) { row2.layoutElement.preferredWidth = row2Ref.preferredWidth; }
+            //else { row2.layoutElement.preferredWidth = -1; }
         }
     }
 }

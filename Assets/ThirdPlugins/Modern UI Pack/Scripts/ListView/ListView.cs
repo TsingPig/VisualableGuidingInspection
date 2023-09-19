@@ -51,7 +51,14 @@ namespace Michsky.MUIP
             if (itemParent == null) { Debug.LogError("<b>[List View]</b> 'Item Parent' is missing."); return; }
             if (initializeOnAwake == true) { InitializeItems(); }
         }
-
+        public void InitializeItems(int count)
+        {
+            listItems = new List<ListItem>(count)
+            {
+                new ListItem()
+            };
+            InitializeItems();
+        }
         public void InitializeItems()
         {
 #if UNITY_EDITOR
@@ -60,7 +67,7 @@ namespace Michsky.MUIP
 #else
             foreach (Transform child in itemParent) { Destroy(child.gameObject); }
 #endif
-
+            Debug.Log(listItems.Count);
             for (int i = 0; i < listItems.Count; ++i)
             {
                 GameObject go = Instantiate(itemPreset, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;

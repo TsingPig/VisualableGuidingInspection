@@ -1,3 +1,4 @@
+using Michsky.MUIP;
 using TMPro;
 using TsingPigSDK;
 
@@ -10,8 +11,11 @@ public class PatientInfoPanel : BasePanel
     TMP_Text _patientAddress;
     TMP_Text _patientPhone;
 
+
     PatientInfo _patientInfo;
-    public PatientInfoPanel(PatientInfo patientInfo) 
+
+
+    public PatientInfoPanel(PatientInfo patientInfo)
     {
         _patientInfo = patientInfo;
     }
@@ -24,13 +28,15 @@ public class PatientInfoPanel : BasePanel
         _patientAddress = UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("地址");
         _patientGender = UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("性别");
         _patientPhone = UIManager.Instance.GetOrAddComponentInChilden<TMP_Text>("电话");
-        
-        
+
+
         _patientID.text = _patientInfo.patientID;
-        _patientName.text= _patientInfo.patientName;
-        _patientAddress.text= _patientInfo.patientAddress;
+        _patientName.text = _patientInfo.patientName;
+        _patientAddress.text = _patientInfo.patientAddress;
         _patientGender.text = _patientInfo.patientGender == Gender.Male ? "男" : "女";
         _patientPhone.text = _patientInfo.patientPhoneNumber;
-        _patientAge.text= _patientInfo.patientAge.ToString();   
+        _patientAge.text = _patientInfo.patientAge.ToString();
+
+       
     }
 }

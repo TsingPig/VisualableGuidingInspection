@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class Main : MonoBehaviour
+public class MainMono : MonoBehaviour
 {
     public CanvasGroup[] Panels;
 
