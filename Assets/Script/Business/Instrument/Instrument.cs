@@ -51,7 +51,7 @@ public class Instrument : MonoBehaviour
             {
                 waitingTIme += GetTime(patient.Inspection.CurInspectionInfo);
             }
-            Log.Info($"{gameObject.name}当前WaitingTime为：{waitingTIme}");
+            //Log.Info($"{gameObject.name}当前WaitingTime为：{waitingTIme}");
             return waitingTIme;
         }
     }
@@ -106,6 +106,8 @@ public class Instrument : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         Log.Info($"{patient.name} 治疗结束");
+
+        InspectionManager.Instance.CurFinishedInspectionsCount++;
 
         InspectionEnd_Event?.Invoke(patient.transform);
 

@@ -9,7 +9,12 @@ public class InspectionManager : Singleton<InspectionManager>
     private Inspection_SO _inspectionData;
 
     private List<InspectionInfo> _inspectionInfos;
+
+    private int _curFinishedCount;
+
     public List<InspectionInfo> InspectionInfos => _inspectionInfos;
+
+    public int CurFinishedInspectionsCount { get => _curFinishedCount; set => _curFinishedCount = value; }
 
     private void Init()
     {

@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph DataVirtualized="True" GraphDirection="RightToLeft" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 Member=(Name=ScreenPointToRay OverloadingParameters=[(@7 Namespace=System Type=String)]))" Category="CodeSchema_Method" Bounds="537.992615152994,216.653781485543,139.896666666667,25.24" CodeSchemaProperty_IsPrivate="True" CommonLabel="ScreenPointToRay" Icon="CodeSchema_Method" Label="ScreenPointToRay" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=68 StartCharacterOffset=17 EndLineNumber=68 EndCharacterOffset=33)" />
+    <Node Id="(@1 @2 Member=_selectMode)" Category="CodeSchema_Field" Bounds="369.920560986965,48.4479649674119,109.073333333333,25.24" CodeSchemaProperty_IsPrivate="True" CommonLabel="_selectMode" Icon="CodeSchema_Field" Label="_selectMode" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=37 StartCharacterOffset=23 EndLineNumber=37 EndCharacterOffset=34)" UseManualLocation="True" />
+    <Node Id="(@1 @4 Member=OffSelected)" Category="CodeSchema_Method" Bounds="44.5165071206627,129.258913879395,102.813333333333,25.24" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="OffSelected" Icon="CodeSchema_Method" Label="OffSelected" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/Business/ISelectable.cs StartLineNumber=7 StartCharacterOffset=6 EndLineNumber=7 EndCharacterOffset=17)" />
+    <Node Id="(@1 @4 Member=OnSelected)" Category="CodeSchema_Method" Bounds="44.5165073241132,74.0188130187988,101.886666666667,25.24" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="OnSelected" Icon="CodeSchema_Method" Label="OnSelected" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/Business/ISelectable.cs StartLineNumber=6 StartCharacterOffset=6 EndLineNumber=6 EndCharacterOffset=16)" />
+    <Node Id="(@1 Type=SelectMode)" Category="CodeSchema_Enum" Bounds="244.771514781192,-21.7684325832042,125.066666666667,25" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="SelectMode" DelayedChildNodesState="NotFetched" Group="Collapsed" Icon="CodeSchema_Enum" Label="SelectMode" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=6 StartCharacterOffset=12 EndLineNumber=6 EndCharacterOffset=22)" UseManualLocation="True" />
+    <Node Id="@10" Category="CodeSchema_Method" Bounds="276.005640130354,119.129326699255,119.936666666667,25.24" CodeSchemaProperty_IsPrivate="True" CommonLabel="EnterInfoPanel" Icon="CodeSchema_Method" Label="EnterInfoPanel" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=92 StartCharacterOffset=17 EndLineNumber=92 EndCharacterOffset=31)" UseManualLocation="True" />
+    <Node Id="@11" Category="CodeSchema_Method" Bounds="44.5165107573408,184.499010925293,119.936666666667,25.24" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="EnterInfoPanel" Icon="CodeSchema_Method" Label="EnterInfoPanel" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/Business/ISelectable.cs StartLineNumber=8 StartCharacterOffset=6 EndLineNumber=8 EndCharacterOffset=20)" />
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="517.992615152994,1.57399370422365,435.881284586589,260.319887781319" CodeSchemaProperty_IsPublic="True" CommonLabel="InputManager" DelayedChildNodesState="Incomplete" Group="Expanded" Icon="CodeSchema_Class" Label="InputManager" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=13 StartCharacterOffset=13 EndLineNumber=13 EndCharacterOffset=25)" UseManualLocation="True" />
+    <Node Id="@5" Category="CodeSchema_Interface" Bounds="24.5165071206628,34.0187130187988,159.936670303345,195.720397906494" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ISelectable" DelayedChildNodesState="Incomplete" Group="Expanded" Icon="CodeSchema_Interface" Label="ISelectable" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/Business/ISelectable.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=28)" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Method" Bounds="743.793452555338,90.4326443456503,80.1366666666667,25.24" CodeSchemaProperty_IsPrivate="True" CommonLabel="OnClick" Icon="CodeSchema_Method" Label="OnClick" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=99 StartCharacterOffset=17 EndLineNumber=99 EndCharacterOffset=24)" />
+    <Node Id="@8" Category="CodeSchema_Field" Bounds="557.220095313752,97.574092274529,71.8266666666668,25.24" CodeSchemaProperty_IsPrivate="True" CommonLabel="_cams" Icon="CodeSchema_Field" Label="_cams" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=17 StartCharacterOffset=43 EndLineNumber=17 EndCharacterOffset=48)" />
+    <Node Id="@9" Category="CodeSchema_Field" Bounds="540.590095313752,41.574092274529,105.086666666667,25.24" CodeSchemaProperty_IsPrivate="True" CommonLabel="_selectables" Icon="CodeSchema_Field" Label="_selectables" SourceLocation="(Assembly=file:///D:/--UnityProject/LearningProject/Java/Assets/Script/System/InputManager.cs StartLineNumber=33 StartCharacterOffset=24 EndLineNumber=33 EndCharacterOffset=36)" />
+    <Node Id="E键" Category="CodeSchema_Method" Bounds="565.835064796174,153.574096089226,54.5966666666666,25.24" />
+    <Node Id="ISelectable接口是对所有可以被鼠标选中物体的抽象。提供三个接口方法，分别是选中、取消选择和进入信息面板。统一人和设备的选择特性。" Category="Comment" Bounds="214.453177424007,190.223170776367,248,66.96" UseManualLocation="True" />
+    <Node Id="全局输入控制管理器。包括E键打开信息面板、V键切换视角、鼠标屏幕射线转换到世界空间、鼠标点击事件处理等功能。" Category="Comment" Bounds="408.58997015756,305.900042795078,244.116666666667,55.72" UseManualLocation="True" />
+    <Node Id="鼠标点击接口，向_selectables中增改元素" Category="Comment" Bounds="689.787233072917,161.413681485543,244.086666666667,25.24" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="(@1 @2 Member=_selectMode)" Target="(@1 Type=SelectMode)" Bounds="335.840991404737,7.86420681793611,67.5963521376465,40.5837577358969" Label="选择模式" LabelBounds="320.609692051085,29.8707810974719,48,15.24" />
+    <Link Source="@10" Target="@11" Bounds="157.836460962349,144.369324798584,133.44719130793,37.6838456550322" />
+    <Link Source="@10" Target="@5" Bounds="81.4336506903628,160.1875717899,0.631515747032338,41.0012673554136" />
+    <Link Source="@3" Target="(@1 @2 Member=(Name=ScreenPointToRay OverloadingParameters=[(@7 Namespace=System Type=String)]))" Category="Contains" FetchingParent="@3" />
+    <Link Source="@3" Target="@6" Category="Contains" FetchingParent="@3" />
+    <Link Source="@3" Target="@8" Category="Contains" FetchingParent="@3" />
+    <Link Source="@3" Target="@9" Category="Contains" FetchingParent="@3" />
+    <Link Source="@3" Target="E键" Category="Contains" />
+    <Link Source="@3" Target="鼠标点击接口，向_selectables中增改元素" Category="Contains" />
+    <Link Source="@5" Target="(@1 @4 Member=OffSelected)" Category="Contains" FetchingParent="@5" />
+    <Link Source="@5" Target="(@1 @4 Member=OnSelected)" Category="Contains" FetchingParent="@5" />
+    <Link Source="@5" Target="@11" Category="Contains" FetchingParent="@5" />
+    <Link Source="@6" Target="@8" Bounds="638.040453908332,104.552924306151,105.752998647006,3.95970965737438" Label="V键切换视角" LabelBounds="647.019109838641,110.904002896613,68.1166666666668,15.24" />
+    <Link Source="@6" Target="@9" Bounds="651.116401135474,69.0474920739002,92.7433578192494,23.7579041401707" Label="增改" LabelBounds="681.051236091096,84.9284641764433,24,15.24" />
+    <Link Source="@6" Target="E键" Bounds="628.975698978615,115.575266093988,117.059601500108,38.7530837919187" Label="选中后" LabelBounds="681.770305329298,138.957216879627,36,15.24" />
+    <Link Source="E键" Target="@10" Bounds="404.862653817012,140.976499209801,160.97240518364,21.5611719154035" Label="进入ISelectable对象的信息面板" LabelBounds="112.553710196914,108.552195880385,170.053333333333,15.24" />
+    <Link Source="ISelectable接口是对所有可以被鼠标选中物体的抽象。提供三个接口方法，分别是选中、取消选择和进入信息面板。统一人和设备的选择特性。" Target="@5" Bounds="192.83105998966,166.551663542465,60.3150323254899,23.6715072339019" />
+    <Link Source="全局输入控制管理器。包括E键打开信息面板、V键切换视角、鼠标屏幕射线转换到世界空间、鼠标点击事件处理等功能。" Target="@3" Bounds="558.957708414232,268.20672314644,38.3013441794021,37.6933196486384" />
+    <Link Source="鼠标点击接口，向_selectables中增改元素" Target="@6" Bounds="792.133856180252,124.046056204328,14.7240298545318,37.3676252812148" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="类" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="类" />
+    <Category Id="CodeSchema_Enum" Label="枚举" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Enum" NavigationActionLabel="枚举" />
+    <Category Id="CodeSchema_Field" Label="字段" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="字段" />
+    <Category Id="CodeSchema_Interface" Label="接口" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Interface" NavigationActionLabel="接口" />
+    <Category Id="CodeSchema_Member" Label="编号" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="成员" />
+    <Category Id="CodeSchema_Method" Label="方法" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="方法" />
+    <Category Id="CodeSchema_Type" Label="类型" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="类型" />
+    <Category Id="Comment" Label="注释" Description="表示在图表中用户定义的注释" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="注释" />
+    <Category Id="Contains" Label="包含" Description="链接的源是否包含目标对象" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="包含者" IsContainment="True" OutgoingActionLabel="包含" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="是抽象的" Description="一个标志，用于指示该成员是“抽象”成员且不提供完整实现" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsFinal" Label="是最终的" Description="一个标志，用于指示该成员是“最终”成员且不能从其派生" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="是私有的" Description="一个标志，用于指示该范围是“私有”范围" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="是公共的" Description="一个标志，用于指示该范围是“公共”范围" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DataVirtualized" Label="已虚拟化数据" Description="如果为 true，则图中可以包含表示虚拟化节点/链接(即，不在图中实际创建)的数据的节点和链接。" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="DelayedChildNodesState" Label="延迟的子节点状态" Description="如果未指定延迟的子节点状态，则为 Unspecified。如果尚未将组包含的子节点提取到关系图中，则为 NotFetched。如果已提取组内的所有延迟的子节点，则为 Fetched。" DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="FetchingParent" DataType="Microsoft.VisualStudio.GraphModel.GraphNodeId" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="组" Description="将节点显示为组" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="图标" Description="图标" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="起始行号" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="Visibility" Label="可见性" Description="定义关系图中的节点是否可见" DataType="System.Windows.Visibility" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="程序集" ValueType="Uri" />
+    <Name Id="Member" Label="编号" ValueType="System.Object" />
+    <Name Id="Name" Label="名称" ValueType="System.String" />
+    <Name Id="Namespace" Label="命名空间" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="参数" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="Type" Label="类型" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(5b6dee6d-7094-f819-b7d3-038b2f4d5999.OutputPathUri)" />
+    <Alias n="2" Id="Type=InputManager" />
+    <Alias n="3" Id="(@1 @2)" />
+    <Alias n="4" Id="Type=ISelectable" />
+    <Alias n="5" Id="(@1 @4)" />
+    <Alias n="6" Id="(@1 @2 Member=(Name=OnClick OverloadingParameters=[@5]))" />
+    <Alias n="7" Uri="Assembly=file:///E:/--Unity New/2021.3.13f1c1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/mscorlib.dll" />
+    <Alias n="8" Id="(@1 @2 Member=_cams)" />
+    <Alias n="9" Id="(@1 @2 Member=_selectables)" />
+    <Alias n="10" Id="(@1 @2 Member=EnterInfoPanel)" />
+    <Alias n="11" Id="(@1 @4 Member=EnterInfoPanel)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="错误" ValueLabel="错误级别">
+      <Condition Expression="HasValue('ErrorLevel')" />
+      <Setter Property="Icon" Value="Node.Error" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="结果" ValueLabel="True">
+      <Condition Expression="HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFBCFFBE" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="测试项目" ValueLabel="测试项目">
+      <Condition Expression="HasCategory('CodeMap_TestProject')" />
+      <Setter Property="Icon" Value="CodeMap_TestProject" />
+      <Setter Property="Background" Value="#FF307A69" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Web 项目" ValueLabel="Web 项目">
+      <Condition Expression="HasCategory('CodeMap_WebProject')" />
+      <Setter Property="Icon" Value="CodeMap_WebProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Windows 应用商店项目" ValueLabel="Windows 应用商店项目">
+      <Condition Expression="HasCategory('CodeMap_WindowsStoreProject')" />
+      <Setter Property="Icon" Value="CodeMap_WindowsStoreProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="电话项目" ValueLabel="电话项目">
+      <Condition Expression="HasCategory('CodeMap_PhoneProject')" />
+      <Setter Property="Icon" Value="CodeMap_PhoneProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="可移植库" ValueLabel="可移植库">
+      <Condition Expression="HasCategory('CodeMap_PortableLibraryProject')" />
+      <Setter Property="Icon" Value="CodeMap_PortableLibraryProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="WPF 项目" ValueLabel="WPF 项目">
+      <Condition Expression="HasCategory('CodeMap_WpfProject')" />
+      <Setter Property="Icon" Value="CodeMap_WpfProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="VSIX 项目" ValueLabel="VSIX 项目">
+      <Condition Expression="HasCategory('CodeMap_VsixProject')" />
+      <Setter Property="Icon" Value="CodeMap_VsixProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="建模项目" ValueLabel="建模项目">
+      <Condition Expression="HasCategory('CodeMap_ModelingProject')" />
+      <Setter Property="Icon" Value="CodeMap_ModelingProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="程序集" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#FF094167" />
+      <Setter Property="Stroke" Value="#FF094167" />
+      <Setter Property="Icon" Value="CodeSchema_Assembly" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="命名空间" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#FF0E619A" />
+      <Setter Property="Stroke" Value="#FF0E619A" />
+      <Setter Property="Icon" Value="CodeSchema_Namespace" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="接口" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Interface" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="结构" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Struct')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Struct" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="枚举" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Enum')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Enum" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="委托" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Delegate')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Delegate" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="类" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#FF0E70C0" />
+      <Setter Property="Stroke" Value="#FF0E70C0" />
+      <Setter Property="Icon" Value="CodeSchema_Class" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="属性" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Property')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Property" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="方法" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Method') Or HasCategory('CodeSchema_CallStackUnresolvedMethod')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Method" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="事件" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Event')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Event" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="字段" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Field')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Field" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Out 参数" ValueLabel="具有类别">
+      <Condition Expression="CodeSchemaProperty_IsOut = 'True'" />
+      <Setter Property="Icon" Value="CodeSchema_OutParameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="参数" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Parameter')" />
+      <Setter Property="Icon" Value="CodeSchema_Parameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="局部变量" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_LocalExpression')" />
+      <Setter Property="Icon" Value="CodeSchema_LocalExpression" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="外部" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FF424242" />
+      <Setter Property="Stroke" Value="#FF424242" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="继承自" ValueLabel="True">
+      <Condition Expression="HasCategory('InheritsFrom')" />
+      <Setter Property="Stroke" Value="#FF00A600" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="实现" ValueLabel="True">
+      <Condition Expression="HasCategory('Implements')" />
+      <Setter Property="Stroke" Value="#8000A600" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="调用" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Calls')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="函数指针" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FunctionPointer')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="字段读取" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldRead')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="字段写入" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldWrite')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="DrawArrow" Value="true" />
+      <Setter Property="IsHidden" Value="false" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('InheritsFrom') And Target.HasCategory('CodeSchema_Class')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('Implements') And Target.HasCategory('CodeSchema_Interface')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Comment Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="Source.HasCategory('Comment')" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Cursor Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCursorLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Disabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="DisabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="EnabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Instruction Pointer Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsInstructionPointerLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Callstack Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCurrentCallstackFrame" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="返回" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_ReturnTypeLink')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="引用" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('References')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="使用特性" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_AttributeUse')" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="解决方案文件夹" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeMap_SolutionFolder')" />
+      <Setter Property="Background" Value="#FFDEBA83" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="项目引用" ValueLabel="项目引用">
+      <Condition Expression="HasCategory('CodeMap_ProjectReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="外部引用" ValueLabel="外部引用">
+      <Condition Expression="HasCategory('CodeMap_ExternalReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="注释" ValueLabel="包含注释">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="5b6dee6d-7094-f819-b7d3-038b2f4d5999.OutputPathUri" Value="file:///D:/--UnityProject/LearningProject/Java/Temp/Bin/Debug/Assembly-CSharp.dll" />
+  </Paths>
+</DirectedGraph>

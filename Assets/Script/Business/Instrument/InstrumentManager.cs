@@ -13,6 +13,9 @@ public class InstrumentManager : Singleton<InstrumentManager>
 
     private Dictionary<string, List<Instrument>> _dicInstruments = new Dictionary<string, List<Instrument>>();
 
+    private int _instrumentCount;
+    public int InstrumentCount { get => _instrumentCount; set => _instrumentCount = value; }
+
     /// <summary>
     /// 设备初始化：双向注册（Info绑定到设备、设备绑定到管理器）
     /// </summary>
@@ -34,6 +37,8 @@ public class InstrumentManager : Singleton<InstrumentManager>
             List<Instrument> lstInstrument = new List<Instrument>() { instrument };
             _dicInstruments.Add(info.instrumentID, lstInstrument);
         }
+
+        _instrumentCount++;
         Log.Info($"ID : {instrumentID}注册{info.instrumentName}");
         return info;
     }
