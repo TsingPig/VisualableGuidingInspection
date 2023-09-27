@@ -1,7 +1,6 @@
 using UnityEngine;
 namespace TsingPigSDK
 {
-
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour, new()
     {
         private static T instance;

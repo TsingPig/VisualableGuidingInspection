@@ -21,14 +21,14 @@ namespace TsingPigSDK
         }
         public static void Info(params string[] strings)
         {
-            //string result = string.Join(" ", strings);
-            //Debug.Log(result);
+            string result = string.Join(" ", strings);
+            Debug.Log(result);
         }
         
         public static void Warning(params string[] strings)
         {
-            //string result = string.Join(" ", strings);
-            //Debug.LogWarning(result);
+            string result = string.Join(" ", strings);
+            Debug.LogWarning(result);
         }
     }
 }

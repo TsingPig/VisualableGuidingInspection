@@ -1,6 +1,4 @@
 using TsingPigSDK;
-using UnityEngine;
-
 public sealed class GameManager : Singleton<GameManager>
 {
     private void Init()
@@ -15,7 +13,6 @@ public sealed class GameManager : Singleton<GameManager>
     private void GameEntry()
     {
         //UIManager.Instance.Enter(new MainPanel());
-
     }
     protected override void Awake()
     {
@@ -26,16 +23,5 @@ public sealed class GameManager : Singleton<GameManager>
     private void Start()
     {
         GameEntry();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            RandomSystem.RandomPatientInfo();
-        }
-        if (Input.GetKeyUp(KeyCode.T))
-        {
-           
-        }
     }
 }

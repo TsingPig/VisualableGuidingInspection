@@ -51,7 +51,7 @@ public class Instrument : MonoBehaviour
             {
                 waitingTIme += GetTime(patient.Inspection.CurInspectionInfo);
             }
-            Log.Info($"{gameObject.name}当前WaitingTime为：{waitingTIme}");
+            //Log.Info($"{gameObject.name}当前WaitingTime为：{waitingTIme}");
             return waitingTIme;
         }
     }

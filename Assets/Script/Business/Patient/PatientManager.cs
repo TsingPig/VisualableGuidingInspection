@@ -11,7 +11,7 @@ public class PatientManager : Singleton<PatientManager>
 {
     private int _totalPatientCount = 44;
 
-    private float _genDurationPeriodPercent = 0.5f;
+    private float _genDurationPeriodPercent = 0.2f;
 
     public Action AllPatientFinish_Event;
 
